@@ -60,3 +60,7 @@ Source of truth for shared platform code is the main repository; port fixes made
 - The free-counselling form and the footer newsletter box post to `/api/enquiry` and are stored in the `overseas_enquiries` table (migration `20261231000001`). Run `npm run portal:migrate` on any database before using them.
 - Set `PORTAL_AUTO_MIGRATE=1` to apply migrations and load the country and university catalogue (7 countries, 47 universities) on server start.
 - Set `MARKETING_URL` only if paths from other verticals should redirect to another site; otherwise they return a normal 404.
+
+## Standard footer
+
+The footer is the standard Yugty footer used by every web application (`components/standard-footer/`, see its README). Edit `lib/footer.config.ts` for this app's content. Set `NEXT_PUBLIC_SITE_URL` (used for canonical URLs and the share buttons) and, when the other apps are live, `NEXT_PUBLIC_APP_URL_LEARNING`, `_INTERNSHIPS` and `_RECRUITMENT`.
