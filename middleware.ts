@@ -5,11 +5,11 @@ import { BLOCK_DEMO_HEADER, blocksDemo } from "@/lib/portal/demo";
 
 export async function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
-  const portalOnly = process.env.SITE_MODE !== "full"; // this repo serves one vertical; other paths go to MARKETING_URL
+  const portalOnly = process.env.SITE_MODE !== "full" && !!process.env.MARKETING_URL; // only redirect other-vertical paths when a MARKETING_URL is configured
   const noindex = process.env.SITE_NOINDEX === "1";
   // Optional portal-only host: marketing pages are not served here, so send visitors to the main site.
   if (portalOnly) {
-    const d = portalDecision(pathname, search, process.env.MARKETING_URL || "https://growqr.ai");
+    const d = portalDecision(pathname, search, process.env.MARKETING_URL ?? "");
     if (d.action === "redirect") return NextResponse.redirect(d.to.startsWith("/") ? new URL(d.to, request.url) : d.to, 307);
   }
   // Tell the server whether a read-only demo account may act on this request. Set here, so a value sent by the browser is always replaced.

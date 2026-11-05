@@ -1,222 +1,310 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, ArrowUpRight, ChevronDown, Play, Quote } from "lucide-react";
 import data from "@/lib/abroad/data/study-abroad.json";
-import { ABROAD_PACKAGES, ABROAD_STAGES, PACKAGE_DISCLAIMER, rs } from "@/lib/abroad/packages";
+import { ABROAD_PACKAGES } from "@/lib/abroad/packages";
+import { DESTINATIONS, FAQS, FUNDING, JOURNEY, RESOURCES, SERVICES, TESTIMONIALS, VERIFIED_STATS, WHY } from "@/lib/home/content";
+import { photo } from "@/lib/home/images";
 import { SITE_URL } from "@/lib/seo";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Icon from "@/components/home/Icon";
+import Reveal from "@/components/home/Reveal";
+import Counter from "@/components/home/Counter";
+import GlobeHero from "@/components/home/GlobeHero";
+import Discovery, { type UniLite } from "@/components/home/Discovery";
+import EnquiryForm from "@/components/home/EnquiryForm";
 
 export const metadata: Metadata = {
-  title: "Yugty Overseas Education: Plan, Apply, Fund and Settle Abroad",
+  title: "Yugty Overseas Education: Your Global Education Journey Starts Here",
   description:
-    "Compare universities in the USA, UK, Canada, Germany, Australia, France and the UAE, see yearly costs in rupees, and get counsellor-led help from shortlisting to visa, funding and settling in.",
+    "Discover world-class universities, explore international opportunities and turn your academic ambitions into a global future. Compare ten study destinations, plan costs in rupees and get expert help from shortlist to visa.",
   alternates: { canonical: SITE_URL },
 };
 
+type CatCountry = { key: string; tuition: { mid: number; low: number }; currency: string; living: { low: number } };
 const fx = data.fx as Record<string, number>;
+const CAT = new Map((data.countries as unknown as CatCountry[]).map((c) => [c.key, c]));
 const lakh = (inr: number) => `₹${(inr / 1_00_000).toFixed(inr >= 10_00_000 ? 0 : 1)} lakh`;
 
-const STAGE_TEXT: Record<string, string> = {
-  Plan: "Profile evaluation, a shortlist of Safe, Target and Reach universities, and a deadline roadmap.",
-  Apply: "SOP and LOR strategy, resume refinement, and applications filed and tracked for you.",
-  Prepare: "IELTS coaching, scholarship search and interview preparation with a real counsellor.",
-  "Visa and funding": "Visa file, financial documents, education loans and proof-of-funds planning.",
-  "Settle in": "Pre-departure briefing, accommodation, banking, and support after you land.",
-};
-
-const TOOLS = [
-  { href: "/ielts", title: "IELTS preparation", text: "Lessons, writing and speaking practice, and 30 full mock tests per skill." },
-  { href: "/abroad/matches", title: "University matches", text: "Safe, Target and Reach options scored against your profile and budget." },
-  { href: "/abroad/visa", title: "Visa tracker", text: "Step-by-step checklist with deadlines and calendar reminders." },
-  { href: "/abroad/funds", title: "Funds planner", text: "Tuition, living cost and proof-of-funds worked out in rupees." },
-  { href: "/abroad/loans", title: "Education loans", text: "Compare lenders and see the EMI before you commit." },
-  { href: "/abroad/interview", title: "Visa interview practice", text: "Mock interviews with feedback on every answer." },
-];
-
-const FAQ = [
-  ["Do you guarantee admission or a visa?", "No. Universities and governments make those decisions. We improve the quality of your file and your preparation, and we say so plainly on every package."],
-  ["Can I use the tools without buying a package?", "Yes. Browsing destinations, comparing universities, IELTS practice and the cost planner are free once you sign in."],
-  ["Are prices shown in rupees?", "Yes. Tuition and living costs are converted at a stated rate and marked with the date they were last reviewed."],
-  ["Who delivers the counselling?", "Yugty counsellors and vetted partners, with every step visible in your dashboard."],
-];
-
-type Country = { key: string; name: string; code: string; currency: string; c1: string; c2: string; tagline: string; tuition: { mid: number } };
+const UNIS: UniLite[] = (data.universities as unknown as Array<{ slug: string; name: string; country: string; levels: string[]; fields: string[]; cost: string }>).map((u) => ({
+  slug: u.slug, name: u.name, country: u.country, levels: u.levels, fields: u.fields, cost: u.cost,
+}));
 
 export default function Home() {
-  const countries = data.countries as unknown as Country[];
-  const unis = data.universities.length;
-  const inr = (c: Country) => c.tuition.mid * (fx[c.currency] ?? 1);
+  const heroPhoto = photo("hero");
+  const stats: Array<{ value: number; suffix?: string; label: string }> = [
+    { value: data.countries.length, label: "Destinations in our catalogue" },
+    { value: data.universities.length, label: "Universities compared" },
+    { value: ABROAD_PACKAGES.length, label: "Levels of expert support" },
+    { value: JOURNEY.length, label: "Steps from ambition to admission" },
+    ...VERIFIED_STATS,
+  ];
 
   return (
-    <div className="min-h-screen bg-white text-ink">
-      <Navbar />
+    <div className="yg">
+      <Navbar overlay />
 
-      <section className="relative overflow-hidden bg-[#0B1220] text-white">
-        <div aria-hidden className="absolute inset-0 opacity-60" style={{ background: "radial-gradient(60% 80% at 85% 0%, rgba(255,106,47,.35), transparent 60%), radial-gradient(50% 60% at 0% 100%, rgba(59,130,246,.28), transparent 60%)" }} />
-        <div aria-hidden className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "56px 56px" }} />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:py-28 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[13px] font-medium text-white/85">
-              <span className="h-2 w-2 rounded-full bg-orange" /> Counsellor-led, from first shortlist to first day on campus
-            </span>
-            <h1 className="mt-6 text-[40px] font-bold leading-[1.08] tracking-tight text-white sm:text-6xl">
-              Study abroad with a plan, <span className="font-serif font-normal italic text-orange">not guesswork.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed !text-white/75">
-              Compare {unis}+ universities across {countries.length} countries, see the real yearly cost in rupees, and get expert help with applications, IELTS, visa, funding and settling in.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/study-abroad" className="inline-flex min-h-[52px] items-center rounded-full bg-orange px-8 text-[16px] font-semibold text-white shadow-glow transition hover:bg-orange-dark">Explore universities</Link>
-              <Link href="/overseas-packages" className="inline-flex min-h-[52px] items-center rounded-full border border-white/25 px-8 text-[16px] font-semibold text-white transition hover:bg-white/10">View packages</Link>
+      {/* 2. HERO */}
+      <section className="yg-hero" id="top">
+        <div className="yg-hero-bg" aria-hidden style={heroPhoto ? { backgroundImage: `linear-gradient(180deg, rgba(5,12,32,.78), rgba(5,12,32,.92)), url(${heroPhoto})` } : undefined} />
+        <div className="yg-wrap yg-hero-in">
+          <div className="yg-hero-copy">
+            <p className="yg-pill"><span /> Counsellor-led study abroad, from shortlist to arrival</p>
+            <h1>Your Global Education Journey <em>Starts Here.</em></h1>
+            <p className="yg-lead">Discover world-class universities, explore international opportunities, and turn your academic ambitions into a global future.</p>
+            <Discovery unis={UNIS} compact />
+            <div className="yg-cta-row">
+              <a href="#destinations" className="yg-btn yg-btn-primary yg-btn-lg">Explore Study Destinations <ArrowRight size={18} aria-hidden /></a>
+              <Link href="/study-abroad" className="yg-btn yg-btn-ghost yg-btn-lg">Find Your University</Link>
             </div>
-            <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
-              {[[`${countries.length}`, "Study destinations"], [`${unis}+`, "Universities compared"], ["5", "Journey stages covered"]].map(([n, l]) => (
-                <div key={l}>
-                  <dt className="text-3xl font-bold sm:text-4xl">{n}</dt>
-                  <dd className="mt-1 text-[13px] text-white/60">{l}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="yg-trust">
+              <b><Counter to={data.universities.length} />+</b>
+              <span>universities and <b><Counter to={data.countries.length} /></b> destinations compared in rupees, with guidance at every step.</span>
+            </div>
           </div>
-
-          <div className="rounded-3xl border border-white/15 bg-white/[0.06] p-6 shadow-2xl backdrop-blur sm:p-8">
-            <p className="text-[12px] font-semibold uppercase tracking-widest text-white/55">Typical yearly tuition</p>
-            <ul className="mt-5 divide-y divide-white/10">
-              {countries.map((c) => (
-                <li key={c.key} className="flex items-center justify-between py-3">
-                  <span className="flex items-center gap-3 text-[15px] font-medium"><Badge code={c.code} />{c.name}</span>
-                  <span className="text-[15px] font-semibold tabular-nums">{lakh(inr(c))}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 text-[12px] leading-relaxed text-white/50">Mid-range tuition converted to rupees at the rate on file. Reviewed {data.reviewed}. Living costs are extra.</p>
-          </div>
+          <GlobeHero />
         </div>
       </section>
 
-      <section id="destinations" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-20">
-        <SectionHead eyebrow="Destinations" title="Seven countries, compared honestly" text="Tuition, living cost, work rights after study and visa steps for each destination, in one place." />
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {countries.map((c) => (
-            <li key={c.key}>
-              <Link href={`/study-abroad/${c.key}`} className="group block h-full overflow-hidden rounded-3xl border border-black/10 bg-white transition hover:-translate-y-1 hover:shadow-card">
-                <div className="flex h-28 items-end justify-between p-5 text-white" style={{ background: `linear-gradient(135deg, ${c.c1}, ${c.c2})` }}>
-                  <span className="text-2xl font-bold">{c.name}</span>
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-[15px] font-bold tracking-wide ring-1 ring-white/40" aria-hidden>{c.code}</span>
-                </div>
-                <div className="p-5">
-                  <p className="min-h-[66px] text-[15px] leading-relaxed text-ink-3">{c.tagline}</p>
-                  <div className="mt-4 flex items-center justify-between border-t border-black/[0.07] pt-4 text-[13px]">
-                    <span className="text-ink-4">Tuition from <b className="text-ink">{lakh(inr(c))}</b>/yr</span>
-                    <span className="font-semibold text-orange transition group-hover:translate-x-1">Explore →</span>
-                  </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link href="/study-abroad" className="flex h-full min-h-[240px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-orange/40 bg-orange-lighter p-6 text-center transition hover:border-orange">
-              <span className="text-xl font-semibold text-orange-deep">Browse all {unis}+ universities</span>
-              <span className="mt-2 text-[14px] text-ink-3">Filter by country, field, level and budget</span>
-            </Link>
-          </li>
-        </ul>
-      </section>
-
-      <section id="journey" className="scroll-mt-20 bg-cream-2 py-20">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionHead eyebrow="The journey" title="Five stages. One dashboard." text="Everything from the first profile review to your first month abroad, tracked in your own student dashboard." />
-          <ol className="mt-12 grid gap-5 md:grid-cols-5">
-            {ABROAD_STAGES.map((s, i) => (
-              <li key={s} className="rounded-3xl bg-white p-6 shadow-card">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange text-[15px] font-bold text-white">{i + 1}</span>
-                <h3 className="mt-4 text-lg font-semibold">{s}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-ink-3">{STAGE_TEXT[s]}</p>
-              </li>
-            ))}
-          </ol>
+      {/* 3. DISCOVERY */}
+      <section className="yg-sec yg-sec-light" id="discover">
+        <div className="yg-wrap">
+          <Reveal className="yg-head">
+            <p className="yg-kicker">Discover</p>
+            <h2>Find the right university and course, <em>faster.</em></h2>
+            <p>Filter by country, level, subject, budget and intake. See matching universities instantly.</p>
+          </Reveal>
+          <Reveal className="yg-discover"><Discovery unis={UNIS} /></Reveal>
         </div>
       </section>
 
-      <section id="packages" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-20">
-        <SectionHead eyebrow="Packages" title="Choose how much help you want" text="Five levels, each building on the last. Pay once, at a fixed price." />
-        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-          {ABROAD_PACKAGES.map((p) => (
-            <li key={p.key} className={`flex flex-col rounded-3xl border p-6 ${p.level === 3 ? "border-orange shadow-glow" : "border-black/10"}`}>
-              {p.level === 3 ? <span className="mb-3 w-fit rounded-full bg-orange px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">Most chosen</span> : <span className="mb-3 h-[26px]" />}
-              <span className="text-[12px] font-semibold uppercase tracking-widest text-ink-4">Level {p.level}</span>
-              <h3 className="mt-1 text-lg font-semibold leading-snug">{p.name}</h3>
-              <p className="mt-1 text-[14px] text-ink-3">{p.tagline}</p>
-              <p className="mt-5 text-3xl font-bold">{rs(p.from)}</p>
-              <ul className="mt-5 flex-1 space-y-2 text-[14px] text-ink-2">
-                {p.headline.map((h) => (
-                  <li key={h} className="flex gap-2"><span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-orange" />{h}</li>
-                ))}
-              </ul>
-              <Link href="/overseas-packages" className="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full border border-black/15 text-[14px] font-semibold transition hover:border-orange hover:text-orange">See what is included</Link>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 max-w-3xl text-[13px] leading-relaxed text-ink-4">{PACKAGE_DISCLAIMER}</p>
+      {/* 4. DESTINATIONS */}
+      <section className="yg-sec yg-sec-off" id="destinations">
+        <div className="yg-wrap">
+          <Reveal className="yg-head">
+            <p className="yg-kicker">Study destinations</p>
+            <h2>Ten countries. <em>One trusted guide.</em></h2>
+            <p>Explore where your ambition could take you, with real costs and honest comparisons.</p>
+          </Reveal>
+          <ul className="yg-dest-grid">
+            {DESTINATIONS.map((d, i) => {
+              const c = CAT.get(d.key);
+              const img = photo(`destinations/${d.key}`);
+              const href = d.catalogue ? `/study-abroad/${d.key}` : `/#enquire?dest=${encodeURIComponent(d.name)}`;
+              return (
+                <Reveal as="li" key={d.key} delay={(i % 5) * 60}>
+                  <Link href={href} className="yg-dest">
+                    <span className="yg-dest-art" style={{ background: img ? `url(${img}) center/cover` : `linear-gradient(135deg, ${d.hue[0]}, ${d.hue[1]})` }}>
+                      {!img && <span className="yg-dest-code" aria-hidden>{d.code}</span>}
+                      <span className="yg-dest-name">{d.name}</span>
+                    </span>
+                    <span className="yg-dest-body">
+                      <span className="yg-dest-blurb">{d.blurb}</span>
+                      <span className="yg-dest-tags">{d.programmes.map((p) => <i key={p}>{p}</i>)}</span>
+                      <span className="yg-dest-foot">
+                        <span>{c ? <>Tuition from <b>{lakh(c.tuition.mid * (fx[c.currency] ?? 1))}</b>/yr</> : "Ask us about costs"}</span>
+                        <span className="yg-dest-go">Explore Destination <ArrowUpRight size={15} aria-hidden /></span>
+                      </span>
+                    </span>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </ul>
+        </div>
       </section>
 
-      <section id="tools" className="scroll-mt-20 bg-[#0B1220] py-20 text-white">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionHead dark eyebrow="Your toolkit" title="Everything you need, in one place" text="Practical tools that work whether or not you buy a package." />
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TOOLS.map((t) => (
-              <li key={t.href}>
-                <Link href={t.href} className="block h-full rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange/60 hover:bg-white/[0.07]">
-                  <h3 className="text-lg font-semibold text-white">{t.title}</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed !text-white/65">{t.text}</p>
-                  <span className="mt-4 inline-block text-[14px] font-semibold text-orange">Open →</span>
+      {/* 5. SERVICES */}
+      <section className="yg-sec yg-sec-light" id="services">
+        <div className="yg-wrap">
+          <Reveal className="yg-head">
+            <p className="yg-kicker">Our services</p>
+            <h2>Complete support, <em>start to settled.</em></h2>
+            <p>Eleven services that cover everything between your first question and your first month abroad.</p>
+          </Reveal>
+          <ul className="yg-svc-grid">
+            {SERVICES.map((s, i) => (
+              <Reveal as="li" key={s.title} delay={(i % 4) * 50}>
+                <Link href={s.href} className="yg-svc">
+                  <span className="yg-ico"><Icon name={s.icon} size={24} /></span>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                  <span className="yg-svc-cta">{s.cta} <ArrowRight size={15} aria-hidden /></span>
                 </Link>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>
       </section>
 
-      <section id="faq" className="mx-auto max-w-3xl scroll-mt-20 px-5 py-20">
-        <SectionHead eyebrow="FAQ" title="Straight answers" />
-        <div className="mt-10 divide-y divide-black/10 border-y border-black/10">
-          {FAQ.map(([q, a]) => (
-            <details key={q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-semibold">
-                {q}<span className="text-2xl text-orange transition group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 text-[15px] leading-relaxed text-ink-3">{a}</p>
-            </details>
-          ))}
+      {/* 6. WHY CHOOSE US */}
+      <section className="yg-sec yg-dark" id="why">
+        <div className="yg-wrap yg-why">
+          <Reveal className="yg-why-intro">
+            <p className="yg-kicker yg-kicker-light">Why choose us</p>
+            <h2>A global education platform built on <em>clarity and care.</em></h2>
+            <p>We combine real data, personal guidance and a transparent process, so you always know where you stand and what happens next.</p>
+            <dl className="yg-stats">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <dt><Counter to={s.value} suffix={s.suffix} /></dt>
+                  <dd>{s.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+          <ul className="yg-why-grid">
+            {WHY.map((w, i) => (
+              <Reveal as="li" key={w.title} delay={(i % 3) * 60} className="yg-why-card">
+                <span className="yg-ico yg-ico-light"><Icon name={w.icon} size={22} /></span>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="px-5 pb-20">
-        <div className="mx-auto max-w-7xl rounded-[32px] bg-gradient-to-br from-orange to-orange-dark px-6 py-14 text-center text-white sm:py-20">
-          <h2 className="mx-auto max-w-2xl text-3xl font-bold leading-tight !text-white sm:text-5xl">Ready to see where your profile can take you?</h2>
-          <p className="mx-auto mt-4 max-w-xl !text-white/85">Create a free account, build your profile, and get your first Safe, Target and Reach shortlist.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/signup" className="inline-flex min-h-[52px] items-center rounded-full bg-white px-8 font-semibold text-orange-deep">Create free account</Link>
-            <Link href="/overseas-packages" className="inline-flex min-h-[52px] items-center rounded-full border border-white/50 px-8 font-semibold text-white">Talk to a counsellor</Link>
+      {/* 7. JOURNEY */}
+      <section className="yg-sec yg-sec-off" id="journey">
+        <div className="yg-wrap">
+          <Reveal className="yg-head yg-head-center">
+            <p className="yg-kicker">Your journey</p>
+            <h2>From ambition to <em>admission.</em></h2>
+            <p>Seven clear steps, each with a guide beside you.</p>
+          </Reveal>
+          <ol className="yg-timeline">
+            {JOURNEY.map((s, i) => (
+              <Reveal as="li" key={s.no} delay={i * 90}>
+                <span className="yg-node">{s.no}</span>
+                <h3>{s.name}</h3>
+                <p>{s.text}</p>
+              </Reveal>
+            ))}
+          </ol>
+          <Reveal className="yg-center"><a href="#enquire" className="yg-btn yg-btn-primary yg-btn-lg">Start your journey <ArrowRight size={18} aria-hidden /></a></Reveal>
+        </div>
+      </section>
+
+      {/* 8. SCHOLARSHIPS & FINANCE */}
+      <section className="yg-sec yg-sec-light" id="scholarships">
+        <div className="yg-wrap yg-fund">
+          <Reveal className="yg-fund-intro">
+            <p className="yg-kicker">Scholarships &amp; financial guidance</p>
+            <h2>Make studying abroad <em>affordable.</em></h2>
+            <p>Know the full cost up front, find funding you qualify for, and plan your finances before you commit.</p>
+            <div className="yg-cta-row yg-cta-left">
+              <a href="#enquire?service=Scholarship%20guidance" className="yg-btn yg-btn-primary">Get scholarship guidance</a>
+              <Link href="/study-abroad" className="yg-btn yg-btn-ghost-dark">Compare costs</Link>
+            </div>
+          </Reveal>
+          <ul className="yg-fund-grid">
+            {FUNDING.map((f, i) => (
+              <Reveal as="li" key={f.title} delay={(i % 2) * 70} className="yg-fund-card">
+                <span className="yg-ico"><Icon name={f.icon} size={22} /></span>
+                <div><h3>{f.title}</h3><p>{f.text}</p></div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 9. SUCCESS STORIES */}
+      <section className="yg-sec yg-sec-off" id="stories">
+        <div className="yg-wrap">
+          <Reveal className="yg-head">
+            <p className="yg-kicker">Student success stories</p>
+            <h2>Real students. <em>Real journeys.</em></h2>
+            <p>Hear from students who took the step. These cards are samples until verified stories are added.</p>
+          </Reveal>
+          <ul className="yg-story-grid">
+            {TESTIMONIALS.map((t, i) => {
+              const img = photo(`students/${i + 1}`);
+              return (
+                <Reveal as="li" key={i} delay={i * 80} className="yg-story">
+                  <div className="yg-story-media" style={img ? { background: `url(${img}) center/cover` } : undefined}>
+                    {!img && <span aria-hidden>{(t.name[0] ?? "S").toUpperCase()}</span>}
+                    <button type="button" className="yg-play" disabled aria-label="Video testimonial coming soon"><Play size={20} aria-hidden /></button>
+                    <em>Video coming soon</em>
+                  </div>
+                  <Quote size={22} className="yg-quote" aria-hidden />
+                  <p>{t.quote}</p>
+                  <footer>
+                    <b>{t.name}</b>
+                    <span>{t.course}</span>
+                    <span>{t.university}, {t.country}</span>
+                    {t.placeholder && <i className="yg-sample">Sample story</i>}
+                  </footer>
+                </Reveal>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      {/* 10. RESOURCES */}
+      <section className="yg-sec yg-sec-light" id="resources">
+        <div className="yg-wrap">
+          <Reveal className="yg-head yg-head-row">
+            <div>
+              <p className="yg-kicker">Knowledge centre</p>
+              <h2>Guides, tools and <em>answers.</em></h2>
+            </div>
+            <Link href="/study-abroad" className="yg-btn yg-btn-ghost-dark">Visit Knowledge Centre <ArrowRight size={16} aria-hidden /></Link>
+          </Reveal>
+          <ul className="yg-res-grid">
+            {RESOURCES.map((r, i) => (
+              <Reveal as="li" key={r.title} delay={(i % 4) * 50}>
+                <Link href={r.href} className="yg-res">
+                  <i>{r.tag}</i>
+                  <h3>{r.title}</h3>
+                  <p>{r.text}</p>
+                  <span>Read more <ArrowRight size={14} aria-hidden /></span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 11. LEAD GENERATION */}
+      <section className="yg-sec yg-lead-sec" id="enquire">
+        <div className="yg-wrap yg-enq-wrap">
+          <Reveal className="yg-enq-copy">
+            <p className="yg-kicker yg-kicker-light">Free counselling</p>
+            <h2>Let&apos;s Turn Your Global Ambitions into <em>Reality.</em></h2>
+            <p>Connect with our education experts and discover the right international study opportunities for your future.</p>
+            <ul className="yg-checks">
+              <li>Personal advice on country, course and budget</li>
+              <li>A clear plan with deadlines and next steps</li>
+              <li>No obligation, and no pressure</li>
+            </ul>
+          </Reveal>
+          <Reveal className="yg-enq-card"><EnquiryForm /></Reveal>
+        </div>
+      </section>
+
+      {/* 12. FAQ */}
+      <section className="yg-sec yg-sec-off" id="faq">
+        <div className="yg-wrap yg-faq">
+          <Reveal className="yg-head">
+            <p className="yg-kicker">FAQ</p>
+            <h2>Straight answers to <em>common questions.</em></h2>
+          </Reveal>
+          <div className="yg-faq-list">
+            {FAQS.map(([q, a]) => (
+              <details key={q} name="faq">
+                <summary>{q}<ChevronDown size={20} aria-hidden /></summary>
+                <p>{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
-}
-
-function Badge({ code }: { code: string }) {
-  return <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold tracking-wide ring-1 ring-white/25" aria-hidden>{code}</span>;
-}
-
-function SectionHead({ eyebrow, title, text, dark }: { eyebrow: string; title: string; text?: string; dark?: boolean }) {
-  return (
-    <div className="max-w-2xl">
-      <p className="text-[13px] font-semibold uppercase tracking-widest text-orange">{eyebrow}</p>
-      <h2 className={`mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl ${dark ? "!text-white" : ""}`}>{title}</h2>
-      {text ? <p className={`mt-4 text-lg leading-relaxed ${dark ? "!text-white/70" : "text-ink-3"}`}>{text}</p> : null}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQS.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) }} />
     </div>
   );
 }

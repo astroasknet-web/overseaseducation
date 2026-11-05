@@ -51,3 +51,12 @@ share accounts and the Skill Passport across verticals, or give each its own dat
 `npm run build` · `npm run start` · `npm test` · `npm run portal:migrate` · `npm run demo:admin`
 
 Source of truth for shared platform code is the main repository; port fixes made there into this repo when they touch shared files.
+
+## Home page, content and enquiries
+
+- The home page is `app/page.tsx`; its text, destinations, services, FAQs, contact details and social links live in `lib/home/content.ts`.
+- Optional photos: `public/home/hero.jpg`, `public/home/destinations/<key>.jpg`, `public/home/students/<n>.jpg` appear automatically when present.
+- The success-story cards are samples (marked "Sample story"). Replace them with verified stories before launch.
+- The free-counselling form and the footer newsletter box post to `/api/enquiry` and are stored in the `overseas_enquiries` table (migration `20261231000001`). Run `npm run portal:migrate` on any database before using them.
+- Set `PORTAL_AUTO_MIGRATE=1` to apply migrations and load the country and university catalogue (7 countries, 47 universities) on server start.
+- Set `MARKETING_URL` only if paths from other verticals should redirect to another site; otherwise they return a normal 404.

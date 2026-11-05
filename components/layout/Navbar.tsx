@@ -1,37 +1,51 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const LINKS: Array<[string, string]> = [
   ["/#destinations", "Destinations"],
+  ["/#services", "Services"],
   ["/#journey", "Journey"],
-  ["/#packages", "Packages"],
-  ["/#tools", "Tools"],
+  ["/#scholarships", "Scholarships"],
+  ["/#resources", "Resources"],
   ["/#faq", "FAQ"],
 ];
 
-/** The site header: Yugty Overseas Education. Sticky, with a no-script mobile menu. */
-export default function Navbar(_props: { hideUseCases?: boolean } = {}) {
+/**
+ * The site header for Yugty Overseas Education. `overlay` places it transparently over the dark home hero; other pages get the solid
+ * white bar. The mobile menu is a native <details>, so it works without JavaScript.
+ */
+export default function Navbar({ overlay = false }: { overlay?: boolean; hideUseCases?: boolean } = {}) {
   return (
-    <header className="sticky top-0 z-40 border-b border-black/[0.06] bg-white/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-        <Link href="/" className="flex items-center gap-3" aria-label="Yugty Overseas Education home">
+    <header className={`yg-header ${overlay ? "yg-header-overlay" : "yg-header-solid"}`}>
+      <div className="yg-wrap yg-header-in">
+        <Link href="/" className="yg-brand" aria-label="Yugty Overseas Education home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/yugty-logo.svg" alt="Yugty" className="h-8 w-auto" />
-          <span className="hidden whitespace-nowrap border-l border-black/15 pl-3 text-[13px] font-semibold tracking-wide text-ink-3 lg:inline">Overseas Education</span>
+          <img src="/yugty-logo.svg" alt="Yugty" className="yg-logo" />
+          <span className="yg-brand-sub">Overseas Education</span>
         </Link>
-        <nav className="hidden items-center gap-8 whitespace-nowrap text-[14px] font-medium text-ink-2 lg:flex" aria-label="Main">
-          {LINKS.map(([h, l]) => <Link key={h} href={h} className="hover:text-orange">{l}</Link>)}
-          <Link href="/study-abroad" className="hover:text-orange">Universities</Link>
+        <nav className="yg-nav" aria-label="Main">
+          {LINKS.map(([h, l]) => (
+            <Link key={h} href={h}>
+              {l}
+            </Link>
+          ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <Link href="/login" className="hidden min-h-[40px] items-center whitespace-nowrap rounded-full px-4 text-[14px] font-semibold text-ink-2 hover:text-orange sm:inline-flex">Sign in</Link>
-          <Link href="/signup" className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-full bg-orange px-5 text-[14px] font-semibold text-white shadow-glow transition hover:bg-orange-dark">Get started</Link>
-          <details className="relative lg:hidden">
-            <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-black/10" aria-label="Menu">
-              <span className="block h-0.5 w-4 bg-ink shadow-[0_5px_0_#1a1a1a,0_-5px_0_#1a1a1a]" />
+        <div className="yg-header-cta">
+          <Link href="/login" className="yg-signin">
+            Sign in
+          </Link>
+          <Link href="/#enquire" className="yg-btn yg-btn-primary yg-btn-sm">
+            Free counselling <ArrowRight size={16} aria-hidden />
+          </Link>
+          <details className="yg-menu">
+            <summary aria-label="Open menu">
+              <span />
             </summary>
-            <div className="absolute right-0 top-12 w-56 rounded-2xl border border-black/10 bg-white p-2 shadow-soft">
-              {[...LINKS, ["/study-abroad", "Universities"], ["/login", "Sign in"]].map(([h, l]) => (
-                <Link key={h + l} href={h} className="block rounded-xl px-4 py-3 text-[15px] font-medium hover:bg-cream-2">{l}</Link>
+            <div className="yg-menu-panel">
+              {[...LINKS, ["/study-abroad", "Find universities"], ["/login", "Sign in"]].map(([h, l]) => (
+                <Link key={h + l} href={h}>
+                  {l}
+                </Link>
               ))}
             </div>
           </details>

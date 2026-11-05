@@ -10,6 +10,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import TopProgressBar from "@/components/layout/TopProgressBar";
 import ZohoSalesIQ from "@/components/chat/ZohoSalesIQ";
 import "./globals.css";
+import "@/components/home/home.css";
 import { cn } from "@/lib/utils";
 import { serializeJsonLd } from "@/lib/json-ld";
 import { HomeModeProvider } from "@/components/layout/HomeMode";
