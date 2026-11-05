@@ -1,0 +1,24 @@
+/* Styles for the IELTS Writing Task 1 visuals (charts, tables, processes and maps) rendered by lib/lms/ielts-visual.ts */
+.iwv { --iwv-accent: #0d9488; --iwv-deep: #111827; --iwv-mid: #4b5563; --iwv-border: #e5e7eb; }
+.iwv-svg { width: 100%; height: auto; max-width: 760px; display: block; margin: 6px 0 10px; background: #fff; border: 1px solid var(--iwv-border); border-radius: 10px; }
+.iwv-tablewrap { overflow-x: auto; margin: 8px 0 4px; }
+.iwv-table { border-collapse: collapse; font-size: 0.86rem; width: 100%; }
+.iwv-table caption { caption-side: top; text-align: left; font-weight: 700; color: var(--iwv-deep); padding: 4px 0 6px; font-size: 0.88rem; }
+.iwv-table th, .iwv-table td { border: 1px solid var(--iwv-border); padding: 6px 9px; text-align: right; }
+.iwv-table th:first-child, .iwv-table td:first-child { text-align: left; }
+.iwv-table thead th { background: #f0fdfa; text-align: center; }
+.iwv-legend { display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: 0.82rem; color: var(--iwv-mid); margin: 4px 0 8px; }
+.iwv-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.iwv-process { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 8px 0; }
+.iwv-stage { display: flex; gap: 12px; border: 1px solid var(--iwv-border); border-left: 4px solid var(--iwv-accent); border-radius: 10px; padding: 10px 12px; background: #fff; }
+.iwv-stage__n { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--iwv-accent); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+.iwv-stage__name { font-weight: 700; color: var(--iwv-deep); }
+.iwv-stage__desc { font-size: 0.88rem; color: var(--iwv-mid); margin-top: 2px; line-height: 1.5; }
+.iwv-arrow { text-align: center; color: var(--iwv-accent); font-weight: 800; font-size: 1.1rem; line-height: 1; }
+.iwv-maps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0; }
+@media (max-width: 600px) { .iwv-maps { grid-template-columns: 1fr; } }
+.iwv-mapfig { margin: 0; }
+.iwv-mapfig figcaption { text-align: center; font-weight: 700; font-size: 0.88rem; color: var(--iwv-deep); margin-top: 4px; }
+.iwv-map { aspect-ratio: 1 / 1; }
+.iwv-combo { margin-bottom: 14px; }
+.iwv-subtitle { margin: 8px 0 2px; font-size: 0.95rem; color: var(--iwv-deep); }

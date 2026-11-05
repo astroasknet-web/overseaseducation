@@ -1,0 +1,117 @@
+/* Overseas education packages. Scoped to .ap; light text on a dark surface (the home section and the public page set the dark background, the portal page uses .ap-light). */
+.ap { --ap-ink: #0b1020; color: #fff; font-family: var(--font-poppins), system-ui, sans-serif; }
+.ap-light { color: var(--ap-ink); }
+
+/* the flight path across five stages */
+.ap .ap-rail { list-style: none; margin: 0 0 28px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
+.ap .ap-rail::before { content: ""; position: absolute; left: 10%; right: 10%; top: 19px; height: 3px; border-radius: 3px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 8px, transparent 8px 16px); }
+.ap .ap-rail li { position: relative; display: grid; justify-items: center; gap: 8px; text-align: center; }
+.ap .ap-node { position: relative; z-index: 1; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 0.85rem; background: #12183a; border: 2px solid rgba(255, 255, 255, 0.28); color: rgba(255, 255, 255, 0.7); transition: background-color .4s, border-color .4s, color .4s, box-shadow .4s; }
+.ap .ap-on .ap-node { background: var(--c); border-color: var(--c); color: #0b1020; box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 22%, transparent), 0 10px 26px -8px var(--c); }
+.ap .ap-stage { font-size: 0.8rem; font-weight: 600; color: rgba(255, 255, 255, 0.55); line-height: 1.25; transition: color .3s; }
+.ap .ap-on .ap-stage { color: #fff; }
+@media (max-width: 560px) { .ap .ap-stage { font-size: 0.68rem; } .ap .ap-node { width: 34px; height: 34px; } .ap .ap-rail::before { top: 16px; } }
+
+/* the five levels, rising like steps */
+.ap .ap-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: end; margin-bottom: 18px; }
+.ap .ap-step { position: relative; display: grid; gap: 4px; align-content: end; text-align: left; padding: 14px 14px 12px; border-radius: 18px; border: 1.5px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.05); color: #fff; font: inherit; cursor: pointer; min-height: calc(112px + var(--lv) * 14px); transition: transform .3s, background-color .25s, border-color .25s, box-shadow .3s; }
+.ap .ap-step:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 70%, transparent); }
+.ap .ap-step-on { background: linear-gradient(160deg, color-mix(in srgb, var(--c) 30%, #0b1020), color-mix(in srgb, var(--c2) 12%, #0b1020)); border-color: var(--c); box-shadow: 0 24px 50px -24px var(--c); transform: translateY(-6px); }
+.ap .ap-step-lv { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c); }
+.ap .ap-step-name { font-size: 0.95rem; font-weight: 600; line-height: 1.25; }
+.ap .ap-step-price { font-size: 0.9rem; font-weight: 700; color: rgba(255, 255, 255, 0.92); }
+.ap .ap-step-bar { height: 4px; border-radius: 4px; background: rgba(255, 255, 255, 0.14); overflow: hidden; margin-top: 6px; }
+.ap .ap-step-bar i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--c), var(--c2)); }
+.ap .ap-step-own { position: absolute; right: 10px; top: 10px; font-size: 0.66rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: var(--c); color: #0b1020; }
+@media (max-width: 900px) { .ap .ap-steps { display: flex; overflow-x: auto; padding: 8px 2px 14px; scroll-snap-type: x mandatory; scrollbar-width: none; } .ap .ap-steps::-webkit-scrollbar { display: none; } .ap .ap-step { flex: 0 0 min(220px, 70vw); min-height: 128px; scroll-snap-align: start; } }
+
+/* the detail panel */
+.ap .ap-panel { position: relative; overflow: hidden; border-radius: 30px; padding: clamp(22px, 4vw, 44px); background: linear-gradient(160deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03)); border: 1px solid color-mix(in srgb, var(--c) 45%, rgba(255, 255, 255, 0.14)); box-shadow: 0 40px 90px -40px color-mix(in srgb, var(--c) 60%, #000); backdrop-filter: blur(8px); }
+.ap .ap-panel-glow { position: absolute; right: -90px; top: -90px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, var(--c), transparent 66%); opacity: 0.4; filter: blur(14px); pointer-events: none; }
+.ap .ap-panel-head { position: relative; display: grid; gap: 24px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .ap .ap-panel-head { grid-template-columns: minmax(0, 1fr) minmax(250px, 300px); align-items: start; } }
+.ap .ap-kicker { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c); }
+.ap .ap-title { margin: 10px 0 0; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+.ap .ap-tag { margin: 8px 0 0; font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); }
+.ap .ap-target { margin: 12px 0 0; max-width: 40em; font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.7); }
+.ap .ap-target b { color: #fff; font-weight: 600; }
+.ap .ap-buy { padding: 20px; border-radius: 22px; background: rgba(11, 16, 32, 0.55); border: 1px solid rgba(255, 255, 255, 0.14); display: grid; gap: 6px; }
+.ap .ap-price { margin: 0; font-size: clamp(1.5rem, 2.6vw, 1.9rem); font-weight: 700; letter-spacing: -0.01em; }
+.ap .ap-price-note { margin: 0 0 8px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.65); line-height: 1.4; }
+.ap .ap-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; text-decoration: none; background: linear-gradient(110deg, var(--c), var(--c2)); color: #0b1020; box-shadow: 0 16px 36px -14px var(--c); transition: transform .25s, box-shadow .25s; }
+.ap .ap-cta:hover { transform: translateY(-2px); box-shadow: 0 22px 44px -14px var(--c); }
+.ap .ap-own { margin: 0; padding: 10px 14px; border-radius: 12px; font-size: 0.9rem; font-weight: 600; background: color-mix(in srgb, var(--c) 22%, transparent); }
+.ap .ap-builds { position: relative; display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 0; padding: 8px 16px; min-height: 40px; border-radius: 999px; border: 1px dashed color-mix(in srgb, var(--c) 70%, transparent); background: transparent; color: rgba(255, 255, 255, 0.9); font: inherit; font-size: 0.9rem; cursor: pointer; }
+.ap .ap-builds:hover { background: color-mix(in srgb, var(--c) 14%, transparent); }
+.ap .ap-builds svg { color: var(--c); }
+.ap .ap-groups { position: relative; display: grid; gap: 18px 36px; margin-top: 24px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .ap .ap-groups-2 { grid-template-columns: repeat(2, 1fr); } }
+.ap .ap-group h4 { margin: 0 0 10px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c); }
+.ap .ap-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ap .ap-group li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; color: rgba(255, 255, 255, 0.88); }
+.ap .ap-group li svg { flex: none; margin-top: 3px; color: var(--c); }
+.ap .ap-total { position: relative; margin: 26px 0 0; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 0.88rem; color: rgba(255, 255, 255, 0.7); }
+.ap .ap-fine { margin: 18px auto 0; max-width: 56em; text-align: center; font-size: 0.8rem; line-height: 1.6; color: rgba(255, 255, 255, 0.55); }
+.ap .ap-in { animation: ap-in .4s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes ap-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.ap :focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .ap .ap-in { animation: none; } .ap .ap-step, .ap .ap-cta, .ap .ap-node { transition: none; } .ap .ap-step:hover, .ap .ap-step-on { transform: none; } }
+
+/* comparison table */
+.ap-matrix { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.92rem; color: #fff; }
+.ap-matrix th, .ap-matrix td { padding: 12px 10px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.ap-matrix th:first-child, .ap-matrix td:first-child { text-align: left; padding-left: 16px; }
+.ap-matrix thead th { position: sticky; top: 0; background: #0f1530; font-size: 0.8rem; font-weight: 700; vertical-align: bottom; }
+.ap-matrix thead th small { display: block; font-weight: 500; color: rgba(255, 255, 255, 0.6); margin-top: 2px; }
+.ap-matrix td svg { margin: 0 auto; }
+.ap-matrix .ap-dash { color: rgba(255, 255, 255, 0.25); }
+.ap-matrix-wrap { position: relative; overflow-x: auto; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); }
+.ap-matrix-wrap table { min-width: 760px; }
+.ap .ap-panel .ap-title, .hx .ap .ap-panel .ap-title, .ap .ap-panel .ap-price, .hx .ap .ap-panel .ap-price { color: #fff; }
+
+/* Public page variant: the same showcase on the portal's light surface (cream page, white cards, ink text, brand orange accent), so it reads like the rest of the site. */
+.ap.ap-public { color: #1a1a1a; }
+.ap-public .ap-rail::before { background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0 8px, transparent 8px 16px); }
+.ap-public .ap-node { background: #fff; border-color: rgba(0, 0, 0, 0.18); color: #525252; }
+.ap-public .ap-on .ap-node { background: #1a1a1a; border-color: #1a1a1a; color: #fff; box-shadow: 0 0 0 5px rgba(255, 106, 47, 0.22); }
+.ap-public .ap-stage { color: #525252; }
+.ap-public .ap-on .ap-stage { color: #1a1a1a; }
+.ap-public .ap-step { background: #fff; border: 1.5px solid rgba(0, 0, 0, 0.1); color: #1a1a1a; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); }
+.ap-public .ap-step:hover { border-color: #ff6a2f; }
+.ap-public .ap-step-on { background: #fff5ee; border-color: #ff6a2f; box-shadow: 0 0 0 3px rgba(255, 106, 47, 0.18), 0 12px 32px -12px rgba(255, 106, 47, 0.4); }
+.ap-public .ap-step-lv, .ap-public .ap-kicker, .ap-public .ap-group h4 { color: #9c3a11; }
+.ap-public .ap-step-price { color: #1a1a1a; }
+.ap-public .ap-step-bar { background: rgba(0, 0, 0, 0.08); }
+.ap-public .ap-step-bar i { background: #ff6a2f; }
+.ap-public .ap-step-own { background: #1a1a1a; color: #fff; }
+.ap-public .ap-panel { background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -8px rgba(0, 0, 0, 0.06); backdrop-filter: none; }
+.ap-public .ap-panel-glow { display: none; }
+.ap.ap-public .ap-panel .ap-title, .hx .ap.ap-public .ap-panel .ap-title { color: #1a1a1a; }
+.ap-public .ap-tag { color: #333; }
+.ap-public .ap-target { color: #525252; }
+.ap-public .ap-target b { color: #1a1a1a; }
+.ap-public .ap-buy { background: #f5f5f2; border-color: rgba(0, 0, 0, 0.08); }
+.ap.ap-public .ap-panel .ap-price, .hx .ap.ap-public .ap-panel .ap-price { color: #1a1a1a; }
+.ap-public .ap-price-note { color: #525252; }
+.ap-public .ap-cta { background: #1a1a1a; color: #fff; box-shadow: none; }
+.ap-public .ap-cta:hover { background: #333; box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.5); }
+.ap-public .ap-own { background: #ecfdf5; color: #064e3b; }
+.ap-public .ap-builds { color: #1a1a1a; border-color: rgba(0, 0, 0, 0.3); }
+.ap-public .ap-builds:hover { background: #fff5ee; }
+.ap-public .ap-builds svg, .ap-public .ap-group li svg { color: #d44f1a; }
+.ap-public .ap-group li { color: #333; }
+.ap-public .ap-total { border-top-color: rgba(0, 0, 0, 0.1); color: #525252; }
+.ap-public .ap-fine { color: #525252; }
+.ap.ap-public :focus-visible { outline-color: #1a1a1a; }
+
+/* comparison table on the light surface */
+.ap-matrix-light .ap-matrix { color: #1a1a1a; }
+.ap-matrix-light .ap-matrix th, .ap-matrix-light .ap-matrix td { border-bottom-color: rgba(0, 0, 0, 0.08); }
+.ap-matrix-light .ap-matrix thead th { background: #f5f5f2; color: #1a1a1a !important; }
+.ap-matrix-light .ap-matrix thead th small { color: #525252; }
+.ap-matrix-light .ap-matrix tbody tr:last-child th, .ap-matrix-light .ap-matrix tbody tr:last-child td { border-bottom: 0; }
+.ap-matrix-light .ap-matrix td { color: #d44f1a !important; }
+.ap-matrix-light .ap-matrix td b { color: #1a1a1a !important; }
+.ap-matrix-light .ap-matrix .ap-dash { color: rgba(0, 0, 0, 0.3); }
+.ap-matrix-wrap.ap-matrix-light { background: #fff; border-color: rgba(0, 0, 0, 0.08); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -8px rgba(0, 0, 0, 0.06); }
+.ap-public .ap-cta { text-align: center; padding: 12px 20px; line-height: 1.3; }
