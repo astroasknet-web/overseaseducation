@@ -7,7 +7,7 @@ import * as CN from "@/lib/abroad/counsel";
 import { btnLine, box, ConsolePage, Stats } from "@/components/admin/console-page";
 import { claimStudentAction } from "./actions";
 
-export const metadata: Metadata = { title: "My caseload | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "My caseload | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 const th = "py-2 pr-3 text-left font-medium text-ink-4";

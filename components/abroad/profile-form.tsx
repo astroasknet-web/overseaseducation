@@ -56,7 +56,7 @@ export function ProfileForm({ initial, fields, countries, budgets, intakes, hasC
         <Row id="goal" label="Your goal in a sentence or two" hint="(optional)"><textarea id="goal" name="goal" rows={3} maxLength={500} defaultValue={v.goal} className={`${input} border-black/[0.12]`} /></Row>
         {!hasConsent ? (
           <div className="mb-5">
-            <label className="flex items-start gap-2.5 text-[14px] text-ink-2 min-h-[44px]"><input type="checkbox" name="consent" value="1" className="mt-1" />I agree that GrowQR may use these details to match me with universities and that a counselor may view my documents. I can export or erase my data at any time.</label>
+            <label className="flex items-start gap-2.5 text-[14px] text-ink-2 min-h-[44px]"><input type="checkbox" name="consent" value="1" className="mt-1" />I agree that Yugty may use these details to match me with universities and that a counselor may view my documents. I can export or erase my data at any time.</label>
             {e.consent ? <p className="mt-1.5 text-[13px] text-red-700">{e.consent}</p> : null}
           </div>
         ) : null}

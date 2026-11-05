@@ -12,7 +12,7 @@ import type { Tables } from "@/types/database";
  * must stay under SalesIQ's 5-second response limit.
  */
 
-const FROM_EMAIL = "GrowQR Bot <hello@growqr.ai>";
+const FROM_EMAIL = "Yugty Bot <hello@growqr.ai>";
 
 // Confirmed 2026-07-31, replacing the unverified "file@growqr.ai" from the
 // original spec (flagged as a likely typo, since confirmed as one).
@@ -25,7 +25,7 @@ function row(label: string, value: string | null) {
 
 function buildEmail(lead: Tables<"bot_leads">, zohoLeadId: string): { subject: string; html: string } {
   const label = BOT_INTENT_LABELS[lead.intent as BotIntent] ?? lead.intent;
-  const subject = `[GrowQR Bot] New ${label}`;
+  const subject = `[Yugty Bot] New ${label}`;
   const timestamp = new Date(lead.created_at).toLocaleString("en-IN", {
     dateStyle: "medium",
     timeStyle: "short",
@@ -42,7 +42,7 @@ function buildEmail(lead: Tables<"bot_leads">, zohoLeadId: string): { subject: s
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                   <tr>
                     <td class="hero mobile-pad" style="padding: 28px;">
-                      <div style="color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;">GrowQR Bot</div>
+                      <div style="color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;">Yugty Bot</div>
                       <h1 class="hero-title" style="margin: 0; color: #ffffff; font-size: 26px; line-height: 1.2;">New ${escapeHtml(label)}</h1>
                     </td>
                   </tr>
@@ -69,7 +69,7 @@ function buildEmail(lead: Tables<"bot_leads">, zohoLeadId: string): { subject: s
                       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 20px;">
                         <tr>
                           <td align="left">
-                            <a class="cta" href="mailto:${escapeHtml(lead.email ?? "")}?subject=Re:%20GrowQR">Reply to ${escapeHtml(lead.name ?? "lead")}</a>
+                            <a class="cta" href="mailto:${escapeHtml(lead.email ?? "")}?subject=Re:%20Yugty">Reply to ${escapeHtml(lead.name ?? "lead")}</a>
                           </td>
                         </tr>
                       </table>

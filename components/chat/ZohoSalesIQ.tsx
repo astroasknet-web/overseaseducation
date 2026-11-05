@@ -24,7 +24,7 @@ const widgetCode =
  * the application's initial render.
  *
  * Also pushes the minimal visitor context the webhook bot's intent router
- * reads (lib/bot/context.ts GrowQRVisitorContext) via
+ * reads (lib/bot/context.ts YugtyVisitorContext) via
  * $zoho.salesiq.visitor.info() — see docs/salesiq-bot/CONTEXT_SCHEMA.ts.
  * Deliberately only these eight fields per the approved scope; do not add
  * more without updating the schema doc first.

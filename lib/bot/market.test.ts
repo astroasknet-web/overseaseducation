@@ -5,7 +5,7 @@ import { detectNamedCountry, countryDisplayName } from "@/lib/countries";
 /**
  * Deterministic — no I/O, no model. This is the regression guard for the
  * live-confirmed 2026-08-03 bug: a visitor whose own market was live asked
- * "is it live in the USA?" and the AI answered "GrowQR is available in the
+ * "is it live in the USA?" and the AI answered "Yugty is available in the
  * US," which is false. These pin the fix at the level it actually needs to
  * be pinned: the plain isLiveCountry() lookup, same as the landing pages.
  */
@@ -62,11 +62,11 @@ describe("countryDisplayName", () => {
 
 describe("marketAvailabilityFor", () => {
   it("answers live for a live country, regardless of phrasing", () => {
-    for (const q of ["is it live in India", "is GrowQR live in India", "is GrowQR available in India"]) {
+    for (const q of ["is it live in India", "is Yugty live in India", "is Yugty available in India"]) {
       const result = marketAvailabilityFor(q);
       expect(result?.isLive).toBe(true);
       expect(result?.code).toBe("IN");
-      expect(result?.reply).toBe("Yes, GrowQR is live in India. You can sign up at growqr.ai.");
+      expect(result?.reply).toBe("Yes, Yugty is live in India. You can sign up at growqr.ai.");
     }
   });
 
@@ -75,7 +75,7 @@ describe("marketAvailabilityFor", () => {
     expect(result?.isLive).toBe(false);
     expect(result?.code).toBe("US");
     expect(result?.reply).toBe(
-      "GrowQR isn't live in the US yet. You can join the waitlist at growqr.ai and we'll email you when it opens.",
+      "Yugty isn't live in the US yet. You can join the waitlist at growqr.ai and we'll email you when it opens.",
     );
   });
 
@@ -83,8 +83,8 @@ describe("marketAvailabilityFor", () => {
     for (const q of [
       "is it live in the UK",
       "is it live in Canada",
-      "is GrowQR live in Germany",
-      "is GrowQR available in Pakistan",
+      "is Yugty live in Germany",
+      "is Yugty available in Pakistan",
     ]) {
       expect(marketAvailabilityFor(q)?.isLive).toBe(false);
     }

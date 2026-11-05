@@ -8,7 +8,7 @@ import { btnDark, btnLine, box, ConsolePage, field, Stats } from "@/components/a
 import { adminGate } from "../gate";
 import { abroadOpsAction } from "../actions";
 
-export const metadata: Metadata = { title: "Study abroad operations | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Study abroad operations | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 type R = Record<string, unknown>;

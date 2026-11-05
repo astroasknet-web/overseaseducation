@@ -12,10 +12,10 @@ import "@/components/abroad/packages.css";
 export const dynamic = "force-dynamic"; // the buttons depend on whether you are signed in
 
 export const metadata: Metadata = {
-  title: "Overseas Education Packages: From Shortlisting to Settling Abroad | GrowQR",
+  title: "Overseas Education Packages: From Shortlisting to Settling Abroad | Yugty",
   description: `Five levels of expert help for studying abroad, from a university shortlist at ${rs(1999)} to arrival, housing and welfare support after you land. Compare every service.`,
   alternates: { canonical: `${SITE_URL}/overseas-packages` },
-  openGraph: { type: "website", url: `${SITE_URL}/overseas-packages`, siteName: "GrowQR", title: "Overseas Education Packages | GrowQR", description: `Five levels of expert help for studying abroad, from a university shortlist at ${rs(1999)} to arrival, housing and welfare support after you land.` },
+  openGraph: { type: "website", url: `${SITE_URL}/overseas-packages`, siteName: "Yugty", title: "Overseas Education Packages | Yugty", description: `Five levels of expert help for studying abroad, from a university shortlist at ${rs(1999)} to arrival, housing and welfare support after you land.` },
 };
 
 const FAQ: Array<[string, string]> = [
@@ -35,7 +35,7 @@ export default async function OverseasPackagesPage({ searchParams }: { searchPar
       <header className="max-w-3xl">
         <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-deep">Overseas education</p>
         <h1 className="mt-3 text-[32px] font-bold leading-[1.1] text-ink sm:text-[44px]">From the first shortlist to your first month abroad.</h1>
-        <p className="mt-4 text-[16px] leading-relaxed text-ink-3 sm:text-[17px]">Five levels of hands-on help from GrowQR&apos;s counsellors. Each level includes everything in the one before it, so you can start where you are and go as far as you need. Prices run from {rs(ABROAD_PACKAGES[0].from)} to {rs(ABROAD_PACKAGES[4].from)}.</p>
+        <p className="mt-4 text-[16px] leading-relaxed text-ink-3 sm:text-[17px]">Five levels of hands-on help from Yugty&apos;s counsellors. Each level includes everything in the one before it, so you can start where you are and go as far as you need. Prices run from {rs(ABROAD_PACKAGES[0].from)} to {rs(ABROAD_PACKAGES[4].from)}.</p>
       </header>
 
       <div className="mt-8 sm:mt-10"><PackageShowcase ctas={packageCtas(!!me)} initial={initial} variant="public" headingLevel={2} /></div>

@@ -4,7 +4,7 @@ import { btnDark, btnLine, box, ConsolePage, field, Stats } from "@/components/a
 import { adminGate } from "../gate";
 import { collegeAction } from "../actions";
 
-export const metadata: Metadata = { title: "College submissions | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "College submissions | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 export default async function Colleges() {

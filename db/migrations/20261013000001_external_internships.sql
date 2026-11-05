@@ -1,6 +1,6 @@
 -- MySQL / MariaDB version of the portal schema step 20261013000001_external_internships.sql. Converted, then reviewed by hand. Statements run one by one; a duplicate index or column is skipped.
 -- Internships collected from public job feeds (Adzuna, India). Kept apart from `internships` on purpose: these are NOT posted
--- by employers on GrowQR, carry no verified stipend and cannot be applied to here, so they only ever link out to the original advert.
+-- by employers on Yugty, carry no verified stipend and cannot be applied to here, so they only ever link out to the original advert.
 -- Idempotent, like every portal migration.
 CREATE TABLE IF NOT EXISTS external_internships (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,

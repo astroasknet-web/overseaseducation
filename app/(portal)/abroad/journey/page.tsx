@@ -19,7 +19,7 @@ import { Alert } from "@/components/portal/ui";
 import { ResendVerification } from "@/components/portal/forms";
 import { startJourneyAction } from "@/app/abroad/journey-actions";
 
-export const metadata: Metadata = { title: "My overseas education journey | GrowQR" };
+export const metadata: Metadata = { title: "My overseas education journey | Yugty" };
 export const dynamic = "force-dynamic";
 
 const OFFER_STATES = new Set(["offer", "accepted"]);

@@ -7,7 +7,7 @@ import { markReadAction, prefsAction } from "@/app/abroad/journey-actions";
 import { btnGhost, btnPrimary, when } from "@/components/journey/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "Notifications | GrowQR" };
+export const metadata: Metadata = { title: "Notifications | Yugty" };
 export const dynamic = "force-dynamic";
 
 export default async function JourneyNotifications() {

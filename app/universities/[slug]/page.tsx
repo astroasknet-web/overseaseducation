@@ -17,12 +17,12 @@ export const dynamic = "force-dynamic";
 const clean = (s: string) => s.toLowerCase().replace(/[^a-z0-9-]/g, "");
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  if (!databaseConfigured()) return { title: "University | GrowQR" };
+  if (!databaseConfigured()) return { title: "University | Yugty" };
   const u = await A.university(clean((await params).slug));
-  if (!u) return { title: "University not found | GrowQR", robots: { index: false, follow: true } };
+  if (!u) return { title: "University not found | Yugty", robots: { index: false, follow: true } };
   const c = await A.country(u.country_key);
   return {
-    title: `${u.name}: Costs, Fit and How to Apply | GrowQR`,
+    title: `${u.name}: Costs, Fit and How to Apply | Yugty`,
     description: Array.from(`${u.name} in ${u.city}${c ? ", " + c.name : ""}. ${u.blurb} See estimated yearly cost in rupees and whether it is a Safe, Target or Reach for you.`).slice(0, 155).join(""),
     alternates: { canonical: `${SITE_URL}/universities/${u.slug}` },
     robots: { index: true, follow: true },

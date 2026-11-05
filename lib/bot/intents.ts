@@ -164,7 +164,7 @@ const KEYWORDS: Record<DeterministicIntent, readonly string[]> = {
   //
   // NOTE the absence of a bare "agent"/"agents" (removed again 2026-08-02,
   // live-confirmed regression: a visitor typed just "agents" — asking about
-  // GrowQR's core AI-agents feature — and got immediate escalation instead of
+  // Yugty's core AI-agents feature — and got immediate escalation instead of
   // an answer). It had been re-added on the theory that PRODUCT_AGENT below
   // would veto product questions about the agents, but that veto only fires
   // when a qualifier word precedes "agent(s)" ("what agents", "list your

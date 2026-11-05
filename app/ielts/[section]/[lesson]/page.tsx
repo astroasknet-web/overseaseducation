@@ -25,8 +25,8 @@ async function load(params: P["params"]) {
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const { ref, l } = await load(params);
-  if (!ref || !l) return { title: "Lesson not found | GrowQR", robots: { index: false, follow: true } };
-  return { title: l.seo?.title ? `${l.seo.title} | GrowQR` : `${l.title}: IELTS Lesson | GrowQR`, description: l.seo?.description ?? l.summary, alternates: { canonical: `/ielts/${ref.section}/${l.slug}` } };
+  if (!ref || !l) return { title: "Lesson not found | Yugty", robots: { index: false, follow: true } };
+  return { title: l.seo?.title ? `${l.seo.title} | Yugty` : `${l.title}: IELTS Lesson | Yugty`, description: l.seo?.description ?? l.summary, alternates: { canonical: `/ielts/${ref.section}/${l.slug}` } };
 }
 
 export default async function IeltsLessonPage({ params }: P) {

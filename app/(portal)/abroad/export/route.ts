@@ -6,7 +6,7 @@ import * as store from "@/lib/abroad/store";
 
 export const dynamic = "force-dynamic";
 
-// A student downloads everything GrowQR holds about their study-abroad journey (data portability). Only their own data, only when signed in.
+// A student downloads everything Yugty holds about their study-abroad journey (data portability). Only their own data, only when signed in.
 export async function GET() {
   if (!databaseConfigured()) return new NextResponse("Not available.", { status: 503 });
   const me = (await getSession())?.user;

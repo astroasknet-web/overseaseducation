@@ -17,7 +17,7 @@ import { Bar, DueText, PriorityTag, StatusBadge, when, day } from "@/components/
 import { JourneyFlash } from "@/components/journey/flash";
 import { addAppAction, assignAction, carryOverAction, commAction, docReviewAction, evidenceAction, exceptionAction, moveAction, naAction, reminderAction, termsAction, uploadAction } from "../actions";
 
-export const metadata: Metadata = { title: "Journey case | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Journey case | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 type R = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any

@@ -51,11 +51,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "GrowQR: One QR. One Identity. Unlocks Growth.",
-  description: "Specialised AI agents. One QR. Your career edge, activated. The AI-driven proof-of-skill platform powering the future of readiness.",
-  keywords: "GrowQR, GrowQR.ai, growqr ai, growqr platform, RQ-Score, proof of skill, skill verification, talent verification, workforce intelligence, AI talent platform, career readiness, QR code skills, enterprise talent, smart city workforce, not grok, not grow company, specialised AI agents, AI career Edge",
-  authors: [{ name: "GrowQR" }],
-  publisher: "GrowQR",
+  title: { default: "Yugty Overseas Education: Study Abroad, Planned End to End", template: "%s" },
+  description: "Compare universities in the USA, UK, Canada, Germany, Australia, France and the UAE, see yearly costs in rupees, and get counsellor-led help with applications, IELTS, visa, funding and settling in.",
+  keywords: "Yugty, Yugty Overseas Education, study abroad, overseas education, study abroad consultants India, IELTS preparation, university shortlisting, student visa, education loan, study in USA, study in UK, study in Canada, study in Germany, study in Australia",
+  authors: [{ name: "Yugty" }],
+  publisher: "Yugty",
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: `${SITE_URL}/`,
@@ -72,20 +72,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "GrowQR: One QR. One Identity. Unlocks Growth.",
-    description: "Specialised AI agents. One QR. Your career edge, activated.",
+    title: "Yugty Overseas Education: Study Abroad, Planned End to End",
+    description: "Compare universities, plan costs in rupees and get counsellor-led help from shortlist to visa.",
     type: "website",
     url: `${SITE_URL}/`,
-    siteName: "GrowQR",
+    siteName: "Yugty",
     images: [OG_IMAGE],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@Growqr",
-    creator: "@Growqr",
-    title: "GrowQR.ai | Specialised AI Agents",
-    description: "Specialised AI agents. One QR. Your career edge, activated.",
+    title: "Yugty Overseas Education",
+    description: "Compare universities, plan costs in rupees and get counsellor-led help from shortlist to visa.",
     // summary_large_image needs a ~1200x630 asset; logo.png is a 385x130
     // wordmark and was being rejected/letterboxed.
     images: [OG_IMAGE.url],
@@ -137,46 +135,23 @@ export default async function RootLayout({
         {/* Preconnect to external origins — saves 200-400ms DNS lookup on mobile */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://app.growqr.ai" />
 
-        {/* Structured Data / JSON-LD - Organization */}
+        {/* Structured data: organisation and website */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-             __html: serializeJsonLd({
+            __html: serializeJsonLd({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "EducationalOrganization",
               "@id": `${SITE_URL}/#organization`,
-              "name": "GrowQR",
-              "alternateName": ["GrowQR.ai", "Grow QR", "GrowQR AI"],
+              "name": "Yugty Overseas Education",
+              "alternateName": "Yugty",
               "url": SITE_URL,
-              "logo": {
-                "@type": "ImageObject",
-                "url": `${SITE_URL}/logo.png`,
-                // Real dimensions of public/logo.png — this previously
-                // claimed 512x512 for a 385x130 wordmark.
-                "width": 385,
-                "height": 130
-              },
-              "image": `${SITE_URL}${OG_IMAGE.url}`,
-              "description": "GrowQR provides specialised AI agents and the RQ-Score system, making talent visible, verified, and valuable.",
-              "slogan": "One QR. Infinite Potential.",
-              "foundingDate": "2024",
-               "founder": {
-                "@type": "Person",
-                "name": "GrowQR Team"
-              },
-              "email": "support@growqr.ai",
-              "sameAs": [
-                "https://x.com/Growqr",
-                "https://www.linkedin.com/company/growqr",
-                "https://www.instagram.com/growqr.ai"
-              ]
+              "logo": { "@type": "ImageObject", "url": `${SITE_URL}/yugty-logo.svg` },
+              "description": "Yugty Overseas Education helps students compare universities, plan costs in rupees and manage applications, IELTS, visa and funding for study abroad."
             })
           }}
         />
-
-        {/* WebSite Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -184,51 +159,10 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "@id": `${SITE_URL}/#website`,
-              "name": "GrowQR",
-              "alternateName": "GrowQR.ai",
+              "name": "Yugty Overseas Education",
               "url": SITE_URL,
-              "description": "The AI-driven proof-of-skill platform powering the future of readiness",
-              "publisher": {
-                "@id": `${SITE_URL}/#organization`
-              },
-              // No SearchAction: the site has no search endpoint, and this
-              // previously advertised a "/?search=" sitelinks searchbox that
-              // nothing on the site implements. Re-add only alongside a real
-              // search route that actually reads the query param.
-              "inLanguage": "en-US"
-            })
-          }}
-        />
-
-        {/* SoftwareApplication Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "GrowQR",
-              "alternateName": ["GrowQR.ai", "GrowQR Platform", "RQ-Score Platform"],
-              "description": "AI-driven proof-of-skill platform that provides RQ-Score and specialised AI agents for workforce intelligence.",
-              "url": SITE_URL,
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "Web",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": "ComingSoon"
-              },
-              "featureList": [
-                "Specialised AI Agents",
-                "RQ-Score skill verification",
-                "QR code based skill profiles",
-                "Enterprise workforce intelligence"
-              ],
-              "screenshot": `${SITE_URL}/logo.png`,
-              "provider": {
-                "@id": `${SITE_URL}/#organization`
-              }
+              "publisher": { "@id": `${SITE_URL}/#organization` },
+              "inLanguage": "en-IN"
             })
           }}
         />

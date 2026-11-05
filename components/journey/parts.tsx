@@ -83,4 +83,4 @@ export const label = "block text-[13px] font-medium text-ink-2 mb-1";
 export const btnPrimary = "min-h-[44px] px-5 rounded-lg bg-orange hover:bg-orange-dark text-white text-[14px] font-semibold";
 export const btnGhost = "min-h-[44px] px-4 rounded-lg border border-black/[0.15] text-[14px] font-medium hover:bg-cream-2";
 
-export const HONESTY = "GrowQR's counsellors help you prepare and track every step. Admission, scholarship and visa decisions are made by universities and governments, so no step or package can guarantee an outcome.";
+export const HONESTY = "Yugty's counsellors help you prepare and track every step. Admission, scholarship and visa decisions are made by universities and governments, so no step or package can guarantee an outcome.";

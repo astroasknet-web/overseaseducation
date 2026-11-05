@@ -20,8 +20,8 @@ export function generateStaticParams() { return writingTests().map((t) => ({ slu
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const t = writingTest(clean((await params).slug));
-  if (!t) return { title: "Test not found | GrowQR", robots: { index: false, follow: true } };
-  return { title: `${t.title}: Free IELTS Writing Practice Test | GrowQR`, description: `A 60-minute IELTS Academic Writing practice test (${t.topics.join(", ")}) with an estimated band.`.slice(0, 160), alternates: { canonical: `/ielts/writing-practice-tests/${t.slug}` } };
+  if (!t) return { title: "Test not found | Yugty", robots: { index: false, follow: true } };
+  return { title: `${t.title}: Free IELTS Writing Practice Test | Yugty`, description: `A 60-minute IELTS Academic Writing practice test (${t.topics.join(", ")}) with an estimated band.`.slice(0, 160), alternates: { canonical: `/ielts/writing-practice-tests/${t.slug}` } };
 }
 
 export default async function WritingTestPage({ params }: P) {

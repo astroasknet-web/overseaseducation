@@ -8,7 +8,7 @@ import { Bar, day } from "@/components/journey/parts";
 import { JourneyFlash } from "@/components/journey/flash";
 import { claimAction } from "./actions";
 
-export const metadata: Metadata = { title: "Journey workspace | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Journey workspace | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 const th = "py-2 pr-3 text-left font-medium text-ink-4";

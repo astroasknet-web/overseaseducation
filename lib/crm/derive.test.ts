@@ -140,7 +140,7 @@ describe("deriveB2bAudience", () => {
   });
 
   it("maps every solution label", () => {
-    expect(deriveB2bAudience(null, "GrowQR Enterprise")).toEqual({
+    expect(deriveB2bAudience(null, "Yugty Enterprise")).toEqual({
       audience: "Enterprise",
       businessUnit: "Enterprise",
       productInterest: "Q-Skale",

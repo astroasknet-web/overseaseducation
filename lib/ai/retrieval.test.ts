@@ -37,9 +37,9 @@ describe("Zoho docs retrieval", () => {
 
   /**
    * The load-bearing test for this corpus. It documents ZOHO SALESIQ, not
-   * GrowQR, so for ordinary visitor questions the correct result is NO MATCH.
+   * Yugty, so for ordinary visitor questions the correct result is NO MATCH.
    * If these start matching, the threshold is too low and the bot will begin
-   * answering GrowQR questions out of Zoho's help pages.
+   * answering Yugty questions out of Zoho's help pages.
    */
   it.each([
     "does growqr work with greenhouse ats",
@@ -47,7 +47,7 @@ describe("Zoho docs retrieval", () => {
     "can growqr help me get a job",
     "is growqr available in germany",
     "what is the rq score",
-  ])("returns nothing for the GrowQR question %j", (question) => {
+  ])("returns nothing for the Yugty question %j", (question) => {
     expect(retrieveZohoDocs(question)).toEqual([]);
   });
 

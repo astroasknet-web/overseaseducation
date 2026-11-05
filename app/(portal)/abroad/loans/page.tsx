@@ -7,7 +7,7 @@ import { deleteLoanAction, saveLoanAction } from "@/app/abroad/more-actions";
 import { Flash } from "@/components/abroad/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "My education loans | GrowQR" };
+export const metadata: Metadata = { title: "My education loans | Yugty" };
 export const dynamic = "force-dynamic";
 
 const input = "w-full px-3 py-2.5 rounded-lg border border-black/[0.15] bg-white text-[15px] min-h-[44px]";
@@ -39,7 +39,7 @@ export default async function LoansPage() {
   const loans = await L.forUser(me.id);
   const fin = (await V.forUser(me.id)).filter((d) => d.doc_type === "financial" && d.status !== "rejected");
   return (
-    <PortalPage user={me} active="abroad" title="My education loans" subtitle="Track lenders, documents and your repayment estimate. GrowQR is not a lender and does not arrange loans." wide>
+    <PortalPage user={me} active="abroad" title="My education loans" subtitle="Track lenders, documents and your repayment estimate. Yugty is not a lender and does not arrange loans." wide>
       <Flash />
       {loans.map((l) => (
         <Card key={l.id} title={`${l.lender}: ${L.STATUS[l.status]}`}>

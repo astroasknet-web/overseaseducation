@@ -7,7 +7,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <>
       <Navbar />
-      <div className="pt-[120px]">{children}</div>
+      <div>{children}</div>
       <Footer />
     </>
   );

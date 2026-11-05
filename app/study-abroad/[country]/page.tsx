@@ -16,11 +16,11 @@ type Faq = { q: string; a: string };
 type Official = { label: string; url: string };
 
 export async function generateMetadata({ params }: { params: Promise<{ country: string }> }): Promise<Metadata> {
-  if (!databaseConfigured()) return { title: "Study abroad | GrowQR" };
+  if (!databaseConfigured()) return { title: "Study abroad | Yugty" };
   const c = await A.country(clean((await params).country));
-  if (!c) return { title: "Country not found | GrowQR", robots: { index: false, follow: true } };
+  if (!c) return { title: "Country not found | Yugty", robots: { index: false, follow: true } };
   return {
-    title: `Study in ${c.name}: Universities, Costs and Visa | GrowQR`,
+    title: `Study in ${c.name}: Universities, Costs and Visa | Yugty`,
     description: Array.from(`Study in ${c.name}: compare universities, yearly costs of about ${inrRange(c)}, intakes, exams and the visa checklist.`).slice(0, 155).join(""),
     alternates: { canonical: `${SITE_URL}/study-abroad/${c.key}` },
     robots: { index: true, follow: true },

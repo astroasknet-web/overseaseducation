@@ -7,12 +7,12 @@ import { checkAnswer, type AiCandidate, type GuardContext } from "@/lib/ai/guard
  * in CI and cost nothing to run.
  */
 
-const SOURCE = `What is GrowQR?
-GrowQR is a career readiness platform. It scores your readiness with an RQ Score
+const SOURCE = `What is Yugty?
+Yugty is a career readiness platform. It scores your readiness with an RQ Score
 and gives you 7 AI agents to close the gaps. Free Forever plan available.
 
-Is GrowQR available in my country?
-GrowQR is live in India today. Other regions can join the waitlist at growqr.ai.`;
+Is Yugty available in my country?
+Yugty is live in India today. Other regions can join the waitlist at growqr.ai.`;
 
 const ctx: GuardContext = {
   sourceText: SOURCE,
@@ -24,7 +24,7 @@ const good = (over: Partial<AiCandidate> = {}): AiCandidate => ({
   answered: true,
   mode: "grounded",
   confidence: "high",
-  answer: "GrowQR scores your readiness with an RQ Score and gives you 7 AI agents to close the gaps.",
+  answer: "Yugty scores your readiness with an RQ Score and gives you 7 AI agents to close the gaps.",
   sourceIds: ["art_1"],
   ...over,
 });
@@ -93,11 +93,11 @@ describe("checkAnswer", () => {
 
   describe("numeric grounding", () => {
     it("accepts a number that appears in the sources", () => {
-      expect(reason(good({ answer: "GrowQR gives you 7 AI agents." }))).toBeNull();
+      expect(reason(good({ answer: "Yugty gives you 7 AI agents." }))).toBeNull();
     });
 
     it("rejects an invented number", () => {
-      expect(reason(good({ answer: "GrowQR gives you 42 AI agents." }))).toBe("ungrounded_number:42");
+      expect(reason(good({ answer: "Yugty gives you 42 AI agents." }))).toBe("ungrounded_number:42");
     });
 
     it("rejects an invented percentage", () => {
@@ -120,7 +120,7 @@ describe("checkAnswer", () => {
   describe("risky claims", () => {
     it("rejects an ungrounded integration claim", () => {
       // The exact category that produced a live wrong answer.
-      expect(reason(good({ answer: "Yes, GrowQR integrates with Greenhouse and Workday." }))).toBe(
+      expect(reason(good({ answer: "Yes, Yugty integrates with Greenhouse and Workday." }))).toBe(
         "ungrounded_claim:integrat",
       );
     });
@@ -132,8 +132,8 @@ describe("checkAnswer", () => {
     });
 
     it("allows a claim word that IS in the sources", () => {
-      const withClaim = { ...ctx, sourceText: `${SOURCE}\nGrowQR integrates with major ATS tools.` };
-      expect(reason(good({ answer: "GrowQR integrates with major ATS tools." }), withClaim)).toBeNull();
+      const withClaim = { ...ctx, sourceText: `${SOURCE}\nYugty integrates with major ATS tools.` };
+      expect(reason(good({ answer: "Yugty integrates with major ATS tools." }), withClaim)).toBeNull();
     });
   });
 
@@ -161,11 +161,11 @@ describe("checkAnswer", () => {
     });
 
     it("rejects em dashes", () => {
-      expect(reason(good({ answer: "GrowQR scores readiness — then closes gaps." }))).toBe("em_dash");
+      expect(reason(good({ answer: "Yugty scores readiness — then closes gaps." }))).toBe("em_dash");
     });
 
     it("rejects markdown and html", () => {
-      expect(reason(good({ answer: "GrowQR scores **readiness** for you." }))).toBe("markup");
+      expect(reason(good({ answer: "Yugty scores **readiness** for you." }))).toBe("markup");
     });
   });
 
@@ -218,7 +218,7 @@ describe("checkAnswer", () => {
       expect(
         checkAnswer(
           conversational({
-            answer: "GrowQR is not live there yet. You can join the waitlist at growqr.ai.",
+            answer: "Yugty is not live there yet. You can join the waitlist at growqr.ai.",
           }),
           ctx,
         ),
@@ -229,7 +229,7 @@ describe("checkAnswer", () => {
       expect(
         checkAnswer(
           conversational({
-            answer: "Yes, GrowQR is live there. You can sign up at growqr.ai.",
+            answer: "Yes, Yugty is live there. You can sign up at growqr.ai.",
           }),
           ctx,
         ),

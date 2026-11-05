@@ -1,5 +1,5 @@
 -- MySQL / MariaDB version of the portal schema step 20261002000001_initial_schema.sql. Converted, then reviewed by hand. Statements run one by one; a duplicate index or column is skipped.
--- GrowQR portal (internships, courses, study abroad, resume scoring): initial schema for Supabase / Postgres.
+-- Yugty portal (internships, courses, study abroad, resume scoring): initial schema for Supabase / Postgres.
 --
 -- Idempotent: every statement can run more than once. The same file is applied by the Supabase GitHub integration
 -- (supabase/migrations) and, as a fallback, by the app itself on first request (src/Portal/Schema.php).

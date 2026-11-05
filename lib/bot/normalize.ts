@@ -2,10 +2,10 @@
  * Query and document normalisation for the Answer Hub matcher.
  *
  * Fixes a specific, measured failure: the KB speaks in proper nouns
- * ("GrowQR", "RQ-Vera") while visitors speak in pronouns and generics ("you",
- * "this", "the platform"). Of 15 natural phrasings of "What is GrowQR?", the
+ * ("Yugty", "RQ-Vera") while visitors speak in pronouns and generics ("you",
+ * "this", "the platform"). Of 15 natural phrasings of "What is Yugty?", the
  * matcher answered 5 — and every failure was a phrasing that avoided the
- * literal word "GrowQR". Nothing bridged the two vocabularies.
+ * literal word "Yugty". Nothing bridged the two vocabularies.
  *
  * Everything here is a lookup table. No inference, no model, no scoring
  * change: this only decides which TOKENS the existing scorer sees.
@@ -41,7 +41,7 @@ export function expandContractions(text: string): string {
 }
 
 /**
- * Words that stand in for "GrowQR" when a visitor is asking about the product
+ * Words that stand in for "Yugty" when a visitor is asking about the product
  * itself. Applied ONLY to queries.
  *
  * Scoped tightly on purpose: "you" is rewritten, but "your" is not, because

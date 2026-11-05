@@ -13,7 +13,7 @@ import * as VT from "@/lib/abroad/vault";
 import { btnDark, btnLine, box, ConsolePage, field } from "@/components/admin/console-page";
 import { studentAction } from "../../actions";
 
-export const metadata: Metadata = { title: "Student file | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Student file | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 const when = (ts: unknown, o: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", hour: "numeric", minute: "2-digit", hour12: true }) => new Date(String(ts).replace(" ", "T") + "Z").toLocaleString("en-IN", { ...o, timeZone: "UTC" });

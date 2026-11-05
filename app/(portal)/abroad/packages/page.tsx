@@ -8,7 +8,7 @@ import { packageCtas } from "@/components/abroad/package-ctas";
 import { PortalPage } from "@/components/portal/shell";
 import "@/components/abroad/packages.css";
 
-export const metadata: Metadata = { title: "Overseas education packages | GrowQR" };
+export const metadata: Metadata = { title: "Overseas education packages | Yugty" };
 export const dynamic = "force-dynamic";
 
 type SP = { pkg?: string };

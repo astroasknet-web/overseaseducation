@@ -60,7 +60,7 @@ function newCode(): string {
 
 export function displayName(full: string, style: string): string {
   const parts = full.trim().split(/\s+/u).filter(Boolean);
-  if (!parts.length) return "GrowQR learner";
+  if (!parts.length) return "Yugty learner";
   const initial = (p: string) => Array.from(p)[0].toUpperCase();
   const first = parts[0];
   const last = parts.length > 1 ? parts[parts.length - 1] : "";
@@ -145,7 +145,7 @@ export async function snapshot(uid: number, opts: ShareOptions, fullName: string
       scale: 100,
       grade: p.rq_grade ?? "",
       scoredAt: ymd(p.rq_updated_at ?? new Date().toISOString()),
-      method: "GrowQR deterministic resume scoring, engine v" + String(rq.version ?? "1"),
+      method: "Yugty deterministic resume scoring, engine v" + String(rq.version ?? "1"),
       sections,
     };
     if (rq.career?.stage) out.careerStage = rq.career.stage;
@@ -270,14 +270,14 @@ export async function url(code: string, qr = false): Promise<string> {
   return (await pc.base()) + "v/" + code + (qr ? "?q=1" : "");
 }
 
-/** LinkedIn "Add to profile" (certifications) link. The holder must be signed in to LinkedIn; GrowQR is not affiliated with LinkedIn. */
+/** LinkedIn "Add to profile" (certifications) link. The holder must be signed in to LinkedIn; Yugty is not affiliated with LinkedIn. */
 export async function linkedInUrl(code: string, issuedTs: number, expiresTs: number): Promise<string> {
   const i = new Date(issuedTs * 1000);
   const e = new Date(expiresTs * 1000);
   const q = new URLSearchParams({
     startTask: "CERTIFICATION_NAME",
-    name: "GrowQR Verified Skill Passport",
-    organizationName: "GrowQR",
+    name: "Yugty Verified Skill Passport",
+    organizationName: "Yugty",
     issueYear: String(i.getUTCFullYear()),
     issueMonth: String(i.getUTCMonth() + 1),
     expirationYear: String(e.getUTCFullYear()),

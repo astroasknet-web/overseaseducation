@@ -2,30 +2,30 @@
   "articles": [
     {
       "id": "227090000000015015",
-      "title": "Can GrowQR help me get a job?",
+      "title": "Can Yugty help me get a job?",
       "category": "Company",
-      "text": "Yes. GrowQR helps you build career readiness for a role, then get in front of it.\nYour RQ Score sets the starting point and becomes your career roadmap:\n• Skill gaps: see which skills are missing for your target role, and train on them\n• Learning recommendations: a focused set of courses to close those gaps\n• Resume and interviews: an ATS ready resume, plus mock interview practice\n• Job matching: relevant roles, with auto apply on higher plans\nAs you progress, your career roadmap and RQ Score update.\nStart free at growqr.ai",
+      "text": "Yes. Yugty helps you build career readiness for a role, then get in front of it.\nYour RQ Score sets the starting point and becomes your career roadmap:\n• Skill gaps: see which skills are missing for your target role, and train on them\n• Learning recommendations: a focused set of courses to close those gaps\n• Resume and interviews: an ATS ready resume, plus mock interview practice\n• Job matching: relevant roles, with auto apply on higher plans\nAs you progress, your career roadmap and RQ Score update.\nStart free at growqr.ai",
       "wordCount": 93
     },
     {
       "id": "227090000000016005",
-      "title": "Does GrowQR work for universities and institutes?",
+      "title": "Does Yugty work for universities and institutes?",
       "category": "Universities",
-      "text": "Yes. GrowQR helps universities and institutes improve employability and placements.\nStudents get the full agent suite for career pathways, skill building, resumes, and mock interviews. The institution gets readiness visibility across cohorts through RQ Scores, plus recruiter engagement to help place students.\nYou can read more at growqr.ai/solutions/institutes. If you would like to explore a campus partnership or a demo, I can take a few details and connect you with our team.",
+      "text": "Yes. Yugty helps universities and institutes improve employability and placements.\nStudents get the full agent suite for career pathways, skill building, resumes, and mock interviews. The institution gets readiness visibility across cohorts through RQ Scores, plus recruiter engagement to help place students.\nYou can read more at growqr.ai/solutions/institutes. If you would like to explore a campus partnership or a demo, I can take a few details and connect you with our team.",
       "wordCount": 72
     },
     {
       "id": "227090000000030016",
       "title": "How do I book a demo?",
       "category": "Enterprise",
-      "text": "Happy to set that up. GrowQR offers demos for recruiters, universities, and companies who want to see the platform in action.\nShare your name, work email, organisation, and what you are trying to solve, and I will pass it to our team to arrange a demo. During business hours (IST) I can connect you right away.\nYou can also request one any time at growqr.ai/contact.",
+      "text": "Happy to set that up. Yugty offers demos for recruiters, universities, and companies who want to see the platform in action.\nShare your name, work email, organisation, and what you are trying to solve, and I will pass it to our team to arrange a demo. During business hours (IST) I can connect you right away.\nYou can also request one any time at growqr.ai/contact.",
       "wordCount": 65
     },
     {
       "id": "227090000000031008",
-      "title": "How do I contact the GrowQR team?",
+      "title": "How do I contact the Yugty team?",
       "category": "Support",
-      "text": "You can reach the GrowQR team in a few ways.\nThe fastest is right here. Just say talk to our team and I will connect you during business hours (IST), or take your details for a follow up if we are offline.\nYou can also use the contact form at growqr.ai/contact, or email support@growqr.ai.",
+      "text": "You can reach the Yugty team in a few ways.\nThe fastest is right here. Just say talk to our team and I will connect you during business hours (IST), or take your details for a follow up if we are offline.\nYou can also use the contact form at growqr.ai/contact, or email support@growqr.ai.",
       "wordCount": 54
     },
     {
@@ -37,9 +37,9 @@
     },
     {
       "id": "227090000000033003",
-      "title": "How does GrowQR help me switch careers?",
+      "title": "How does Yugty help me switch careers?",
       "category": "Company",
-      "text": "GrowQR is well suited to a career switch because it focuses on your readiness for the new field rather than your past title.\nStart with your RQ Score to see where you stand for the target role. Use RQ-Sage to close skill gaps, RQ-Lyra to follow a focused learning path, RQ-Mira to reframe your resume, and RQ-Vera to practise interviews for the new field.\nTell me the field you are moving into and I can suggest where to begin.",
+      "text": "Yugty is well suited to a career switch because it focuses on your readiness for the new field rather than your past title.\nStart with your RQ Score to see where you stand for the target role. Use RQ-Sage to close skill gaps, RQ-Lyra to follow a focused learning path, RQ-Mira to reframe your resume, and RQ-Vera to practise interviews for the new field.\nTell me the field you are moving into and I can suggest where to begin.",
       "wordCount": 79
     },
     {
@@ -93,28 +93,28 @@
     },
     {
       "id": "227090000000009082",
-      "title": "How is GrowQR different from ChatGPT?",
+      "title": "How is Yugty different from ChatGPT?",
       "category": "Company",
-      "text": "ChatGPT is a general purpose assistant that answers prompts. GrowQR is built specifically for careers, so instead of one general model you get specialised AI agents that each focus on one job, such as resumes, interviews, skill building, or job matching.\nGrowQR also remembers your goals and tracks your progress through your RQ Score, so its guidance is personal and measurable rather than one off answers.\nFor organisations it works the same way. Role specific AI agents work together through structured workflows instead of a single chatbot handling everything.",
+      "text": "ChatGPT is a general purpose assistant that answers prompts. Yugty is built specifically for careers, so instead of one general model you get specialised AI agents that each focus on one job, such as resumes, interviews, skill building, or job matching.\nYugty also remembers your goals and tracks your progress through your RQ Score, so its guidance is personal and measurable rather than one off answers.\nFor organisations it works the same way. Role specific AI agents work together through structured workflows instead of a single chatbot handling everything.",
       "wordCount": 89
     },
     {
       "id": "227090000000030014",
       "title": "How is my personal data protected?",
       "category": "Data Privacy",
-      "text": "GrowQR stores only the information needed to personalise your career guidance.\n• Your personal data is not used to train publicly available third-party AI models.\n• GrowQR does not sell your personal data.\n• Your profile, scores, and verified credentials are shared with an organisation only where you made them visible, or applied to that organisation's posted opportunity.\n• Interview and roleplay recordings are kept only as long as needed to give you feedback, and you can delete them at any time in account settings.\n• You can request access, correction, or erasure of your data, and withdraw consent, by writing to support@growqr.ai\nFull policy: growqr.ai/privacy-policy",
+      "text": "Yugty stores only the information needed to personalise your career guidance.\n• Your personal data is not used to train publicly available third-party AI models.\n• Yugty does not sell your personal data.\n• Your profile, scores, and verified credentials are shared with an organisation only where you made them visible, or applied to that organisation's posted opportunity.\n• Interview and roleplay recordings are kept only as long as needed to give you feedback, and you can delete them at any time in account settings.\n• You can request access, correction, or erasure of your data, and withdraw consent, by writing to support@growqr.ai\nFull policy: growqr.ai/privacy-policy",
       "wordCount": 106
     },
     {
       "id": "227090000000014023",
       "title": "How is our organisation's data secured?",
       "category": "Data Privacy",
-      "text": "GrowQR is built for organisational use and operates under India's DPDP Act, 2023.\n• Customer and employee data is not used to train publicly available third-party AI models.\n• Only the minimum data required to run the platform is collected.\n• Safeguards include access controls and encryption in transit, on infrastructure hosted with AWS and Cloudflare.\n• Candidate and student profiles, scores, and credentials are visible to your organisation only where the individual made them visible, or applied to your posted opportunity.\n• Data is shared with cloud, AI, analytics, and payment vendors only as needed to deliver the service, under contractual protections. GrowQR does not sell personal data.\nFull policy: growqr.ai/privacy-policy. For security, compliance, or data residency questions, I can connect you with our team.",
+      "text": "Yugty is built for organisational use and operates under India's DPDP Act, 2023.\n• Customer and employee data is not used to train publicly available third-party AI models.\n• Only the minimum data required to run the platform is collected.\n• Safeguards include access controls and encryption in transit, on infrastructure hosted with AWS and Cloudflare.\n• Candidate and student profiles, scores, and credentials are visible to your organisation only where the individual made them visible, or applied to your posted opportunity.\n• Data is shared with cloud, AI, analytics, and payment vendors only as needed to deliver the service, under contractual protections. Yugty does not sell personal data.\nFull policy: growqr.ai/privacy-policy. For security, compliance, or data residency questions, I can connect you with our team.",
       "wordCount": 126
     },
     {
       "id": "227090000000030018",
-      "title": "How much does GrowQR cost for enterprises?",
+      "title": "How much does Yugty cost for enterprises?",
       "category": "Enterprise",
       "text": "Enterprise pricing is tailored to your organisation rather than a fixed plan, because it depends on which agents you activate and how many people you support.\nTell me your team size and what you want to achieve, whether that is hiring, employee development, or workforce analytics, and I can connect you with our team for pricing and a demo.\nFor individuals, standard plans start free and are listed at growqr.ai.",
       "wordCount": 70
@@ -135,44 +135,44 @@
     },
     {
       "id": "227090000000030012",
-      "title": "What AI agents does GrowQR offer?",
+      "title": "What AI agents does Yugty offer?",
       "category": "AI Agents",
-      "text": "GrowQR gives individuals seven specialised AI agents, each focused on one part of your career.\nRQ-Scout finds and applies to matched jobs. RQ-Mira builds resumes and cover letters. RQ-Vera runs mock interviews. RQ-Kai coaches you through roleplay practice. RQ-Nova builds your personal brand. RQ-Sage trains your skills. RQ-Lyra curates courses and learning.\nYou can use a single agent for one need, or combine them for an end to end journey. Each agent has its own page at growqr.ai/agents.\nFor companies, GrowQR also offers a separate set of enterprise agents for hiring and workforce needs.",
+      "text": "Yugty gives individuals seven specialised AI agents, each focused on one part of your career.\nRQ-Scout finds and applies to matched jobs. RQ-Mira builds resumes and cover letters. RQ-Vera runs mock interviews. RQ-Kai coaches you through roleplay practice. RQ-Nova builds your personal brand. RQ-Sage trains your skills. RQ-Lyra curates courses and learning.\nYou can use a single agent for one need, or combine them for an end to end journey. Each agent has its own page at growqr.ai/agents.\nFor companies, Yugty also offers a separate set of enterprise agents for hiring and workforce needs.",
       "wordCount": 94
     },
     {
       "id": "227090000000027009",
       "title": "What are Q-Ryze, Q-Skale, Q-Kampus and Q-Kalyber?",
-      "category": "GrowQR offerings",
-      "text": "These are GrowQR's four offerings, each built for a different type of user.\n• Q-Ryze: for individuals building their own career, including students and working professionals. Start at growqr.ai\n• Q-Kalyber: for recruiters and hiring teams. See growqr.ai/solutions/recruiters\n• Q-Kampus: for universities and institutes. See growqr.ai/solutions/institutes\n• Q-Skale: for businesses and organisations. See growqr.ai/solutions/enterprises\nTell me which one describes you and I can point you to the right place.",
+      "category": "Yugty offerings",
+      "text": "These are Yugty's four offerings, each built for a different type of user.\n• Q-Ryze: for individuals building their own career, including students and working professionals. Start at growqr.ai\n• Q-Kalyber: for recruiters and hiring teams. See growqr.ai/solutions/recruiters\n• Q-Kampus: for universities and institutes. See growqr.ai/solutions/institutes\n• Q-Skale: for businesses and organisations. See growqr.ai/solutions/enterprises\nTell me which one describes you and I can point you to the right place.",
       "wordCount": 69
     },
     {
       "id": "227090000000027005",
-      "title": "What do recruiters get from GrowQR?",
+      "title": "What do recruiters get from Yugty?",
       "category": "Recruiters",
-      "text": "GrowQR gives recruiters a pipeline of verified, job ready talent and makes screening faster.\nRQ-Rita, our AI recruiter, screens and shortlists candidates at scale, and every candidate carries an RQ Score that signals real readiness beyond the resume, so you spend your time on the strongest fits.\nYou can read more at growqr.ai/solutions/recruiters. If you would like a walkthrough or pricing, I can connect you with our team.",
+      "text": "Yugty gives recruiters a pipeline of verified, job ready talent and makes screening faster.\nRQ-Rita, our AI recruiter, screens and shortlists candidates at scale, and every candidate carries an RQ Score that signals real readiness beyond the resume, so you spend your time on the strongest fits.\nYou can read more at growqr.ai/solutions/recruiters. If you would like a walkthrough or pricing, I can connect you with our team.",
       "wordCount": 68
     },
     {
       "id": "227090000000033001",
-      "title": "What does GrowQR cost? Is it free?",
+      "title": "What does Yugty cost? Is it free?",
       "category": "Pricing",
-      "text": "GrowQR has a Free Forever plan at ₹0 with no card required, plus three paid plans.\nIndia pricing:\n• 7-Day Sprint: ₹699 one time\n• Monthly: ₹1,999 per month\n• Career Accelerator: ₹4,999 per quarter (about ₹1,666 per month)\nPricing and availability depend on your region. Where GrowQR is live, plan prices show at checkout. Where it is not yet available, plans show as Coming soon with the option to join the waitlist.\nSee current pricing for your region at growqr.ai",
+      "text": "Yugty has a Free Forever plan at ₹0 with no card required, plus three paid plans.\nIndia pricing:\n• 7-Day Sprint: ₹699 one time\n• Monthly: ₹1,999 per month\n• Career Accelerator: ₹4,999 per quarter (about ₹1,666 per month)\nPricing and availability depend on your region. Where Yugty is live, plan prices show at checkout. Where it is not yet available, plans show as Coming soon with the option to join the waitlist.\nSee current pricing for your region at growqr.ai",
       "wordCount": 81
     },
     {
       "id": "227090000000013007",
-      "title": "What does GrowQR offer companies and HR teams?",
+      "title": "What does Yugty offer companies and HR teams?",
       "category": "Enterprise",
-      "text": "GrowQR Business is an AI workforce platform for hiring and people teams. You activate only the agents you need, with no technical setup.\nThe enterprise agents are RQ-Rita for recruiting, RQ-Vera for structured interviews, RQ-Scout for talent sourcing, RQ-Nova for employer brand, RQ-Theo for attrition prediction, RQ-Rohan for workforce analytics, RQ-Finn for onboarding, RQ-Eva for capability building, and RQ-Maya for managing outsourced and freelance talent.\nIf you would like a demo or pricing for your team, I can connect you with our team.",
+      "text": "Yugty Business is an AI workforce platform for hiring and people teams. You activate only the agents you need, with no technical setup.\nThe enterprise agents are RQ-Rita for recruiting, RQ-Vera for structured interviews, RQ-Scout for talent sourcing, RQ-Nova for employer brand, RQ-Theo for attrition prediction, RQ-Rohan for workforce analytics, RQ-Finn for onboarding, RQ-Eva for capability building, and RQ-Maya for managing outsourced and freelance talent.\nIf you would like a demo or pricing for your team, I can connect you with our team.",
       "wordCount": 83
     },
     {
       "id": "227090000000032003",
-      "title": "What is GrowQR?",
+      "title": "What is Yugty?",
       "category": "Company",
-      "text": "GrowQR is an AI powered career platform that helps you build skills, sharpen your profile, and get ready for your next opportunity. It brings together specialised AI agents that each handle one part of your career, from resumes and interviews to skill building, learning, and personal branding.\nAt the centre is your RQ Score, a readiness score that shows where you stand and what to improve next.\nFor organisations, GrowQR also offers an AI workforce for hiring, employee development, and workforce analytics.\nYou can start free at growqr.ai with no card required.",
+      "text": "Yugty is an AI powered career platform that helps you build skills, sharpen your profile, and get ready for your next opportunity. It brings together specialised AI agents that each handle one part of your career, from resumes and interviews to skill building, learning, and personal branding.\nAt the centre is your RQ Score, a readiness score that shows where you stand and what to improve next.\nFor organisations, Yugty also offers an AI workforce for hiring, employee development, and workforce analytics.\nYou can start free at growqr.ai with no card required.",
       "wordCount": 92
     },
     {
@@ -193,7 +193,7 @@
       "id": "227090000000009084",
       "title": "What's included in the Free Forever plan?",
       "category": "Pricing",
-      "text": "The Free Forever plan lets you use GrowQR at ₹0 with no card, and it stays free.\nIt includes your real time QR identity, one free RQ Score profile report, one verified skill badge, the resume and cover letter builder at one per day, and three five minute mock interviews.\nIt is a good way to see where you stand. You upgrade only when you want more volume, more agents, or expert help.",
+      "text": "The Free Forever plan lets you use Yugty at ₹0 with no card, and it stays free.\nIt includes your real time QR identity, one free RQ Score profile report, one verified skill badge, the resume and cover letter builder at one per day, and three five minute mock interviews.\nIt is a good way to see where you stand. You upgrade only when you want more volume, more agents, or expert help.",
       "wordCount": 73
     },
     {
@@ -205,9 +205,9 @@
     },
     {
       "id": "227090000000013003",
-      "title": "Who is GrowQR for?",
+      "title": "Who is Yugty for?",
       "category": "Company",
-      "text": "GrowQR is built for anyone working on their career, including students, job seekers, working professionals, career switchers, and freelancers who want to build skills and improve how ready they are for opportunities.\nIt also serves organisations. Universities use it to improve placements, recruiters use it to find job ready talent, and companies use it for hiring and employee development.\nTell me whether you are a student, a professional, a recruiter, a university, or a company, and I can point you to the right place to start.",
+      "text": "Yugty is built for anyone working on their career, including students, job seekers, working professionals, career switchers, and freelancers who want to build skills and improve how ready they are for opportunities.\nIt also serves organisations. Universities use it to improve placements, recruiters use it to find job ready talent, and companies use it for hiring and employee development.\nTell me whether you are a student, a professional, a recruiter, a university, or a company, and I can point you to the right place to start.",
       "wordCount": 86
     }
   ]

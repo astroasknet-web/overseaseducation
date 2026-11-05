@@ -9,7 +9,7 @@ import * as MI from "@/lib/abroad/mock-interview";
 import { btnDark, btnLine, box, ConsolePage, field } from "@/components/admin/console-page";
 import { mockFeedbackAction } from "../../actions";
 
-export const metadata: Metadata = { title: "Mock interview review | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Mock interview review | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 export default async function MockReview({ params }: { params: Promise<{ id: string }> }) {

@@ -17,7 +17,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const sp = await searchParams;
   const filtered = ["q", "country", "field", "level", "type", "sort"].some((k) => one(sp[k]));
   return {
-    title: "Study Abroad: Compare Universities, Costs and Visas | GrowQR",
+    title: "Study Abroad: Compare Universities, Costs and Visas | Yugty",
     description: "Compare universities in the USA, UK, Canada, Australia, Germany and more. See yearly costs in rupees, find your Safe, Target and Reach options, and apply with a counselor.",
     alternates: { canonical: `${SITE_URL}/study-abroad` },
     robots: filtered ? { index: false, follow: true } : { index: true, follow: true },

@@ -19,7 +19,7 @@ import { Card, PortalPage } from "@/components/portal/shell";
 import { Alert } from "@/components/portal/ui";
 import { ResendVerification } from "@/components/portal/forms";
 
-export const metadata: Metadata = { title: "Overseas education | GrowQR" };
+export const metadata: Metadata = { title: "Overseas education | Yugty" };
 export const dynamic = "force-dynamic";
 
 const STATUS: Record<string, string> = { draft: "Draft", in_review: "In review", applied: "Applied", offer: "Offer", declined: "Declined", accepted: "Accepted" };

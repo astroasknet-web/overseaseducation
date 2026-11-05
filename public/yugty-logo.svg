@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 44" role="img" aria-label="Yugty">
+  <rect x="2" y="4" width="36" height="36" rx="10" fill="#FF6A2F"/>
+  <path d="M12 13l8 11 8-11M20 24v9" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="48" y="31" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="-0.5" fill="#1A1A1A">Yugty</text>
+</svg>

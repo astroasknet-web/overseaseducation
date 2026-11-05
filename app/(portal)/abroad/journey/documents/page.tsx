@@ -10,7 +10,7 @@ import { uploadAction } from "@/app/abroad/journey-actions";
 import { btnPrimary, day, input, label } from "@/components/journey/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "My documents | GrowQR" };
+export const metadata: Metadata = { title: "My documents | Yugty" };
 export const dynamic = "force-dynamic";
 
 const STATUS: Record<string, string> = { uploaded: "Waiting for your consultant", verified: "Verified", rejected: "Needs a new version", expired: "Expired: upload a new version", superseded: "Replaced by a newer version" };

@@ -12,7 +12,7 @@ import { attachDocAction, evidenceAction, requestNaAction, taskMoveAction, uploa
 import { btnGhost, btnPrimary, day, DueText, input, label, PriorityTag, StatusBadge, when } from "@/components/journey/parts";
 import { PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "Task | GrowQR" };
+export const metadata: Metadata = { title: "Task | Yugty" };
 export const dynamic = "force-dynamic";
 
 export default async function TaskPage({ params }: { params: Promise<{ id: string }> }) {

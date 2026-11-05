@@ -11,7 +11,7 @@ import { addApplicationAction, exceptionRequestAction } from "@/app/abroad/journ
 import { Bar, btnGhost, btnPrimary, day, input, label } from "@/components/journey/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "My applications | GrowQR" };
+export const metadata: Metadata = { title: "My applications | Yugty" };
 export const dynamic = "force-dynamic";
 
 const STATUS: Record<string, string> = { shortlisted: "Shortlisted", preparing: "Preparing", submitted: "Submitted", under_review: "Under review by the university", offer: "Offer received", rejected: "Not successful", waitlisted: "Waitlisted", accepted: "Accepted by you", declined: "Declined by you", withdrawn: "Withdrawn", deferred: "Deferred" };

@@ -2,7 +2,7 @@
 
 # qrscore (PHP) into test.vidaara.org (Next.js): migration plan
 
-Goal: move every qrscore application (scoring engine, Skill Passport, Resume Studio, internships, courses, study abroad, Overseas CRM, analytics, admin) into the Node/Next.js codebase in `test.vidaara.org`, so GrowQR is one app.
+Goal: move every qrscore application (scoring engine, Skill Passport, Resume Studio, internships, courses, study abroad, Overseas CRM, analytics, admin) into the Node/Next.js codebase in `test.vidaara.org`, so Yugty is one app.
 
 Folders in `D:\GROWQR\GROWQR FINAL AFTER INTEGRATION`:
 - `qrscore\`: the PHP application (the source being ported; unchanged).

@@ -193,11 +193,11 @@ function scoreArticle(
 
   // How much of the TITLE the query accounted for. Without this, "what is
   // growqr" ties every article with "growqr" in the title and the winner is
-  // arbitrary — it answered with "Can GrowQR help me get a job?" instead of
-  // "What is GrowQR?". Rewarding tight titles breaks that tie correctly.
+  // arbitrary — it answered with "Can Yugty help me get a job?" instead of
+  // "What is Yugty?". Rewarding tight titles breaks that tie correctly.
   if (titleTokens.size) score += (titleHits / titleTokens.size) * 1.5;
 
-  // Whole-question containment, e.g. "what is growqr" → "What is GrowQR?".
+  // Whole-question containment, e.g. "what is growqr" → "What is Yugty?".
   const normalizedTitle = article.title.toLowerCase();
   if (queryTokens.length >= 2 && queryTokens.every((t) => normalizedTitle.includes(t))) {
     score += 1.5;

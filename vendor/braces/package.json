@@ -1,6 +1,6 @@
 {
   "name": "braces",
-  "description": "Bash-like brace expansion, implemented in JavaScript. Safer than other brace expansion libs, with complete support for the Bash 4.3 braces specification, without sacrificing speed. (GrowQR security-patched copy: nesting depth limit, see README-GROWQR.md)",
+  "description": "Bash-like brace expansion, implemented in JavaScript. Safer than other brace expansion libs, with complete support for the Bash 4.3 braces specification, without sacrificing speed. (Yugty security-patched copy: nesting depth limit, see README-GROWQR.md)",
   "version": "3.0.4",
   "homepage": "https://github.com/micromatch/braces",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",

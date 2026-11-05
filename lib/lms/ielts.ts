@@ -3,7 +3,7 @@ import path from "node:path";
 
 /**
  * IELTS course imported from Vidaara (content/lms/ielts/): 17 Reading and Writing lessons, 30 Writing practice tests and
- * 30 Speaking practice tests. Reading and Listening practice tests are already part of GrowQR (/practice-tests).
+ * 30 Speaking practice tests. Reading and Listening practice tests are already part of Yugty (/practice-tests).
  * Built by scripts/import-vidaara-ielts.mjs. No database; the Writing band estimate runs in the browser.
  */
 export interface Section { slug: string; label: string; color: string; icon: string; tagline: string }

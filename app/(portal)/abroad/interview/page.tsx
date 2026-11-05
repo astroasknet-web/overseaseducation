@@ -6,7 +6,7 @@ import { deleteMockAction, finishMockAction, startMockAction } from "@/app/abroa
 import { Flash } from "@/components/abroad/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "Visa interview practice | GrowQR" };
+export const metadata: Metadata = { title: "Visa interview practice | Yugty" };
 export const dynamic = "force-dynamic";
 
 const BAND_CLS: Record<string, string> = { "st-green": "bg-emerald-50 text-emerald-800", "st-amber": "bg-amber-50 text-amber-900", "st-red": "bg-red-50 text-red-800" };

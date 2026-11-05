@@ -1,5 +1,5 @@
 /**
- * Deterministic "is GrowQR live in <country>?" replies — the SAME plain
+ * Deterministic "is Yugty live in <country>?" replies — the SAME plain
  * boolean lookup the landing pages use (isLiveCountry() in lib/currency.ts,
  * surfaced client-side via regionForCountry()/useIsLive() in
  * CurrencyProvider.tsx), applied to a country NAMED in the visitor's message
@@ -14,7 +14,7 @@
  * described the VISITOR's own location — never whatever country they named —
  * and nothing cross-checked the two. Live-confirmed 2026-08-03: a visitor
  * whose own market was live asked "is it live in the USA?" and the model
- * answered "GrowQR is available in the US and you can sign up at growqr.ai,"
+ * answered "Yugty is available in the US and you can sign up at growqr.ai,"
  * which is false (the US is not in LIVE_COUNTRIES).
  *
  * Since LIVE_COUNTRIES is a small, complete, authoritative list, there is
@@ -48,7 +48,7 @@ export interface NamedCountryAvailability {
 }
 
 /**
- * Deterministic reply for "is GrowQR live/available in <country>?" — the
+ * Deterministic reply for "is Yugty live/available in <country>?" — the
  * exact isLiveCountry() lookup the landing pages already use, phrased as a
  * chat reply instead of a page's CTA/badge. Returns null when the message
  * doesn't both name a recognized country AND ask an availability question,
@@ -65,8 +65,8 @@ export function marketAvailabilityFor(text: string): NamedCountryAvailability | 
   const name = countryDisplayName(code) ?? code;
   const isLive = isLiveCountry(code);
   const reply = isLive
-    ? `Yes, GrowQR is live in ${name}. You can sign up at growqr.ai.`
-    : `GrowQR isn't live in ${name} yet. You can join the waitlist at growqr.ai and we'll email you when it opens.`;
+    ? `Yes, Yugty is live in ${name}. You can sign up at growqr.ai.`
+    : `Yugty isn't live in ${name} yet. You can join the waitlist at growqr.ai and we'll email you when it opens.`;
 
   return { code, isLive, reply };
 }

@@ -6,7 +6,7 @@ import { saveVisaAction } from "@/app/abroad/more-actions";
 import { Flash } from "@/components/abroad/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
 
-export const metadata: Metadata = { title: "My visa tracker | GrowQR" };
+export const metadata: Metadata = { title: "My visa tracker | Yugty" };
 export const dynamic = "force-dynamic";
 
 const input = "w-full px-3 py-2.5 rounded-lg border border-black/[0.15] bg-white text-[15px] min-h-[44px]";

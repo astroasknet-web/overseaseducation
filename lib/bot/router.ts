@@ -45,8 +45,8 @@ const log = createLogger("bot-router");
 
 // ── Verified-content answer, v1 hardcoded, country-aware ────────────────────
 //
-// Sourced verbatim from the live Answer Hub article "What does GrowQR cost?
-// Is it free?" and "Which countries is GrowQR available in?" (authored and
+// Sourced verbatim from the live Answer Hub article "What does Yugty cost?
+// Is it free?" and "Which countries is Yugty available in?" (authored and
 // verified this session). Hardcoded rather than fetched live: a live SalesIQ
 // REST call inside the response path adds network latency and a second
 // credential to manage in the hot path, a bad trade for a single,
@@ -60,11 +60,11 @@ const log = createLogger("bot-router");
 // message. Showing India pricing to a US visitor was a real, verified defect
 // in the old KB article; this is the fix carried into the bot.
 export const PRICING_REPLY_LIVE =
-  "GrowQR has a Free Forever plan at ₹0, no card required. In India: 7-Day " +
+  "Yugty has a Free Forever plan at ₹0, no card required. In India: 7-Day " +
   "Sprint ₹699 one-time, Monthly ₹1,999/month, Career Accelerator ₹4,999/quarter. " +
   "Full details at growqr.ai";
 export const PRICING_REPLY_NOT_LIVE =
-  "GrowQR is not a live market in your region yet, so I can't quote a price. " +
+  "Yugty is not a live market in your region yet, so I can't quote a price. " +
   "You can join the waitlist at growqr.ai. Plans show as Coming soon there, " +
   "and we'll email you the moment signup opens.";
 
@@ -179,7 +179,7 @@ async function captureB2cLead(session: BotSession): Promise<void> {
  * was removed deliberately, to keep the conversation on the one path that
  * matters. An earlier version offered a third, page-specific explainer
  * ("How screening works" and friends); those are gone, and so is the generic
- * "What is GrowQR?", which said nothing to someone already reading a solution
+ * "What is Yugty?", which said nothing to someone already reading a solution
  * page.
  *
  * Consumer pages keep the generic set: there the visitor may genuinely not
@@ -207,7 +207,7 @@ const B2B_SUGGESTIONS = ["Enquire now", "Talk to our team"];
  * this is guaranteed on-brand and never needs the hallucination guards.
  */
 const OFF_TOPIC_REPLY =
-  "That's outside what I can help with. I'm here for questions about GrowQR, so ask me anything about our platform, plans, or how it works!";
+  "That's outside what I can help with. I'm here for questions about Yugty, so ask me anything about our platform, plans, or how it works!";
 
 /**
  * Per-page chips for the B2C solution pages.
@@ -217,7 +217,7 @@ const OFF_TOPIC_REPLY =
  *  1. NO enquiry/sales CTA. "Enquire now" and "Talk to sales" are enterprise
  *     motions; a student or freelancer has no reason to use either. This
  *     applies to every market, India and US alike.
- *  2. NO "What is GrowQR?". Someone already reading /solutions/students has
+ *  2. NO "What is Yugty?". Someone already reading /solutions/students has
  *     self-selected; offering the generic definition wastes the slot.
  *
  * Chips are contextual to what the visitor on that page actually wants.
@@ -235,7 +235,7 @@ const SOLUTION_SUGGESTIONS: Record<string, string[]> = {
  *  1. AT MOST 2, ever.
  *  2. Only when we know the page. With no page context there is nothing a chip
  *     could be "highly relevant" to, so we show NONE rather than falling back
- *     to a generic set. The old default — "What is GrowQR?" / "Pricing" /
+ *     to a generic set. The old default — "What is Yugty?" / "Pricing" /
  *     "Book a demo" — is deleted outright: it was generic by construction, it
  *     leaked onto solution pages, and it made the widget read as a menu.
  *
@@ -904,7 +904,7 @@ export async function routeMessage(payload: RawSalesIqPayload): Promise<BotRespo
   }
 
   // Condition 1 of the escalation policy: an explicit ask for a person. Wins
-  // over everything — the KB has a "How do I contact the GrowQR team?" article
+  // over everything — the KB has a "How do I contact the Yugty team?" article
   // that would otherwise answer this with text instead of actually connecting
   // them. Only a STRONG signal ("talk to a human", "real person", ...)
   // auto-forwards, though — it's the one reading of the message and there is

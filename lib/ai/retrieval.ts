@@ -181,10 +181,10 @@ function bestExcerpt(text: string, queryTokens: Set<string>): string {
 /**
  * Minimum score for a Zoho page to be offered as grounding at all.
  *
- * Set high on purpose. This corpus documents ZOHO SALESIQ, not GrowQR, so for
+ * Set high on purpose. This corpus documents ZOHO SALESIQ, not Yugty, so for
  * the overwhelming majority of visitor questions the correct result is NO
  * MATCH. Offering a weakly-related page would invite the model to answer a
- * GrowQR question out of Zoho's docs — the specific failure this threshold
+ * Yugty question out of Zoho's docs — the specific failure this threshold
  * exists to prevent.
  */
 const ZOHO_MIN_SCORE = 2.0;

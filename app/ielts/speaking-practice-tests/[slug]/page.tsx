@@ -18,8 +18,8 @@ export function generateStaticParams() { return speakingTests().map((t) => ({ sl
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const t = speakingTest(clean((await params).slug));
-  if (!t) return { title: "Test not found | GrowQR", robots: { index: false, follow: true } };
-  return { title: `${t.title}: Free IELTS Speaking Practice | GrowQR`, description: `IELTS Speaking practice on ${t.topics.join(", ")}, with a cue card, timers and a recorder.`.slice(0, 160), alternates: { canonical: `/ielts/speaking-practice-tests/${t.slug}` } };
+  if (!t) return { title: "Test not found | Yugty", robots: { index: false, follow: true } };
+  return { title: `${t.title}: Free IELTS Speaking Practice | Yugty`, description: `IELTS Speaking practice on ${t.topics.join(", ")}, with a cue card, timers and a recorder.`.slice(0, 160), alternates: { canonical: `/ielts/speaking-practice-tests/${t.slug}` } };
 }
 
 export default async function SpeakingTestPage({ params }: P) {

@@ -9,7 +9,7 @@ import { PortalPage } from "@/components/portal/shell";
 import { Alert } from "@/components/portal/ui";
 import { ResendVerification } from "@/components/portal/forms";
 
-export const metadata: Metadata = { title: "My study-abroad profile | GrowQR" };
+export const metadata: Metadata = { title: "My study-abroad profile | Yugty" };
 export const dynamic = "force-dynamic";
 
 export default async function ProfilePage() {

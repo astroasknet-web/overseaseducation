@@ -16,12 +16,12 @@ describe("renderTranscript", () => {
   it("renders both sides in order, with IST timestamps", () => {
     const out = renderTranscript([
       { role: "visitor", content: "which agents we have?", created_at: at("15:07") },
-      { role: "bot", content: "GrowQR runs a squad of AI agents.", created_at: at("15:07") },
+      { role: "bot", content: "Yugty runs a squad of AI agents.", created_at: at("15:07") },
       { role: "visitor", content: "what vera does for me?", created_at: at("15:09") },
     ]);
     expect(out).toBe(
       "[15:07] Visitor: which agents we have?\n" +
-        "[15:07] GrowQR AI: GrowQR runs a squad of AI agents.\n" +
+        "[15:07] Yugty AI: Yugty runs a squad of AI agents.\n" +
         "[15:09] Visitor: what vera does for me?",
     );
   });
@@ -57,12 +57,12 @@ describe("extractBotText", () => {
       action: "context",
       context_id: "b2b_qualify_demo_request",
       questions: [
-        { name: "use_case", replies: ["What are you hoping to use GrowQR for?"] },
+        { name: "use_case", replies: ["What are you hoping to use Yugty for?"] },
         { name: "email", replies: [{ text: "Your work email?", validate: { type: "email" } }] },
       ],
     };
     expect(extractBotText(res)).toEqual([
-      "What are you hoping to use GrowQR for?",
+      "What are you hoping to use Yugty for?",
       "Your work email?",
     ]);
   });

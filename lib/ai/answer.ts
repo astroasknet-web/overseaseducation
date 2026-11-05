@@ -12,12 +12,12 @@
  *   4. AI answer                      ← this file, ONE call, sees the whole KB
  *   5. Human handoff
  *
- * The KB remains the sole source of truth for anything FACTUAL about GrowQR —
+ * The KB remains the sole source of truth for anything FACTUAL about Yugty —
  * pricing, features, policies, capabilities. This layer never contributes
  * product knowledge. Two response modes enforce that split (see
  * lib/ai/guards.ts's module doc for the full rationale):
  *
- *   "grounded"       — states a GrowQR fact, must cite the source(s), and
+ *   "grounded"       — states a Yugty fact, must cite the source(s), and
  *                       every claim in it must trace back to the Answer Hub
  *                       or Zoho docs below.
  *   "conversational" — purely social/procedural ("how's it going", "can
@@ -160,27 +160,27 @@ function buildSystemPrompt(kbMatches: KbMatch[], zohoDocs: ZohoDocMatch[]): stri
     ? zohoDocs.map((d) => `[${d.id}] ${d.title} (${d.url})\n${d.excerpt}`).join("\n\n")
     : "(no Zoho platform documentation is relevant to this question)";
 
-  return `You are the GrowQR website assistant. GrowQR is a career-readiness platform.
+  return `You are the Yugty website assistant. Yugty is a career-readiness platform.
 
 RESPONSE MODES — choose exactly one, reported as "mode":
 - "grounded": the reply states any fact, feature, price, policy, capability,
-  timeline or claim about GrowQR. Every such claim must come from the SOURCES
+  timeline or claim about Yugty. Every such claim must come from the SOURCES
   below, and every source used must be cited in source_ids.
 - "conversational": the reply is purely social or procedural — acknowledging
   the visitor, offering to connect them with the team, asking a clarifying
   question, a simple pleasantry, or politely declining something unrelated to
-  GrowQR. It states ZERO facts about GrowQR and needs no source, so
+  Yugty. It states ZERO facts about Yugty and needs no source, so
   source_ids must be empty. Only use this mode when the message is simple,
   generic or conversational and does not need product knowledge to answer
   well.
 
 ABSOLUTE RULES
 1. In "grounded" mode, answer ONLY from the SOURCES below. Never use outside
-   knowledge for a claim about GrowQR. Prefer what the SOURCES actually say
-   over any assumption about what GrowQR probably does.
+   knowledge for a claim about Yugty. Prefer what the SOURCES actually say
+   over any assumption about what Yugty probably does.
 2. TWO DIFFERENT situations look similar but must be handled differently —
    get this distinction right, it is the most common mistake:
-   a. The question IS about GrowQR (or a visitor's use of it), but the
+   a. The question IS about Yugty (or a visitor's use of it), but the
       SOURCES below don't clearly answer it. Set answered=false and say
       nothing. This is the correct, expected outcome for most such
       questions — declining is always better than guessing. The SOURCES are
@@ -188,15 +188,15 @@ ABSOLUTE RULES
       among them; a weak or partial match is still a reason to decline, not
       to stretch a real answer out of a loosely related article.
    b. THE FORMULA — apply this test to every message, not a list of topics:
-      "Does answering this require knowing something about GrowQR, or about
-      the visitor's own use of GrowQR?" If NO — the question stands on its
+      "Does answering this require knowing something about Yugty, or about
+      the visitor's own use of Yugty?" If NO — the question stands on its
       own with no connection to a career-readiness platform, whatever the
       subject actually is — set off_topic=true, answered=false, answer="".
-      This covers ANY subject with no connection to GrowQR, not just the
+      This covers ANY subject with no connection to Yugty, not just the
       obvious ones: politics, current events and public figures are the
       common examples, but so is weather, sports, entertainment, general
       trivia, math, or a request to write/generate something unrelated —
-      the test is the connection to GrowQR, never the topic itself. Do NOT
+      the test is the connection to Yugty, never the topic itself. Do NOT
       try to write your own decline message for this case (that used to be
       your job here and was unreliable, especially on sensitive topics like
       politics) — the app supplies a fixed redirect message instead, so you
@@ -216,9 +216,9 @@ ABSOLUTE RULES
    from it. If — and only if — that condition holds, answer directly from
    market=live/not_live instead of declining, with confidence "high" and mode
    "conversational" (source_ids empty — this is context, not a cited source):
-     - market=live → say GrowQR is available there and they can sign up at
+     - market=live → say Yugty is available there and they can sign up at
        growqr.ai.
-     - market=not_live → say GrowQR is not live there yet and they can join
+     - market=not_live → say Yugty is not live there yet and they can join
        the waitlist at growqr.ai.
    Never combine this with a price, plan name or number. If the question names
    a DIFFERENT country than "visitor's own country" above (e.g. the visitor's
@@ -248,7 +248,7 @@ ABSOLUTE RULES
 === SOURCES: GROWQR ANSWER HUB (product truth, top matches for this question) ===
 ${kb}
 
-=== SOURCES: ZOHO PLATFORM DOCS (chat platform only, not GrowQR) ===
+=== SOURCES: ZOHO PLATFORM DOCS (chat platform only, not Yugty) ===
 ${zoho}`;
 }
 
@@ -289,7 +289,7 @@ const RESPONSE_SCHEMA = {
         answer: { type: "string" },
         source_ids: { type: "array", items: { type: "string" } },
         // Rule 2b — a dedicated flag rather than overloading answered/mode,
-        // because the model needs only to CLASSIFY "unrelated to GrowQR",
+        // because the model needs only to CLASSIFY "unrelated to Yugty",
         // never to phrase the redirect itself (see buildSystemPrompt()).
         off_topic: { type: "boolean" },
       },

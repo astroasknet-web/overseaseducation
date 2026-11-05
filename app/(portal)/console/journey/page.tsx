@@ -9,7 +9,7 @@ import { adminGate } from "../gate";
 import { JourneyFlash } from "@/components/journey/flash";
 import { settingsAction, sweepAction, templateAction } from "./actions";
 
-export const metadata: Metadata = { title: "Journey management | GrowQR", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Journey management | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
 const th = "py-2 pr-3 text-left font-medium text-ink-4";

@@ -6,8 +6,8 @@
  * These are the 11 published SalesIQ FAQs (lib/bot/faq-snapshot.json,
  * regenerate with `npm run faq:export`). They were invisible to the bot until
  * now because export-kb-snapshot.ts only ever tried API v2; the FAQs live on
- * v3. One of them, "Is GrowQR available in my country?", is the correct answer
- * to a question the matcher was answering wrongly with "What is GrowQR?".
+ * v3. One of them, "Is Yugty available in my country?", is the correct answer
+ * to a question the matcher was answering wrongly with "What is Yugty?".
  *
  * SEPARATE FILE, SEPARATE SCORER, ON PURPOSE. This does not import from, reuse,
  * or modify lib/bot/answers.ts. That module and its scoreArticle() are frozen

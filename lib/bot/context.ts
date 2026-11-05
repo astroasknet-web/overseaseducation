@@ -27,7 +27,7 @@ export interface RawSalesIqPayload {
 }
 
 /** What the website sends via $zoho.salesiq.visitor.info() — see Task 3. */
-export interface GrowQRVisitorContext {
+export interface YugtyVisitorContext {
   page: string | null;
   audience: string | null;
   solution: string | null;
@@ -54,7 +54,7 @@ export interface BotSession {
     currentPage: string | null;
   };
   /** Null on social channels (Instagram) — no website context exists there. */
-  context: GrowQRVisitorContext | null;
+  context: YugtyVisitorContext | null;
 }
 
 function firstString(obj: Record<string, unknown>, keys: string[]): string | null {
@@ -74,7 +74,7 @@ function customInfo(visitor: Record<string, unknown>): Record<string, unknown> {
   return {};
 }
 
-function parseGrowQRContext(visitor: Record<string, unknown>): GrowQRVisitorContext | null {
+function parseYugtyContext(visitor: Record<string, unknown>): YugtyVisitorContext | null {
   const info = customInfo(visitor);
   // No custom info at all is the normal case for social channels — return
   // null rather than an all-null object, so callers can tell "no website
@@ -164,7 +164,7 @@ export function parseSession(payload: RawSalesIqPayload): BotSession {
         "last_page",
       ]),
     },
-    context: parseGrowQRContext(visitor),
+    context: parseYugtyContext(visitor),
   };
 }
 

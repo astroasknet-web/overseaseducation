@@ -9,7 +9,7 @@ import { UploadForm } from "@/components/abroad/upload-form";
 import { Card, PortalPage } from "@/components/portal/shell";
 import { Alert } from "@/components/portal/ui";
 
-export const metadata: Metadata = { title: "My study-abroad documents | GrowQR" };
+export const metadata: Metadata = { title: "My study-abroad documents | Yugty" };
 export const dynamic = "force-dynamic";
 
 const PILL: Record<string, string> = { uploaded: "bg-cream-3 text-ink-2", verified: "bg-emerald-50 text-emerald-800", rejected: "bg-red-50 text-red-800" };

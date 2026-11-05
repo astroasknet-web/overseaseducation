@@ -37,8 +37,8 @@ vi.mock("@/lib/ai/retrieval", () => ({
 
 const SOURCE_ARTICLE = {
   id: "art_1",
-  title: "What is GrowQR?",
-  text: "GrowQR is a career readiness platform. It gives you 7 AI agents to close the gaps.",
+  title: "What is Yugty?",
+  text: "Yugty is a career readiness platform. It gives you 7 AI agents to close the gaps.",
   score: 5.2,
 };
 
@@ -101,14 +101,14 @@ describe("tryAiAnswer — grounded answer", () => {
         answered: true,
         mode: "grounded",
         confidence: "high",
-        answer: "GrowQR is a career readiness platform with 7 AI agents.",
+        answer: "Yugty is a career readiness platform with 7 AI agents.",
         source_ids: ["art_1"],
       }),
     );
 
     const outcome = await tryAiAnswer(baseParams);
 
-    expect(outcome.answer).toBe("GrowQR is a career readiness platform with 7 AI agents.");
+    expect(outcome.answer).toBe("Yugty is a career readiness platform with 7 AI agents.");
     expect(outcome.rejection).toBeNull();
     expect(outcome.mode).toBe("grounded");
     expect(outcome.source).toBe("openai");
@@ -176,7 +176,7 @@ describe("tryAiAnswer — off-topic (2026-08-03)", () => {
         answered: true,
         mode: "grounded",
         confidence: "high",
-        answer: "GrowQR is a career readiness platform.",
+        answer: "Yugty is a career readiness platform.",
         source_ids: ["art_1"],
         off_topic: false,
       }),
@@ -184,7 +184,7 @@ describe("tryAiAnswer — off-topic (2026-08-03)", () => {
 
     const outcome = await tryAiAnswer({ ...baseParams, question: "what is growqr" });
 
-    expect(outcome.answer).toBe("GrowQR is a career readiness platform.");
+    expect(outcome.answer).toBe("Yugty is a career readiness platform.");
     expect(outcome.rejection).toBeNull();
   });
 });
@@ -211,7 +211,7 @@ describe("tryAiAnswer — no matching source", () => {
         answered: true,
         mode: "grounded",
         confidence: "high",
-        answer: "GrowQR gives you 7 AI agents.",
+        answer: "Yugty gives you 7 AI agents.",
         source_ids: ["art_1"], // fabricated — not in validIds since retrieval returned nothing
       }),
     );
@@ -230,7 +230,7 @@ describe("tryAiAnswer — hallucination rejection", () => {
         answered: true,
         mode: "grounded",
         confidence: "high",
-        answer: "GrowQR gives you 42 AI agents.",
+        answer: "Yugty gives you 42 AI agents.",
         source_ids: ["art_1"],
       }),
     );
@@ -248,7 +248,7 @@ describe("tryAiAnswer — hallucination rejection", () => {
         answered: true,
         mode: "grounded",
         confidence: "high",
-        answer: "Yes, GrowQR integrates with Greenhouse and Workday.",
+        answer: "Yes, Yugty integrates with Greenhouse and Workday.",
         source_ids: ["art_1"],
       }),
     );
@@ -340,7 +340,7 @@ describe("tryAiAnswer — telemetry", () => {
         answered: true,
         mode: "grounded",
         confidence: "high",
-        answer: "GrowQR gives you 7 AI agents.",
+        answer: "Yugty gives you 7 AI agents.",
         source_ids: ["art_1"],
       }),
     );
@@ -404,7 +404,7 @@ describe("tryAiAnswer — visitor country in the prompt (defense in depth)", () 
         answered: true,
         mode: "conversational",
         confidence: "high",
-        answer: "GrowQR is not live there yet. You can join the waitlist at growqr.ai.",
+        answer: "Yugty is not live there yet. You can join the waitlist at growqr.ai.",
         source_ids: [],
       }),
     );

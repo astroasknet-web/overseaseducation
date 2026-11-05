@@ -1,4 +1,4 @@
--- Support tickets: signed-in people raise a ticket, follow the conversation, and the GrowQR team answers from the admin console.
+-- Support tickets: signed-in people raise a ticket, follow the conversation, and the Yugty team answers from the admin console.
 -- Tickets belong to an account (user_id), so only logged-in, registered people can raise them and each person sees only their own.
 -- Idempotent like every portal migration. All rows go when the account is deleted.
 

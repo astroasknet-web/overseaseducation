@@ -9,7 +9,7 @@ import { UniCard } from "@/components/abroad/parts";
 import { PortalPage } from "@/components/portal/shell";
 import { Alert } from "@/components/portal/ui";
 
-export const metadata: Metadata = { title: "Your Safe, Target and Reach universities | GrowQR" };
+export const metadata: Metadata = { title: "Your Safe, Target and Reach universities | Yugty" };
 export const dynamic = "force-dynamic";
 
 const BLURB = {

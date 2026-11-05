@@ -15,13 +15,13 @@
  * more rigidity than value; one call that has the KB in front of it and
  * decides for itself is simpler and answers more naturally):
  *
- *   "grounded"       — the reply states a GrowQR fact. Must cite >=1 source
+ *   "grounded"       — the reply states a Yugty fact. Must cite >=1 source
  *                       id, and every number/claim in it must trace back to
  *                       that source text.
  *   "conversational" — the reply is purely social/procedural (acknowledging
  *                       the visitor, offering to pass them to the team,
  *                       asking a clarifying question) and states ZERO facts
- *                       about GrowQR. No citation is possible because there
+ *                       about Yugty. No citation is possible because there
  *                       is nothing to cite, so this mode instead refuses
  *                       outright anything that WOULD need grounding: any
  *                       number, any risky-claim keyword, any citation at

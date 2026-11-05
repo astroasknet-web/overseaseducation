@@ -155,7 +155,7 @@ export function renderTranscript(rows: readonly TranscriptRow[]): string {
       minute: "2-digit",
       hour12: false,
     });
-    const who = row.role === "bot" ? "GrowQR AI" : "Visitor";
+    const who = row.role === "bot" ? "Yugty AI" : "Visitor";
     return `[${time}] ${who}: ${row.content}`;
   });
 

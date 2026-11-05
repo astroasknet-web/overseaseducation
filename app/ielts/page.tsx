@@ -7,7 +7,7 @@ import ExamBuyStrip from "@/components/lms/ExamBuyStrip";
 export const dynamic = "force-dynamic"; // the purchase strip depends on the visitor
 
 export const metadata: Metadata = {
-  title: "IELTS Preparation: Reading and Writing Lessons, Practice Tests | GrowQR",
+  title: "IELTS Preparation: Reading and Writing Lessons, Practice Tests | Yugty",
   description: "IELTS preparation for Academic and General Training: 17 Reading and Writing lessons, Writing and Speaking practice tests, and timed Reading and Listening tests with band scores.",
   alternates: { canonical: "/ielts" },
 };

@@ -1,6 +1,6 @@
 # Database setup on Hostinger (MySQL)
 
-GrowQR now keeps **everything** in one MySQL database: accounts, courses and progress, the LMS, Resume Studio, internships, study abroad, the CRM, and the marketing forms, applications, bookings, events and chat-bot data. There is no Supabase and no second database.
+Yugty now keeps **everything** in one MySQL database: accounts, courses and progress, the LMS, Resume Studio, internships, study abroad, the CRM, and the marketing forms, applications, bookings, events and chat-bot data. There is no Supabase and no second database.
 
 You create an empty database in Hostinger once. The app builds every table by itself the first time it starts.
 
