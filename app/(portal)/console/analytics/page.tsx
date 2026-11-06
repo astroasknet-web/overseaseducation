@@ -8,7 +8,7 @@ import { adminGate } from "../gate";
 export const metadata: Metadata = { title: "Analytics | Yugty", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
 
-const TABS: Array<[string, string]> = [["overview", "Overview"], ["users", "Users"], ["internships", "Internships"], ["abroad", "Study abroad"], ["resumes", "Resumes"], ["ebooks", "E-books"], ["colleges", "Colleges"], ["system", "System"]];
+const TABS: Array<[string, string]> = [["overview", "Overview"], ["users", "Users"], ["internships", "Internships"], ["abroad", "Study abroad"], ["resumes", "Resumes"], ["colleges", "Colleges"], ["system", "System"]];
 const one = (v: string | string[] | undefined): string => (Array.isArray(v) ? v[0] ?? "" : v ?? "");
 
 export default async function AnalyticsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { isVerified, mfaRequiredFor } from "@/lib/portal/auth";
+import { isVerified } from "@/lib/portal/auth";
 import { requireUser } from "@/lib/portal/guard";
 import MyProducts from "@/components/pay/MyProducts";
 import JourneyCard from "@/components/portal/JourneyCard";
@@ -24,7 +24,6 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
   const me = await requireUser();
   const sp = await searchParams;
   const verified = isVerified(me);
-  const staff = mfaRequiredFor(me);
   const [tickets, unread] = await Promise.all([listForUser(me.id).catch(() => []), unreadFor(me.id).catch(() => 0)]);
   const openTickets = tickets.filter((t) => t.status !== "closed" && t.status !== "resolved");
   return (
@@ -64,10 +63,6 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
           <div className="flex justify-between gap-4 py-3"><dt className="text-ink-3">Name</dt><dd className="font-medium text-ink text-right">{me.name}</dd></div>
           <div className="flex justify-between gap-4 py-3"><dt className="text-ink-3">Email</dt><dd className="font-medium text-ink text-right break-all">{me.email}</dd></div>
           <div className="flex justify-between gap-4 py-3"><dt className="text-ink-3">Email confirmed</dt><dd className="font-medium text-right">{verified ? "Yes" : "Not yet"}</dd></div>
-          <div className="flex justify-between gap-4 py-3">
-            <dt className="text-ink-3">Two-step verification</dt>
-            <dd className="font-medium text-right">{me.mfa_enabled_at ? "On" : staff ? "Required: not set up" : "Off"} · <Link className="text-orange-dark underline underline-offset-2" href="/account/mfa">{me.mfa_enabled_at ? "Manage" : "Set up"}</Link></dd>
-          </div>
         </dl>
         {!verified ? (
           <div className="mt-5">

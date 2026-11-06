@@ -297,3 +297,11 @@ html { scroll-behavior: smooth; }
 @keyframes yg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 @keyframes yg-spin { to { transform: rotate(360deg); } }
 @media (max-width: 480px) { .yg-sec { padding: 64px 0; } .yg-trust > b { font-size: 32px; } .yg-cta-row .yg-btn-lg { width: 100%; } }
+
+/* ---------- Germany programme band ---------- */
+.yg-band { background: linear-gradient(135deg, var(--yg-navy-2), var(--yg-navy-3)); color: #fff; padding: 40px 0; }
+.yg-band-in { display: grid; gap: 20px; align-items: center; }
+.yg-band h2 { font-size: clamp(22px, 3vw, 30px); line-height: 1.15; font-weight: 700; color: #fff; margin-top: 6px; }
+.yg-band p:not(.yg-kicker) { margin-top: 8px; color: rgba(255,255,255,.75); max-width: 640px; }
+.yg-band .yg-kicker { color: var(--yg-teal); margin-bottom: 0; }
+@media (min-width: 900px) { .yg-band-in { grid-template-columns: 1fr auto; gap: 40px; } }

@@ -2,7 +2,6 @@
 
 import { redirect } from "next/navigation";
 import * as auth from "@/lib/portal/auth";
-import { enableMfa, disableMfa } from "@/lib/portal/auth";
 import { humanCheck } from "@/lib/portal/captcha";
 import { PWNED_MESSAGE, pwnedCount } from "@/lib/portal/pwned";
 import { clientIp, audit, safeNext } from "@/lib/portal/security";
@@ -55,25 +54,9 @@ export async function loginAction(_prev: FormState, fd: FormData): Promise<FormS
 
   const r = await auth.attempt(email, password, await clientIp());
   if (!r.ok) return { error: r.error, values };
-  if (r.user.mfa_enabled_at) {
-    await startSession(null, { mfa_uid: r.user.id, mfa_t: Date.now(), mfa_next: next });
-    redirect("/login/mfa");
-  }
   await startSession(r.user.id);
   await audit(r.user.id, r.user.id, "login", "");
   redirect(safeNext(next, auth.homeFor(r.user.role)));
-}
-
-export async function mfaLoginAction(_prev: FormState, fd: FormData): Promise<FormState> {
-  const s = await getSession();
-  const pending = await auth.pendingMfaUser(Number(s?.data.mfa_uid ?? 0) || null, Number(s?.data.mfa_t ?? 0) || null);
-  if (!pending) redirect("/login");
-  const err = await auth.checkMfaCode(pending.id, str(fd, "code", 40));
-  if (err) return { error: err };
-  const next = String(s?.data.mfa_next ?? "");
-  await startSession(pending.id); // a fresh session replaces the parked one
-  await audit(pending.id, pending.id, "login.mfa", "");
-  redirect(safeNext(next, auth.homeFor(pending.role)));
 }
 
 // ---- sign up -------------------------------------------------------------------------------------------------------
@@ -166,29 +149,3 @@ export async function resendVerificationAction(_prev: FormState): Promise<FormSt
   return err ? { error: err } : { ok: true, message: "We sent you a new link. It may take a minute to arrive." };
 }
 
-// ---- two-step login settings ---------------------------------------------------------------------------------------
-
-export async function mfaEnableAction(_prev: FormState, fd: FormData): Promise<FormState> {
-  const s = await getSession();
-  if (!s?.user) redirect("/login");
-  if (s.user.mfa_enabled_at) return { error: "Two-step verification is already on." };
-  const secret = String(s.data.mfa_setup_secret ?? "");
-  if (secret === "" || totp.verify(secret, str(fd, "code", 20)) === null) return { error: "That code did not match. Wait for a fresh code from your app and try again." };
-  const codes = await enableMfa(s.user.id, secret);
-  await dropSessionData("mfa_setup_secret");
-  await audit(s.user.id, s.user.id, "mfa.enable", "");
-  return { ok: true, codes };
-}
-
-export async function mfaDisableAction(_prev: FormState, fd: FormData): Promise<FormState> {
-  const s = await getSession();
-  if (!s?.user) redirect("/login");
-  if (!s.user.mfa_enabled_at) return {};
-  if (auth.mfaRequiredFor(s.user)) return { error: "Staff accounts must keep two-step verification on." };
-  if (!(await verifyPasswordFor(s.user.id, String(fd.get("password") ?? "")))) return { error: "Your password is not correct." };
-  const err = await auth.checkMfaCode(s.user.id, str(fd, "code", 40));
-  if (err) return { error: err };
-  await disableMfa(s.user.id);
-  await audit(s.user.id, s.user.id, "mfa.disable", "");
-  return { ok: true, message: "Two-step verification is now off." };
-}

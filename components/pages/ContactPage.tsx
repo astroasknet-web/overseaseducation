@@ -24,7 +24,7 @@ export default function ContactPage({ user, captcha }: { user: { name: string; e
     { icon: Mail, title: "Email", value: "support@growqr.ai", href: "mailto:support@growqr.ai" },
     { icon: Clock3, title: "Hours", value: "Mon - Fri, 9AM - 6PM IST", href: "#" },
     { icon: MapPin, title: "US Office", value: "Princeton, NJ", href: "#" },
-    { icon: MapPin, title: "India Office", value: "Noida, India", href: "https://share.google/OeH9CLBjeBa3VssRT" },
+    { icon: MapPin, title: "India Office", value: "Noida, India" },
   ];
 
   const inquiryTypes = [

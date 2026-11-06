@@ -10,8 +10,8 @@ export const btnDark = "min-h-[44px] px-4 rounded-lg bg-ink text-white text-[14p
 export const btnLine = "min-h-[44px] px-4 rounded-lg border border-black/[0.15] text-[14px] font-medium hover:bg-cream-2";
 
 const TABS: Array<[string, string, string]> = [
-  ["queue", "/console", "Review queue"], ["colleges", "/console/colleges", "Colleges"], ["studio", "/console/studio", "Resume Studio plans"],
-  ["abroad", "/console/abroad", "Study abroad"], ["journey", "/console/journey", "Journey"], ["analytics", "/console/analytics", "Analytics"], ["payments", "/console/payments", "Payments"], ["reading", "/console/reading", "Reading Studio"], ["math", "/console/math", "Maths Studio"], ["demo", "/console/demo", "Demo student"], ["support", "/console/support", "Support"],
+  ["queue", "/console", "Review queue"], ["colleges", "/console/colleges", "Colleges"],
+  ["abroad", "/console/abroad", "Study abroad"], ["journey", "/console/journey", "Journey"], ["analytics", "/console/analytics", "Analytics"], ["payments", "/console/payments", "Payments"], ["demo", "/console/demo", "Demo student"], ["support", "/console/support", "Support"],
 ];
 
 /** The administrator frame: tab bar plus the one-time message the last action left behind. */

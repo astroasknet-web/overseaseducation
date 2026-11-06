@@ -34,7 +34,7 @@ export const SERVICES: Service[] = [
   { icon: "Award", title: "Scholarship Guidance", text: "Find scholarships you qualify for and prepare strong applications.", href: "#scholarships", cta: "View funding" },
   { icon: "Languages", title: "IELTS & English Language Preparation", text: "Lessons, writing and speaking practice, and full-length mock tests.", href: "/ielts", cta: "Start practising" },
   { icon: "Stamp", title: "Student Visa Guidance", text: "A clear checklist, document review and interview practice for your destination.", href: "#enquire?service=Visa%20guidance", cta: "Get guidance" },
-  { icon: "Landmark", title: "Education Loan Assistance", text: "Compare loan options and understand the repayments before you commit.", href: "#scholarships", cta: "Plan funding" },
+  { icon: "Landmark", title: "Education Loan Assistance", text: "Short of funds? We prepare your loan file and follow it up with the bank, hassle free.", href: "/loan-help", cta: "Get loan help" },
   { icon: "House", title: "Accommodation Assistance", text: "Practical help finding safe housing near your campus.", href: "#enquire?service=Accommodation", cta: "Ask about housing" },
   { icon: "Plane", title: "Pre-Departure Guidance", text: "Packing, banking, travel and what to expect in your first weeks.", href: "#enquire?service=Pre-departure", cta: "Prepare to fly" },
   { icon: "LifeBuoy", title: "International Student Support", text: "A point of contact after you arrive, when questions are most likely to come up.", href: "/support", cta: "Get support" },

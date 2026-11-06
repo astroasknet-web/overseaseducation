@@ -11,6 +11,7 @@ import { Flash } from "@/components/abroad/parts";
 import { viewCase } from "@/lib/journey/service";
 import { caseOfUser } from "@/lib/journey/store";
 import { listDocs, missingCore } from "@/lib/journey/docs";
+import * as GER from "@/lib/abroad/germany";
 import { DOC_KEYS } from "@/lib/journey/types";
 import { Bar } from "@/components/journey/parts";
 import { ABROAD_PACKAGES } from "@/lib/abroad/packages";
@@ -46,6 +47,8 @@ export default async function AbroadDashboard() {
   const shortlist = (await Promise.all(shortlistIds.map((id) => A.universityById(id)))).filter((u): u is A.University => u !== null);
   const history = await S.historyFor(uid, 8);
   const jv = jc ? await viewCase(jc.id) : null;
+  const ger = await GER.forUser(uid).catch(() => null);
+  const gerAssurance = ger ? GER.assurance(ger) : null;
   const jdocs = jc ? await listDocs(jc.id, { latestOnly: true }) : null;
   const jmissing = jc ? await missingCore(jc.id) : null;
   const needDocs = jmissing ? jmissing.map((k) => (DOC_KEYS[k]?.label ?? k).toLowerCase()) : missing.map((t) => V.TYPES[t].toLowerCase());
@@ -91,8 +94,17 @@ export default async function AbroadDashboard() {
       {complete && needDocs.length ? <Alert kind="info">Still needed before you can submit: {needDocs.join(", ")}. <Link className="underline" href={docsHref}>Upload documents</Link>.</Alert> : null}
 
       <nav aria-label="Planning tools" className="mb-6 flex flex-wrap gap-2">
-        {[["/abroad/visa", "Visa tracker"], ["/abroad/funds", "Proof of funds"], ["/abroad/loans", "Education loans"], ["/abroad/interview", "Visa interview practice"]].map(([href, label]) => <Link key={href} href={href} className="min-h-[44px] inline-flex items-center px-4 rounded-full border border-black/[0.15] bg-white text-[14px] font-medium hover:bg-cream-2">{label}</Link>)}
+        {[["/loan-help", "Loan help"], ["/abroad/visa", "Visa tracker"], ["/abroad/funds", "Proof of funds"], ["/abroad/loans", "Loan tracker"], ["/abroad/interview", "Visa interview practice"]].map(([href, label]) => <Link key={href} href={href} className="min-h-[44px] inline-flex items-center px-4 rounded-full border border-black/[0.15] bg-white text-[14px] font-medium hover:bg-cream-2">{label}</Link>)}
       </nav>
+
+      {ger && gerAssurance ? (
+        <section className="mb-8 rounded-2xl border border-orange/40 bg-orange-lighter p-5" aria-labelledby="ger-h">
+          <h2 id="ger-h" className="text-[18px] font-semibold text-ink">{GER.GERMANY.name}</h2>
+          <p className="mt-1 text-[14px] text-ink-2">{GER.STATUSES[ger.status] ?? ger.status} &middot; readiness score {ger.test_score === null ? "not recorded yet" : `${ger.test_score}%`} (you need more than {GER.GERMANY.scoreAbove}%)</p>
+          <p className="mt-2 text-[14px] text-ink-2">{gerAssurance.text}</p>
+          <p className="mt-3"><Link href="/germany-public-universities" className={`${btn} inline-flex items-center border border-black/[0.15] bg-white hover:bg-cream-2`}>Programme details</Link></p>
+        </section>
+      ) : null}
 
       <section id="apps" className="mb-8" aria-labelledby="apps-h">
         <h2 id="apps-h" className="text-[20px] font-bold text-ink mb-3">Applications</h2>

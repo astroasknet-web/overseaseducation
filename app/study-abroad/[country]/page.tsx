@@ -13,7 +13,6 @@ import { SITE_URL } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 const clean = (s: string) => s.toLowerCase().replace(/[^a-z0-9-]/g, "");
 type Faq = { q: string; a: string };
-type Official = { label: string; url: string };
 
 export async function generateMetadata({ params }: { params: Promise<{ country: string }> }): Promise<Metadata> {
   if (!databaseConfigured()) return { title: "Study abroad | Yugty" };
@@ -96,8 +95,6 @@ export default async function CountryPage({ params }: { params: Promise<{ countr
         <article className="bg-white rounded-2xl border border-black/[0.08] shadow-card p-5 sm:p-7">
           <h2 className="text-[20px] font-bold text-ink mb-3">Visa checklist: {visa.name}</h2>
           <ol className="list-decimal pl-5 text-[15px] text-ink-2 space-y-2">{visa.steps.map((s) => <li key={s}>{s}</li>)}</ol>
-          <h3 className="text-[16px] font-semibold text-ink mt-5 mb-2">Official sources</h3>
-          <ul className="space-y-1 text-[15px]">{((c.official as Official[]) ?? []).map((o) => <li key={o.url}><a className="underline text-orange-dark" href={o.url} target="_blank" rel="noopener noreferrer">{o.label}</a></li>)}</ul>
         </article>
       </div>
 

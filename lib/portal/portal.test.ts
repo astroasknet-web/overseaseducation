@@ -134,11 +134,11 @@ describe("redirect safety and client address", () => {
 });
 
 describe("staff rules", () => {
-  it("requires two-step login for admins and counsellors only, unless switched off for a developer machine", async () => {
+  it("never asks anyone for two-step verification", async () => {
     const { mfaRequiredFor, homeFor } = await import("./auth");
     delete process.env.PORTAL_MFA_REQUIRE_STAFF;
-    expect(mfaRequiredFor({ role: "admin" })).toBe(true);
-    expect(mfaRequiredFor({ role: "counselor" })).toBe(true);
+    expect(mfaRequiredFor({ role: "admin" })).toBe(false);
+    expect(mfaRequiredFor({ role: "counselor" })).toBe(false);
     expect(mfaRequiredFor({ role: "student" })).toBe(false);
     expect(mfaRequiredFor({ role: "employer" })).toBe(false);
     process.env.PORTAL_MFA_REQUIRE_STAFF = "false";

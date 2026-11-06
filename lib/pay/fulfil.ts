@@ -22,6 +22,8 @@ async function sideEffect(db: Db, it: Row, userId: number, order: Row): Promise<
   if (it.kind === "course") {
     const c = await first<{ id: number }>(db, "SELECT id FROM courses WHERE slug = $1", [it.fulfil_ref]);
     if (c) await exec(db, "INSERT IGNORE INTO course_enrolments (user_id, course_id, status, done_json, progress, started_at, updated_at) VALUES ($1,$2,'enrolled','[]',0,NOW(),NOW())", [userId, c.id]);
+  } else if (it.kind === "consulting" && it.fulfil_ref === "germany-public") {
+    await exec(db, "INSERT IGNORE INTO germany_enrolments (user_id, status) VALUES ($1, 'enrolled')", [userId]);
   } else if (it.kind === "resume" && it.fulfil_ref === "studio_pro") {
     const paise = order.currency === "INR" ? Number(it.total_minor) : 0;
     await studio.grant(userId, "payment", String(order.public_id), paise, it.access_days === null ? null : Number(it.access_days) * Number(it.qty), db);

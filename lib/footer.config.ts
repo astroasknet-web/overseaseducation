@@ -51,7 +51,8 @@ export const FOOTER: FooterConfig = {
       { href: "/ielts", label: "IELTS preparation" },
       { href: "/#scholarships", label: "Scholarships & funding" },
       { href: "/#enquire?service=Visa%20guidance", label: "Visa guidance" },
-      { href: "/#scholarships", label: "Education loans" },
+      { href: "/loan-help", label: "Education loan help" },
+      { href: "/germany-public-universities", label: "Germany programme" },
       { href: "/#journey", label: "Your journey" },
     ] },
     { title: "Resources", links: [

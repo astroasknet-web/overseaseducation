@@ -1,5 +1,6 @@
 import { RESUME_STUDIO_PRO_RUPEES, SERVICE_PRODUCTS } from "./service-fees";
 import { EXAM_PREP } from "./exam-fees";
+import { GERMANY } from "@/lib/abroad/germany";
 import { ONLINE_PACKAGES, packageSku } from "@/lib/abroad/packages";
 import { first, pool, rows, exec, insertId, type Db, type Row } from "./db";
 
@@ -47,6 +48,7 @@ function seedList(): SeedProduct[] {
   const out: SeedProduct[] = [];
   out.push({ sku: "resume-studio-pro", kind: "resume", title: "Resume Studio Pro", description: "All templates and no waiting between saves.", fulfilRef: "studio_pro", accessDays: null, inrMinor: RESUME_STUDIO_PRO_RUPEES * 100 });
   for (const e of EXAM_PREP) out.push({ sku: `course-${e.slug}`, kind: "course", title: e.title, description: e.blurb, fulfilRef: e.slug, accessDays: null, inrMinor: e.rupees * 100, active: e.onSale });
+  out.push({ sku: GERMANY.sku, kind: "consulting", title: "Germany public universities programme (TestAS, German, IELTS and more)", description: "TestAS preparation, German language training, IELTS, applications, visa and loan help, with an admission assurance.", fulfilRef: GERMANY.key, accessDays: null, inrMinor: GERMANY.feeInr * 100 });
   for (const v of SERVICE_PRODUCTS) out.push({ sku: `service-${v.key}`, kind: "consulting", title: v.title, description: v.description, fulfilRef: v.key, accessDays: null, inrMinor: v.rupees * 100 });
   for (const a of ONLINE_PACKAGES) out.push({ sku: packageSku(a.key), kind: "consulting", title: `Overseas education: ${a.name}`, description: a.target, fulfilRef: a.key, accessDays: null, inrMinor: a.from * 100 });
   return out;

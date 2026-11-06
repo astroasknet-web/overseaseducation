@@ -115,6 +115,13 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="yg-band" aria-label="Germany public universities programme">
+        <div className="yg-wrap yg-band-in">
+          <div><p className="yg-kicker">Studying in Germany?</p><h2>TestAS, German and IELTS prep with an admission assurance.</h2><p>One programme for Germany&apos;s public universities, from preparation to your visa. See the fee, what is included and the terms.</p></div>
+          <Link href="/germany-public-universities" className="yg-btn yg-btn-primary yg-btn-lg">See the Germany programme <ArrowRight size={18} aria-hidden /></Link>
+        </div>
+      </section>
+
       {/* 5. SERVICES */}
       <section className="yg-sec yg-sec-light" id="services">
         <div className="yg-wrap">
@@ -197,6 +204,7 @@ export default function Home() {
             <div className="yg-cta-row yg-cta-left">
               <a href="#enquire?service=Scholarship%20guidance" className="yg-btn yg-btn-primary">Get scholarship guidance</a>
               <Link href="/study-abroad" className="yg-btn yg-btn-ghost-dark">Compare costs</Link>
+              <Link href="/loan-help" className="yg-btn yg-btn-ghost-dark">Education loan help</Link>
             </div>
           </Reveal>
           <ul className="yg-fund-grid">

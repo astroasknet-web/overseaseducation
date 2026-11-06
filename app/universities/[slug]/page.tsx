@@ -83,7 +83,6 @@ export default async function UniversityPage({ params }: { params: Promise<{ slu
             <ul className="flex flex-wrap gap-2">{u.fields.map((f) => <li key={f} className="px-3 py-1.5 rounded-full bg-cream-3 text-[13px]">{f}</li>)}</ul>
             <h3 className="text-[16px] font-semibold text-ink mt-4 mb-2">Levels</h3>
             <p className="text-[15px] text-ink-2">{u.level_list.map((l) => (l === "UG" ? "Undergraduate" : "Postgraduate")).join(" and ")}</p>
-            <p className="mt-4"><a className="underline text-orange-dark" href={u.url} target="_blank" rel="noopener noreferrer">Official website</a></p>
           </article>
 
           <article className={box}>

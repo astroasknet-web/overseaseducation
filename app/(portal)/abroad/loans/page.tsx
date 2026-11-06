@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { requireUser } from "@/lib/portal/guard";
 import * as A from "@/lib/abroad/catalogue";
@@ -39,7 +40,8 @@ export default async function LoansPage() {
   const loans = await L.forUser(me.id);
   const fin = (await V.forUser(me.id)).filter((d) => d.doc_type === "financial" && d.status !== "rejected");
   return (
-    <PortalPage user={me} active="abroad" title="My education loans" subtitle="Track lenders, documents and your repayment estimate. Yugty is not a lender and does not arrange loans." wide>
+    <PortalPage user={me} active="abroad" title="My education loans" subtitle="Track lenders, documents and your repayment estimate. Yugty is not a lender: the bank decides your loan." wide>
+      <div className="mb-6 rounded-2xl border border-orange/40 bg-orange-lighter p-4"><p className="text-[15px] font-semibold text-ink">Want us to handle the bank for you?</p><p className="mt-1 text-[14px] text-ink-2">Our loan team prepares your file and follows it up. <Link className="underline font-semibold" href="/loan-help">Get loan help</Link></p></div>
       <Flash />
       {loans.map((l) => (
         <Card key={l.id} title={`${l.lender}: ${L.STATUS[l.status]}`}>

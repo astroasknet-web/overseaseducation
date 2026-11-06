@@ -15,6 +15,8 @@ export function groupsFor(role: string): NavGroup[] {
         { title: "Overview", items: [ACCOUNT, BILLING, SUPPORT] },
         { title: "Study abroad", items: [
           { key: "abroad", href: "/abroad", label: "Overseas education", icon: "abroad" },
+          { key: "loan-help", href: "/loan-help", label: "Loan help", icon: "billing" },
+          { key: "germany", href: "/germany-public-universities", label: "Germany programme", icon: "abroad" },
         ] },
       ];
     case "teacher":
@@ -30,11 +32,15 @@ export function groupsFor(role: string): NavGroup[] {
       return [{ title: "Overview", items: [ACCOUNT, BILLING, SUPPORT] }, { title: "Staff", items: [
         { key: "crm", href: "/crm", label: "Overseas CRM", icon: "crm" },
         { key: "console", href: "/console", label: "Admin console", icon: "console" },
+        { key: "loan-help-staff", href: "/counselor/loan-help", label: "Loan requests", icon: "billing" },
+        { key: "germany-staff", href: "/counselor/germany", label: "Germany programme", icon: "abroad" },
       ] }];
     case "counselor":
       return [{ title: "Overview", items: [ACCOUNT, BILLING, SUPPORT] }, { title: "Staff", items: [
         { key: "crm", href: "/crm", label: "Overseas CRM", icon: "crm" },
         { key: "students", href: "/counselor/journey", label: "Students", icon: "caseload" },
+        { key: "loan-help-staff", href: "/counselor/loan-help", label: "Loan requests", icon: "billing" },
+        { key: "germany-staff", href: "/counselor/germany", label: "Germany programme", icon: "abroad" },
       ] }];
     default:
       return [{ title: "Overview", items: [ACCOUNT, BILLING, SUPPORT] }];

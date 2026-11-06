@@ -58,7 +58,13 @@ export default async function FundsPage({ searchParams }: { searchParams: Promis
             <span className="absolute inset-y-0 left-0 bg-orange/40 rounded-full" style={{ width: `${cov.pct_total}%` }} /><span className="absolute inset-y-0 left-0 bg-orange rounded-full" style={{ width: `${cov.pct_documented}%` }} />
           </div>
           <p className="mt-2 text-[14px]"><span className={`px-2.5 py-1 rounded-full text-[12px] font-semibold ${STATUS[cov.status][1]}`}>{STATUS[cov.status][0]}</span> <span className="text-ink-3 ml-2">Documented {A.inr(pool.documented)} &middot; planned {A.inr(pool.planned)}{cov.gap > 0 ? ` · still needed ${A.inr(cov.gap)}` : ""}</span></p>
-          {t.links.length ? <p className="mt-3 text-[13px]">Official sources: {t.links.map((l, i) => <span key={l.url}>{i ? " · " : ""}<a className="underline text-orange-dark" href={l.url} target="_blank" rel="noopener noreferrer">{l.label}</a></span>)}</p> : null}
+          {cov.status === "short" ? (
+            <div className="mt-4 rounded-2xl border border-orange/40 bg-orange-lighter p-4">
+              <p className="text-[15px] font-semibold text-ink">Short of funds? We can help you get an education loan.</p>
+              <p className="mt-1 text-[14px] text-ink-2">Our loan team prepares your file and follows it up with the bank, so you can focus on your admission.</p>
+              <p className="mt-3"><Link href="/loan-help" className="inline-flex min-h-[44px] items-center rounded-lg bg-orange px-5 text-[14px] font-semibold text-white hover:bg-orange-dark">Get loan help</Link></p>
+            </div>
+          ) : null}
         </Card>
       ) : null}
 

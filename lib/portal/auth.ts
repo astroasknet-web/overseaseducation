@@ -25,10 +25,9 @@ export function homeFor(role: Role): string {
   return role === "teacher" ? "/teacher" : role === "parent" ? "/parent" : "/account";
 }
 
-export function mfaRequiredFor(u: { role: Role; is_demo?: boolean }): boolean {
-  if (u.is_demo) return false; // a read-only demo login has nothing to protect that a real admin login would
-  if (process.env.PORTAL_MFA_REQUIRE_STAFF === "false") return false;
-  return u.role === "admin" || u.role === "counselor";
+/** Two-step verification has been removed from Yugty: nobody is ever asked for a second factor. Kept so older call sites keep working. */
+export function mfaRequiredFor(_u: { role: Role; is_demo?: boolean }): boolean {
+  return false;
 }
 
 // ---- registration -------------------------------------------------------------------------------------------------

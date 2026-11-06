@@ -35,10 +35,6 @@ export async function GET(req: Request, ctx: { params: Promise<{ provider: strin
   if (!r.ok) return fail(r.code);
 
   const next = safeNext(saved.next, "");
-  if (r.user.mfa_enabled_at) {
-    await startSession(null, { mfa_uid: r.user.id, mfa_t: Date.now(), mfa_next: next });
-    return go("/login/mfa");
-  }
   await startSession(r.user.id);
   await audit(r.user.id, r.user.id, `login.${provider}`, r.created ? "created" : "");
   return go(r.created ? `${homeFor(r.user.role)}?welcome=1` : safeNext(next, homeFor(r.user.role)));

@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { Briefcase, Building2, KeyRound, Lock, Mail, User } from "lucide-react";
 import {
-  loginAction, mfaLoginAction, signupAction, forgotAction, resetAction, logoutAction, resendVerificationAction, mfaEnableAction, mfaDisableAction, type FormState,
+  loginAction, signupAction, forgotAction, resetAction, logoutAction, resendVerificationAction, type FormState,
 } from "@/app/(portal)/actions";
 import { CollegeField } from "./college-field";
 import { COLLEGE_STATES } from "./college-states";
@@ -32,16 +32,6 @@ export function LoginForm({ next, captcha = off }: { next: string; captcha?: Cap
   );
 }
 
-export function MfaLoginForm() {
-  const [s, action] = useActionState(mfaLoginAction, none);
-  return (
-    <form action={action} noValidate>
-      {s.error ? <Notice>{s.error}</Notice> : null}
-      <TextField label="Verification code" name="code" inputMode="numeric" autoComplete="one-time-code" maxLength={14} autoFocus icon={<KeyRound className="h-[18px] w-[18px]" />} hint="The 6-digit code from your authenticator app, or a recovery code." />
-      <GradientButton pendingText="Checking...">Verify and log in</GradientButton>
-    </form>
-  );
-}
 
 /** `scan` is set when the visitor scanned a resume on the home page: their details are pre-filled and the result is saved to the new account. */
 export function SignupForm({ role, captcha = off, scan }: { role: "student" | "employer" | "teacher" | "parent"; captcha?: CaptchaInfo; scan?: { name: string; email: string; college: string; publishAvailable: boolean } }) {
@@ -148,37 +138,4 @@ export function LogoutButton({ className = "" }: { className?: string }) {
   );
 }
 
-export function MfaEnableForm() {
-  const [s, action] = useActionState(mfaEnableAction, none);
-  if (s.ok && s.codes) {
-    return (
-      <div>
-        <Alert kind="success">Two-step verification is on.</Alert>
-        <h2 className="text-[16px] font-semibold text-ink mb-2">Save your recovery codes</h2>
-        <p className="text-[14px] text-ink-3 mb-4">If you lose your phone, each of these codes lets you log in once. They are shown only now: store them somewhere safe.</p>
-        <ul className="grid grid-cols-2 gap-x-6 font-mono text-[15px] leading-8 mb-6">{s.codes.map((c) => <li key={c}>{c}</li>)}</ul>
-        <a href="/account" className="inline-flex items-center justify-center w-full min-h-[48px] rounded-lg bg-orange hover:bg-orange-dark text-white font-semibold text-[15px]">Continue</a>
-      </div>
-    );
-  }
-  return (
-    <form action={action} noValidate>
-      {s.error ? <Alert>{s.error}</Alert> : null}
-      <Field label="6-digit code" name="code" inputMode="numeric" autoComplete="one-time-code" maxLength={7} autoFocus />
-      <SubmitButton pendingText="Checking...">Turn on two-step verification</SubmitButton>
-    </form>
-  );
-}
 
-export function MfaDisableForm() {
-  const [s, action] = useActionState(mfaDisableAction, none);
-  if (s.ok) return <Alert kind="success">{s.message}</Alert>;
-  return (
-    <form action={action} noValidate>
-      {s.error ? <Alert>{s.error}</Alert> : null}
-      <PasswordField />
-      <Field label="Current code or recovery code" name="code" inputMode="numeric" autoComplete="one-time-code" maxLength={14} />
-      <SubmitButton pendingText="Checking...">Turn off</SubmitButton>
-    </form>
-  );
-}

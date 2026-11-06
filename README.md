@@ -64,3 +64,10 @@ Source of truth for shared platform code is the main repository; port fixes made
 ## Standard footer
 
 The footer is the standard Yugty footer used by every web application (`components/standard-footer/`, see its README). Edit `lib/footer.config.ts` for this app's content. Set `NEXT_PUBLIC_SITE_URL` (used for canonical URLs and the share buttons) and, when the other apps are live, `NEXT_PUBLIC_APP_URL_LEARNING`, `_INTERNSHIPS` and `_RECRUITMENT`.
+
+## Loan help and the Germany programme
+
+- `/loan-help` lets a student ask for help with an education loan (table `loan_help_requests`). Staff work the requests at `/counselor/loan-help`.
+- `/germany-public-universities` sells the Germany public universities programme (sku `program-germany-public`, Rs 2,50,000 tax included). Paying adds the student to `germany_enrolments`; staff record the readiness score, consistency and outcome at `/counselor/germany`. The fee, the 75% rule and the 40% refund live in `lib/abroad/germany.ts`.
+- Two-step verification has been removed; migration `20261231000003` clears any stored secrets.
+- Student pages never link outside the app (no university or government website links).
