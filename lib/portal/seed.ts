@@ -3,7 +3,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { run, one } from "./db";
 import * as abroad from "../abroad/catalogue";
-import * as courses from "../market/courses";
 
 /**
  * Keeps the two catalogues that live in editable JSON files (study-abroad countries and universities, the course catalogue) loaded into the
@@ -25,7 +24,6 @@ export async function seedCatalogues(): Promise<string[]> {
   const { seedCatalogue: seedPay } = await import("../pay/catalogue");
   return [
     `study abroad: ${await loadIfChanged("abroad_sig_node", "lib/abroad/data/study-abroad.json", abroad.sync)}`,
-    `courses: ${await loadIfChanged("courses_sig_node", "lib/market/data/courses.json", courses.sync)}`,
     `payment products added: ${await seedPay()}`,
   ];
 }

@@ -46,7 +46,6 @@ export function PublishForm({ styles, current }: { styles: Record<string, string
       <fieldset className="mb-6">
         <legend className="text-[14px] font-medium text-ink-2 mb-2">What else should it show? (the RQ Score is always shown)</legend>
         <label className="flex items-center gap-3 min-h-[44px] text-[15px] text-ink-2"><input type="checkbox" name="show_skills" defaultChecked={current.show_skills} className="w-5 h-5 accent-orange" /> My skills</label>
-        <label className="flex items-center gap-3 min-h-[44px] text-[15px] text-ink-2"><input type="checkbox" name="show_courses" defaultChecked={current.show_courses} className="w-5 h-5 accent-orange" /> My completed courses</label>
         <label className="flex items-center gap-3 min-h-[44px] text-[15px] text-ink-2"><input type="checkbox" name="show_college" defaultChecked={current.show_college} className="w-5 h-5 accent-orange" /> My college</label>
       </fieldset>
       <p className="text-[13px] text-ink-3 mb-4">Your email, phone number and resume text are never shown. The passport is signed by Yugty, so nobody can change what it says. You can withdraw it at any time.</p>

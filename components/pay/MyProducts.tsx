@@ -7,20 +7,10 @@ import { viewCase } from "@/lib/journey/service";
 
 const day = (s: string | null): string => (s ? new Date(s.replace(" ", "T") + "Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }) : "");
 
-/** Where each kind of purchase is used. Anything not listed falls back to the course page named by its reference. */
-const STUDIOS: Record<string, [string, string]> = {
-  "mathematics-speed-enhancement": ["/math-speed/journey", "Open the studio"],
-  "ai-reading-studio": ["/reading-studio/dashboard", "Open the studio"],
-  "mathematics-studio": ["/math-studio/dashboard", "Open the studio"],
-  "writing-clinic": ["/writing-clinic", "Open the studio"],
-};
-
+/** Where each kind of purchase is used. Anything not listed falls back to Billing. */
 function where(e: Entitlement): [string, string] {
   if (e.kind === "plan") return ["#plan", "What is included"];
   if (e.kind === "consulting" && packageByKey(e.ref)) return ["/abroad", "Open my journey"];
-  if (e.kind === "resume") return ["/studio", "Open Resume Studio"];
-  if (STUDIOS[e.ref]) return STUDIOS[e.ref];
-  if (e.kind === "course") return [`/courses/${e.ref}`, "Open the course"];
   return ["/billing", "See in Billing"];
 }
 

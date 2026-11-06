@@ -46,7 +46,7 @@ export default async function JourneyApplications() {
       <Card title="Add a university to your shortlist">
         <form action={addApplicationAction} className="grid sm:grid-cols-2 gap-4 items-end">
           <div><label className={label} htmlFor="uni_name">University</label><input id="uni_name" name="uni_name" required maxLength={160} className={input} /></div>
-          <div><label className={label} htmlFor="programme">Programme (course)</label><input id="programme" name="programme" required maxLength={160} className={input} /></div>
+          <div><label className={label} htmlFor="programme">Programme</label><input id="programme" name="programme" required maxLength={160} className={input} /></div>
           <div><label className={label} htmlFor="intake">Intake</label><select id="intake" name="intake" defaultValue={c.intake} className={input}>{[...new Set([c.intake, ...intakes().filter((x) => x !== "Not sure yet")])].map((o) => <option key={o}>{o}</option>)}</select></div>
           <div><label className={label} htmlFor="category">How realistic is it?</label><select id="category" name="category" className={input}><option value="ambitious">Ambitious (a stretch)</option><option value="target" selected>Target (a good match)</option><option value="safer">Safer (likely to fit)</option></select></div>
           <div className="sm:col-span-2"><button className={btnPrimary} type="submit">Add to shortlist</button>

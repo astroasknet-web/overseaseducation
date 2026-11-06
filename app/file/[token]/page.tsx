@@ -82,7 +82,7 @@ export default async function StudentFile({ params }: { params: Promise<{ token:
               );
             })}
           </ul>
-          <p className="text-[13px] text-ink-3 mt-3">Your counsellor updates this as you complete each step. IELTS or another English test, SAT/GRE where your course needs it, an internship and an NGO community-service certificate all strengthen your application.</p>
+          <p className="text-[13px] text-ink-3 mt-3">Your counsellor updates this as you complete each step. IELTS or another English test, SAT/GRE where your programme needs it, an internship and an NGO community-service certificate all strengthen your application.</p>
         </section>
 
         {apps.length ? (

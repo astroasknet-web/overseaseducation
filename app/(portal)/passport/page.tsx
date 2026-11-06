@@ -43,7 +43,7 @@ export default async function PassportPage() {
   const advice = rq ? adviceFromResult(rq) : [];
 
   return (
-    <PortalPage user={me} active="passport" title="My Skill Passport" subtitle="Your resume quality score, skills and courses in one place. Private until you choose to share it.">
+    <PortalPage user={me} active="passport" title="My Skill Passport" subtitle="Your resume quality score and skills in one place. Private until you choose to share it.">
       {imported ? <Alert kind="success">We saved the resume you just checked to your Skill Passport.</Alert> : null}
       {!me.email_verified_at ? <Alert kind="info">Confirm your email to unlock applying to internships. Check your inbox.</Alert> : null}
 

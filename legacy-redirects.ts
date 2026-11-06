@@ -9,7 +9,7 @@ const plain: Array<[string, string]> = [
   ["/index.php", "/"], ["/login.php", "/login"], ["/login-mfa.php", "/login/mfa"], ["/signup.php", "/signup"], ["/forgot-password.php", "/forgot-password"], ["/reset-password.php", "/reset-password"],
   ["/verify-email.php", "/verify-email"], ["/mfa-setup.php", "/account/mfa"], ["/student-dashboard.php", "/account"],
   ["/employer-dashboard.php", "/employer"], ["/employer-post.php", "/employer/post"],
-  ["/internships.php", "/internships"], ["/my-courses.php", "/my-courses"], ["/courses.php", "/courses"],
+  ["/internships.php", "/internships"],
   ["/study-abroad.php", "/study-abroad"], ["/abroad-dashboard.php", "/abroad"], ["/abroad-profile.php", "/abroad/profile"], ["/abroad-matches.php", "/abroad/matches"], ["/abroad-documents.php", "/abroad/documents"],
   ["/abroad-visa.php", "/abroad/visa"], ["/abroad-funds.php", "/abroad/funds"], ["/abroad-loans.php", "/abroad/loans"], ["/abroad-interview.php", "/abroad/interview"],
   ["/studio.php", "/studio"], ["/studio-export.php", "/studio/export"],
@@ -23,7 +23,6 @@ const plain: Array<[string, string]> = [
 /** [old page, query key, pattern for its value, new path with :key] */
 const byQuery: Array<[string, string, string, string]> = [
   ["/internship.php", "s", "[a-z0-9-]+", "/internships/:s"],
-  ["/course.php", "s", "[a-z0-9-]+", "/courses/:s"],
   ["/university.php", "s", "[a-z0-9-]+", "/universities/:s"],
   ["/study-abroad-country.php", "c", "[a-z]+", "/study-abroad/:c"],
   ["/v.php", "c", "[A-Za-z0-9]+", "/v/:c"],

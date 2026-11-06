@@ -23,13 +23,13 @@ export default function Discovery({ unis, compact = false }: { unis: UniLite[]; 
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("all");
   const [country, setCountry] = useState("");
   const [subject, setSubject] = useState("");
-  const [course, setCourse] = useState("");
+  const [programme, setProgramme] = useState("");
   const [budget, setBudget] = useState("");
   const [intake, setIntake] = useState("");
   const level = TABS.find((t) => t.id === tab)?.level ?? "";
 
   const matches = useMemo(() => {
-    const q = course.trim().toLowerCase();
+    const q = programme.trim().toLowerCase();
     return unis.filter(
       (u) =>
         (!country || u.country === country) &&
@@ -38,7 +38,7 @@ export default function Discovery({ unis, compact = false }: { unis: UniLite[]; 
         (!q || u.name.toLowerCase().includes(q) || u.fields.some((f) => f.toLowerCase().includes(q))) &&
         (!budget || (COST_BY_BUDGET[budget] ?? []).includes(u.cost)),
     );
-  }, [unis, country, level, subject, course, budget]);
+  }, [unis, country, level, subject, programme, budget]);
 
   const catalogueLevel = level === "" || level === "UG" || level === "PG";
   const goesToEnquiry = tab === "Sch" || !catalogueLevel || (country !== "" && !CATALOGUE.has(country));
@@ -57,7 +57,7 @@ export default function Discovery({ unis, compact = false }: { unis: UniLite[]; 
     if (country) p.set("country", country);
     if (level) p.set("level", level);
     if (subject) p.set("field", subject);
-    if (course.trim()) p.set("q", course.trim());
+    if (programme.trim()) p.set("q", programme.trim());
     const s = p.toString();
     return `/study-abroad${s ? `?${s}` : ""}`;
   }
@@ -70,7 +70,7 @@ export default function Discovery({ unis, compact = false }: { unis: UniLite[]; 
         window.location.assign(href());
       }}
       role="search"
-      aria-label="Find a university or course"
+      aria-label="Find a university or programme"
     >
       {!compact && (
         <div className="yg-tabs" role="tablist" aria-label="What are you looking for?">
@@ -116,8 +116,8 @@ export default function Discovery({ unis, compact = false }: { unis: UniLite[]; 
           </label>
         )}
         <label className="yg-field yg-field-wide">
-          <span>Course or university</span>
-          <input value={course} onChange={(e) => setCourse(e.target.value)} placeholder="e.g. Data Science, Oxford" maxLength={80} />
+          <span>Programme or university</span>
+          <input value={programme} onChange={(e) => setProgramme(e.target.value)} placeholder="e.g. Data Science, Oxford" maxLength={80} />
         </label>
         {!compact && (
           <>
@@ -149,7 +149,7 @@ export default function Discovery({ unis, compact = false }: { unis: UniLite[]; 
       {!compact && (
         <div className="yg-results" aria-live="polite">
           {tab === "Sch" ? (
-            <p>Scholarships depend on your destination, course and profile. We will show you what you are eligible for.</p>
+            <p>Scholarships depend on your destination, programme and profile. We will show you what you are eligible for.</p>
           ) : goesToEnquiry ? (
             <p>This combination is handled by our counsellors. Continue and we will prefill the enquiry for you.</p>
           ) : (

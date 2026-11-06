@@ -72,7 +72,7 @@ export default function Home() {
         <div className="yg-wrap">
           <Reveal className="yg-head">
             <p className="yg-kicker">Discover</p>
-            <h2>Find the right university and course, <em>faster.</em></h2>
+            <h2>Find the right university and programme, <em>faster.</em></h2>
             <p>Filter by country, level, subject, budget and intake. See matching universities instantly.</p>
           </Reveal>
           <Reveal className="yg-discover"><Discovery unis={UNIS} /></Reveal>
@@ -232,7 +232,7 @@ export default function Home() {
                   <p>{t.quote}</p>
                   <footer>
                     <b>{t.name}</b>
-                    <span>{t.course}</span>
+                    <span>{t.programme}</span>
                     <span>{t.university}, {t.country}</span>
                     {t.placeholder && <i className="yg-sample">Sample story</i>}
                   </footer>
@@ -276,7 +276,7 @@ export default function Home() {
             <h2>Let&apos;s Turn Your Global Ambitions into <em>Reality.</em></h2>
             <p>Connect with our education experts and discover the right international study opportunities for your future.</p>
             <ul className="yg-checks">
-              <li>Personal advice on country, course and budget</li>
+              <li>Personal advice on country, programme and budget</li>
               <li>A clear plan with deadlines and next steps</li>
               <li>No obligation, and no pressure</li>
             </ul>

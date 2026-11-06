@@ -13,23 +13,9 @@ export function groupsFor(role: string): NavGroup[] {
     case "student":
       return [
         { title: "Overview", items: [ACCOUNT, BILLING, SUPPORT] },
-        { title: "Career", items: [
-          { key: "passport", href: "/passport", label: "Skill Passport", icon: "passport" },
-          { key: "studio", href: "/studio", label: "Resume Studio", icon: "studio" },
-          { key: "internships", href: "/internships", label: "Internships", icon: "internships" },
-          { key: "applications", href: "/applications", label: "My applications", icon: "applications" },
-        ] },
-        { title: "Learning", items: [
-          { key: "courses", href: "/my-courses", label: "My courses", icon: "courses" },
-          { key: "math-speed", href: "/math-speed/journey", label: "Maths Speed Studio", icon: "courses" },
-          { key: "writing", href: "/writing-clinic", label: "English Writing Studio", icon: "courses" },
-          { key: "reading-studio", href: "/reading-studio/dashboard", label: "English Reading Studio", icon: "courses" },
-          { key: "math-studio", href: "/math-studio/dashboard", label: "Mathematics Studio", icon: "courses" },
-
-          { key: "classes", href: "/my-classes", label: "My classes", icon: "classes" },
-        ] },
-        { title: "Global", items: [
+        { title: "Study abroad", items: [
           { key: "abroad", href: "/abroad", label: "Overseas education", icon: "abroad" },
+          { key: "passport", href: "/passport", label: "Skill Passport", icon: "passport" },
           { key: "share", href: "/passport/share", label: "Share my passport", icon: "share" },
         ] },
       ];

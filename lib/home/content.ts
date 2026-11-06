@@ -28,7 +28,7 @@ export const DESTINATIONS: Destination[] = [
 export type Service = { icon: string; title: string; text: string; href: string; cta: string };
 export const SERVICES: Service[] = [
   { icon: "Compass", title: "University Selection & Career Counselling", text: "A balanced list of ambitious, target and safer universities built around your goals.", href: "/study-abroad", cta: "Explore universities" },
-  { icon: "BookOpen", title: "Course & Programme Selection", text: "Match your background and career plans to the right course and specialisation.", href: "#enquire?service=Course%20selection", cta: "Get advice" },
+  { icon: "BookOpen", title: "Programme Selection", text: "Match your background and career plans to the right programme and specialisation.", href: "#enquire?service=Programme%20selection", cta: "Get advice" },
   { icon: "FileText", title: "University Application Assistance", text: "Statements, recommendations, resumes and forms prepared and submitted with care.", href: "/overseas-packages", cta: "See packages" },
   { icon: "BadgeCheck", title: "Admission & Offer Letter Support", text: "Track every response and compare offers before you decide.", href: "#enquire?service=Admission%20support", cta: "Talk to us" },
   { icon: "Award", title: "Scholarship Guidance", text: "Find scholarships you qualify for and prepare strong applications.", href: "#scholarships", cta: "View funding" },
@@ -46,7 +46,7 @@ export const WHY: Array<{ icon: string; title: string; text: string }> = [
   { icon: "ShieldCheck", title: "Transparent admission process", text: "Every step, document and fee is visible to you, and nothing is promised that cannot be delivered." },
   { icon: "Award", title: "Scholarship assistance", text: "Help finding and applying for funding you are eligible for." },
   { icon: "Route", title: "End-to-end application support", text: "From first shortlist to visa and arrival, in one dashboard." },
-  { icon: "Target", title: "Career-oriented counselling", text: "Course choices tied to where you want your career to go." },
+  { icon: "Target", title: "Career-oriented counselling", text: "Programme choices tied to where you want your career to go." },
   { icon: "LifeBuoy", title: "Dedicated student assistance", text: "People you can ask, at every stage of the journey." },
 ];
 
@@ -54,7 +54,7 @@ export const WHY: Array<{ icon: string; title: string; text: string }> = [
 export const VERIFIED_STATS: Array<{ value: number; suffix?: string; label: string }> = [];
 
 export const JOURNEY: Array<{ no: string; name: string; text: string }> = [
-  { no: "01", name: "Discover", text: "Explore countries, universities and courses." },
+  { no: "01", name: "Discover", text: "Explore countries, universities and programmes." },
   { no: "02", name: "Consult", text: "Receive personalised academic guidance." },
   { no: "03", name: "Shortlist", text: "Identify universities matching your profile and budget." },
   { no: "04", name: "Apply", text: "Complete applications and documentation." },
@@ -72,15 +72,15 @@ export const FUNDING: Array<{ icon: string; title: string; text: string }> = [
   { icon: "Building2", title: "Cost-of-living planning", text: "Budget rent, food and travel before you choose a city." },
 ];
 
-export type Testimonial = { name: string; country: string; university: string; course: string; quote: string; placeholder: boolean };
+export type Testimonial = { name: string; country: string; university: string; programme: string; quote: string; placeholder: boolean };
 export const TESTIMONIALS: Testimonial[] = [
-  { name: "Student name", country: "United Kingdom", university: "University name", course: "MSc Data Science", quote: "Replace this with a real quote from a student who has enrolled. Keep it short, specific and in their own words.", placeholder: true },
-  { name: "Student name", country: "Canada", university: "University name", course: "BEng Mechanical Engineering", quote: "Replace this with a real quote from a student who has enrolled. Keep it short, specific and in their own words.", placeholder: true },
-  { name: "Student name", country: "Australia", university: "University name", course: "Master of Business Analytics", quote: "Replace this with a real quote from a student who has enrolled. Keep it short, specific and in their own words.", placeholder: true },
+  { name: "Student name", country: "United Kingdom", university: "University name", programme: "MSc Data Science", quote: "Replace this with a real quote from a student who has enrolled. Keep it short, specific and in their own words.", placeholder: true },
+  { name: "Student name", country: "Canada", university: "University name", programme: "BEng Mechanical Engineering", quote: "Replace this with a real quote from a student who has enrolled. Keep it short, specific and in their own words.", placeholder: true },
+  { name: "Student name", country: "Australia", university: "University name", programme: "Master of Business Analytics", quote: "Replace this with a real quote from a student who has enrolled. Keep it short, specific and in their own words.", placeholder: true },
 ];
 
 export const RESOURCES: Array<{ tag: string; title: string; text: string; href: string }> = [
-  { tag: "Guide", title: "Overseas education guide", text: "How to choose a country, a course and a university.", href: "/study-abroad" },
+  { tag: "Guide", title: "Overseas education guide", text: "How to choose a country, a programme and a university.", href: "/study-abroad" },
   { tag: "Country", title: "Study in the USA", text: "Costs, intakes, work rights and visa steps.", href: "/study-abroad/usa" },
   { tag: "Country", title: "Study in the UK", text: "Short degrees, the Graduate Route and how to apply.", href: "/study-abroad/uk" },
   { tag: "Practice", title: "IELTS preparation", text: "Lessons and full-length practice tests for all four skills.", href: "/ielts" },
@@ -91,11 +91,11 @@ export const RESOURCES: Array<{ tag: string; title: string; text: string; href: 
 ];
 
 export const FAQS: Array<[string, string]> = [
-  ["How do I choose the right country?", "Start with your course, budget and career plans. Compare tuition, living costs, work rights after study and visa rules for each destination, then shortlist two or three. A counsellor can help you weigh them against your profile."],
-  ["What are the admission requirements?", "They vary by university and course, but usually include academic transcripts, proof of English proficiency, a statement of purpose, recommendations and a resume. Some courses also ask for tests such as the GRE or GMAT."],
-  ["Can I study abroad without IELTS?", "Sometimes. Many universities accept other tests (such as PTE, TOEFL or Duolingo), and some waive the requirement based on previous English-medium study. Rules are set by each university, so check the course page or ask us."],
+  ["How do I choose the right country?", "Start with your programme, budget and career plans. Compare tuition, living costs, work rights after study and visa rules for each destination, then shortlist two or three. A counsellor can help you weigh them against your profile."],
+  ["What are the admission requirements?", "They vary by university and programme, but usually include academic transcripts, proof of English proficiency, a statement of purpose, recommendations and a resume. Some programmes also ask for tests such as the GRE or GMAT."],
+  ["Can I study abroad without IELTS?", "Sometimes. Many universities accept other tests (such as PTE, TOEFL or Duolingo), and some waive the requirement based on previous English-medium study. Rules are set by each university, so check the programme page or ask us."],
   ["How can I find scholarships?", "Look at university scholarships, government programmes and merit awards for your destination. Deadlines are often earlier than admission deadlines, so start while you shortlist."],
-  ["What is the average cost of studying abroad?", "It depends heavily on country and course. Germany can be low-tuition at public universities, while the USA and UK are at the higher end. Our destination pages show yearly tuition and living costs in rupees."],
+  ["What is the average cost of studying abroad?", "It depends heavily on country and programme. Germany can be low-tuition at public universities, while the USA and UK are at the higher end. Our destination pages show yearly tuition and living costs in rupees."],
   ["How long does the admission process take?", "Plan for several months from shortlisting to offer, plus time for the visa. Most students begin 9 to 12 months before the intake they want."],
   ["What documents are required for a student visa?", "Typically an offer letter, passport, proof of funds, academic records and English test results, plus country-specific forms and sometimes a medical check or interview. Requirements differ, so confirm on the official visa site."],
   ["Can I work while studying abroad?", "Most destinations allow limited part-time work during term and full-time in holidays, with limits set by each country's student visa. Check the current rules for your destination before you rely on this income."],

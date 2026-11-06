@@ -14,36 +14,33 @@ const PANELS = (f: AuthFacts): Record<PanelKey, { headline: string; points: Poin
     headline: "Pick up right where you left off.",
     points: [
       [FileText, "Your resume, saved", "Open Resume Studio and carry on editing, on any device."],
-      [BookOpen, "Your learning, tracked", `${f.courses} courses, exam prep and practice studios, with your progress remembered.`],
+      [Landmark, "Your shortlist, saved", "Universities you compared and the costs you planned, ready when you are."],
       [Route, "Your journey, stage by stage", "Your overseas roadmap, applications and consultant in one place."],
     ],
   },
   signup: {
     headline: "Free to start. Yours to keep.",
     points: [
-      [GraduationCap, "Learn with structure", "Courses, mock tests and exam prep for school, college and careers."],
-      [FileText, "Build a resume that works", "Templates, live scoring and ATS checks in Resume Studio."],
-      [Globe2, "Go further", `A ${f.stages}-stage study abroad journey, a verified Skill Passport and internships.`],
+      [GraduationCap, "Compare universities", "Safe, Target and Reach options matched to your profile and budget."],
+      [FileText, "Keep your documents organised", "One checklist for transcripts, tests and applications."],
+      [Globe2, "Go further", `A ${f.stages}-stage study abroad journey with a counsellor beside you.`],
     ],
   },
   account: {
     headline: "Your future doesn’t have to wait.",
     points: [
-      [GraduationCap, "Courses and exam prep", "Learn at your own pace, with progress saved."],
-      [FileText, "Resume Studio", "Build and improve your resume with live scoring."],
-      [Globe2, "Internships and study abroad", "Opportunities and plans, all in one account."],
+      [GraduationCap, "University matches", "Safe, Target and Reach options for your profile."],
+      [FileText, "Documents", "Everything for your applications in one checklist."],
+      [Globe2, "Study abroad", "Packages, visa and funding help, all in one account."],
     ],
   },
 });
 
 /** The studios, shown as chips so a visitor sees how much is inside one account. */
-const STUDIOS = ["Resume Studio", "Maths Speed Studio", "Mathematics Studio", "English Reading Studio", "English Writing Studio", "Skill Passport"];
+const STUDIOS = ["University matches", "Visa tracker", "Funds planner", "Education loans", "IELTS practice", "Skill Passport"];
 
 function stats(f: AuthFacts): Array<[typeof Lock, string, string]> {
   const list: Array<[typeof Lock, string, string]> = [
-    [BookOpen, String(f.courses), "courses"],
-    [FileText, String(f.templates), "resume templates"],
-    [Target, String(f.exams), "exam-prep courses"],
     [Route, String(f.stages), "stage overseas journey"],
   ];
   if (f.universities) list.push([Landmark, String(f.universities), "universities"]);

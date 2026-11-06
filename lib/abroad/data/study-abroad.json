@@ -113,7 +113,7 @@
             "exams": [
                 "English: IELTS (UKVI version for some universities), TOEFL or PTE",
                 "GRE is rarely needed",
-                "Some courses need ATAS clearance"
+                "Some programmes need ATAS clearance"
             ],
             "visa": {
                 "name": "Student visa",
@@ -122,7 +122,7 @@
                     "Show proof of funds held for 28 days",
                     "Hold a valid passport",
                     "Provide a TB test certificate (required for applicants from India)",
-                    "Get ATAS clearance if your course needs it",
+                    "Get ATAS clearance if your programme needs it",
                     "Pay the Immigration Health Surcharge",
                     "Give biometrics at a visa application centre"
                 ]
@@ -365,7 +365,7 @@
             "faq": [
                 {
                     "q": "What is the Genuine Student requirement?",
-                    "a": "A statement in which you explain why you want to study in Australia and that course. It replaced the earlier Genuine Temporary Entrant test."
+                    "a": "A statement in which you explain why you want to study in Australia and that programme. It replaced the earlier Genuine Temporary Entrant test."
                 },
                 {
                     "q": "Can I work on a student visa?",
@@ -1357,7 +1357,7 @@
                 "Law & Social Sciences"
             ],
             "english_taught": true,
-            "blurb": "One of Australia's oldest universities, with a wide course range."
+            "blurb": "One of Australia's oldest universities, with a wide programme range."
         },
         {
             "slug": "unsw",

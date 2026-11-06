@@ -1,6 +1,6 @@
 /**
  * Staff-delivered services a plan includes, and how many. Pure data, shared by the value stack, the dashboard and the claim code (lib/pay/services.ts).
- * `per` is the window the count renews in: a month is the last 30 days, a year the last 365. The fee of one on its own is in SERVICE_PRODUCTS (lib/pay/course-fees.ts).
+ * `per` is the window the count renews in: a month is the last 30 days, a year the last 365. The fee of one on its own is in SERVICE_PRODUCTS (lib/pay/service-fees.ts).
  */
 export type ServiceKey = "career-counselling" | "overseas-counselling" | "resume-review" | "mock-visa-interview" | "expert-shortlist";
 export type Window = "month" | "year";

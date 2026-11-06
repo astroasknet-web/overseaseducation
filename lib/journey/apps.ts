@@ -30,7 +30,7 @@ export async function addApplication(caseId: number, who: Who, input: AppInput):
   const programme = input.programme.trim();
   const intake = (input.intake || c.intake).trim();
   if (name.length < 2) return "Enter the university name.";
-  if (programme.length < 3) return "Enter the programme (course) name.";
+  if (programme.length < 3) return "Enter the programme name.";
   if (!intake) return "Choose the intake.";
   if (!(CATEGORIES as readonly string[]).includes(input.category)) return "Choose ambitious, target or safer.";
   if ((await val("SELECT id FROM oj_applications WHERE case_id = $1 AND uni_key = $2 AND prog_key = $3 AND intake_key = $4", [caseId, norm(name), norm(programme), norm(intake)])) !== null) return "You already have an application for this university, programme and intake.";

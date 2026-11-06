@@ -19,7 +19,7 @@ export type FooterConfig = {
     secondary: { label: string; href: string };
     tertiary?: { label: string; href: string };
   };
-  /** The family of apps ("N apps. One account."). The panel only shows when at least two apps have a URL. */
+  /** The family of apps ("N apps. One account."). Apps without a URL show as "Soon" until it is set. */
   appsTitle: string;
   apps: FooterApp[];
   newsletter: { label: string; button: string; endpoint: string; source: string };

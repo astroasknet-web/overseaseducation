@@ -46,7 +46,9 @@ export default function StandardFooter({ config }: { config: FooterConfig }) {
   const { brand, cta, apps, newsletter, columns, social, share, supportEmail } = config;
   const offices = config.offices ?? STANDARD_OFFICES;
   const legal = config.legal ?? STANDARD_LEGAL;
-  const shownApps = apps.filter((a) => a.href);
+  // Every app in the family is always listed. One whose URL is not set yet shows as "Soon" instead of disappearing, so the footer already
+  // carries the links to the other domains (Learning and courses, Internships, Recruitment) and they light up as soon as the URL is configured.
+  const shownApps = apps;
   const showApps = shownApps.length >= 2;
 
   const [email, setEmail] = useState("");
@@ -135,10 +137,19 @@ export default function StandardFooter({ config }: { config: FooterConfig }) {
                 <ul className="grid grid-cols-2 gap-2.5">
                   {shownApps.map((a) => (
                     <li key={a.key}>
-                      <Link href={a.href} {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group flex min-h-[56px] items-center gap-2.5 rounded-2xl bg-white/15 px-3 py-2.5 ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white">
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-orange"><Icon name={a.icon} size={18} /></span>
-                        <span className="text-[13px] font-semibold leading-tight text-white">{a.name}</span>
-                      </Link>
+                      {a.href ? (
+                        <Link href={a.href} {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group flex min-h-[56px] items-center gap-2.5 rounded-2xl bg-white/15 px-3 py-2.5 ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white">
+                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-orange"><Icon name={a.icon} size={18} /></span>
+                          <span className="text-[13px] font-semibold leading-tight text-white">{a.name}</span>
+                          {a.external ? <span className="sr-only"> (opens in a new tab)</span> : null}
+                        </Link>
+                      ) : (
+                        <div aria-disabled="true" className="flex min-h-[56px] items-center gap-2.5 rounded-2xl bg-white/10 px-3 py-2.5 ring-1 ring-white/15">
+                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/70 text-orange"><Icon name={a.icon} size={18} /></span>
+                          <span className="text-[13px] font-semibold leading-tight text-white/80">{a.name}</span>
+                          <span className="ml-auto rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">Soon</span>
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>

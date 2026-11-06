@@ -31,7 +31,7 @@ export const FOOTER: FooterConfig = {
   appsTitle: "One family. One account.",
   apps: [
     { key: "overseas", name: "Overseas Education", href: "/", icon: "Globe" },
-    { key: "learning", name: "Learning", href: env("NEXT_PUBLIC_APP_URL_LEARNING"), icon: "GraduationCap", external: true },
+    { key: "learning", name: "Learning & Courses", href: env("NEXT_PUBLIC_APP_URL_LEARNING"), icon: "GraduationCap", external: true },
     { key: "internships", name: "Internships", href: env("NEXT_PUBLIC_APP_URL_INTERNSHIPS"), icon: "Briefcase", external: true },
     { key: "recruitment", name: "Recruitment & Hiring", href: env("NEXT_PUBLIC_APP_URL_RECRUITMENT"), icon: "Users", external: true },
   ],

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card } from "@/components/portal/shell";
 import { serviceLines } from "@/lib/pay/services";
-import { SERVICE_PRODUCTS } from "@/lib/pay/course-fees";
+import { SERVICE_PRODUCTS } from "@/lib/pay/service-fees";
 import { claimServiceAction } from "@/app/(portal)/account/service-actions";
 
 /** The staff-delivered services the student's plan includes, how many are left, and a button to ask for one (it opens a support ticket). */

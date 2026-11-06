@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PassageQs from "@/components/lms/PassageQs";
 import { WritingClinic } from "@/components/lms/IeltsWriting";
-import { cleanHtml } from "@/lib/market/lessons";
+import { cleanHtml } from "@/lib/lms/clean-html";
 import type { Block } from "@/lib/lms/ielts";
 
 const PROSE = "text-[15.5px] leading-relaxed text-ink-2 [&_li]:mt-1 [&_p]:mt-3 [&_p:first-child]:mt-0 [&_strong]:text-ink [&_table]:my-3 [&_table]:w-full [&_td]:border [&_td]:p-2 [&_th]:border [&_th]:bg-cream-2 [&_th]:p-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5";

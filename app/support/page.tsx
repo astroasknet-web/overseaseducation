@@ -8,7 +8,7 @@ import { LIMITS } from "@/lib/support/model";
 export const dynamic = "force-dynamic";
 
 const TITLE = "Yugty Support: raise a ticket and track the reply";
-const DESC = "Get help with your Yugty account, payments, courses, internships or study abroad. Log in, raise a ticket, and follow the conversation with our team.";
+const DESC = "Get help with your Yugty account, payments or study abroad. Log in, raise a ticket, and follow the conversation with our team.";
 export const metadata: Metadata = { title: TITLE, description: DESC, alternates: { canonical: `${SITE_URL}/support` }, openGraph: { type: "website", url: `${SITE_URL}/support`, siteName: "Yugty", title: TITLE, description: DESC } };
 
 const btn = "inline-flex min-h-[52px] items-center justify-center rounded-lg px-7 text-[16px] font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-deep";

@@ -16,10 +16,10 @@
 
 .yg { font-family: var(--font-poppins), system-ui, sans-serif; color: var(--yg-ink); background: #fff; overflow-x: clip; }
 .yg *, .yg *::before, .yg *::after { box-sizing: border-box; }
-.yg h1, .yg h2, .yg h3, .yg h4 { color: inherit; margin: 0; letter-spacing: -0.02em; }
-.yg p { margin: 0; color: var(--yg-body); }
-.yg ul, .yg ol { list-style: none; margin: 0; padding: 0; }
-.yg a { color: inherit; text-decoration: none; }
+:where(.yg) :where(h1, h2, h3, h4) { color: inherit; margin: 0; letter-spacing: -0.02em; }
+:where(.yg) p { margin: 0; color: var(--yg-body); }
+:where(.yg) :where(ul, ol) { list-style: none; margin: 0; padding: 0; }
+:where(.yg) a { color: inherit; text-decoration: none; }
 .yg em { word-spacing: 0.12em; letter-spacing: 0.01em; }
 .yg em, .yg-header em { font-family: var(--font-instrument-serif), Georgia, serif; font-style: italic; font-weight: 400; color: var(--yg-teal); }
 .yg-wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 20px; }

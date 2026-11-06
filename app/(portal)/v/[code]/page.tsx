@@ -117,32 +117,13 @@ export default async function PublicPassport({ params, searchParams }: { params:
                   <ul className="flex flex-wrap gap-2">
                     {d.skills.map((s) => (
                       <li key={s.name} className={`px-3 py-1.5 rounded-full text-[13px] ${s.evidence === "course" ? "bg-emerald-50 text-emerald-800" : "bg-cream-3 text-ink-2"}`}>
-                        {s.name}{s.evidence === "course" ? <><span className="sr-only"> (backed by a completed course)</span><span aria-hidden> ✓</span></> : null}
+                        {s.name}
                       </li>
                     ))}
                   </ul>
-                  <p className="text-[12px] text-ink-4 mt-2">✓ = backed by a completed course. Other skills are listed on the holder’s resume.</p>
+                  <p className="text-[12px] text-ink-4 mt-2">Skills are listed on the holder’s resume.</p>
                 </>
               ) : <p className="text-[14px] text-ink-4">No skills listed.</p>}
-            </section>
-          ) : null}
-
-          {d.courses ? (
-            <section className="mb-6" aria-labelledby="pv-co">
-              <h2 id="pv-co" className="text-[16px] font-semibold text-ink mb-2">Completed courses</h2>
-              {d.courses.length ? (
-                <ul className="divide-y divide-black/[0.07]">
-                  {d.courses.map((c) => {
-                    const [label, cls] = EVIDENCE[c.evidence ?? "self_reported"] ?? EVIDENCE.self_reported;
-                    return (
-                      <li key={c.title} className="py-2.5 flex items-start justify-between gap-3 text-[14px]">
-                        <span><b className="text-ink">{c.title}</b>{c.completedAt ? <small className="block text-ink-4">Completed {dmy(c.completedAt)}</small> : null}</span>
-                        <em className={`not-italic text-[12px] px-2.5 py-1 rounded-full whitespace-nowrap ${cls}`}>{label}</em>
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : <p className="text-[14px] text-ink-4">No completed courses yet.</p>}
             </section>
           ) : null}
 

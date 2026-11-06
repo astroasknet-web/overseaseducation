@@ -44,9 +44,9 @@ export default function CartView({ initialCountry, countries }: { initialCountry
       <div className="rounded-3xl border border-black/10 bg-white p-10 text-center shadow-sm">
         <ShoppingCart className="mx-auto h-10 w-10 text-ink-4" aria-hidden />
         <h2 className="mt-4 text-[1.3rem] font-semibold text-ink">Your cart is empty</h2>
-        <p className="mt-1 text-ink-3">Add courses or a plan, then check out once.</p>
+        <p className="mt-1 text-ink-3">Add a package, then check out once.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Link href="/courses" className="inline-flex min-h-[48px] items-center rounded-xl bg-ink px-6 font-semibold text-white">Browse courses</Link>
+          <Link href="/overseas-packages" className="inline-flex min-h-[48px] items-center rounded-xl bg-ink px-6 font-semibold text-white">Browse packages</Link>
           <Link href="/pricing" className="inline-flex min-h-[48px] items-center rounded-xl border border-black/15 px-6 font-semibold text-ink">See plans</Link>
         </div>
       </div>
@@ -78,7 +78,7 @@ export default function CartView({ initialCountry, countries }: { initialCountry
             </li>
           ))}
         </ul>
-        <p className="mt-2 text-[0.85rem]"><Link href="/courses" className="font-semibold underline">Keep shopping</Link></p>
+        <p className="mt-2 text-[0.85rem]"><Link href="/overseas-packages" className="font-semibold underline">Keep shopping</Link></p>
       </section>
 
       <aside aria-labelledby="cart-sum" className="h-fit rounded-3xl border border-black/10 bg-white p-6 shadow-sm sm:p-8 lg:sticky lg:top-32">

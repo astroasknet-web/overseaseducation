@@ -11,10 +11,10 @@ export const REVIEWED_ON = "2026-10-27";
 export const STAGES: TemplateStage[] = [
   { no: 1, name: "Profile & Counselling", blurb: "Your profile, goals and a first counselling plan." },
   { no: 2, name: "Eligibility & Academic Assessment", blurb: "What you are eligible for, and what is missing." },
-  { no: 3, name: "University & Course Shortlisting", blurb: "A balanced list of ambitious, target and safer options you approve." },
+  { no: 3, name: "University & Programme Shortlisting", blurb: "A balanced list of ambitious, target and safer options you approve." },
   { no: 4, name: "Document Collection & Verification", blurb: "Every document collected, checked and kept current." },
   { no: 5, name: "Exams & Application Preparation", blurb: "Tests, SOP, recommendations and a readiness check." },
-  { no: 6, name: "Application Submission", blurb: "One application per university, course and intake, with proof." },
+  { no: 6, name: "Application Submission", blurb: "One application per university, programme and intake, with proof." },
   { no: 7, name: "Follow-up & Interviews", blurb: "Track every university and prepare for interviews." },
   { no: 8, name: "Offers, Decisions & Acceptance", blurb: "Record offers, compare them and decide formally." },
   { no: 9, name: "Finance, Funding & Accommodation", blurb: "A funded plan and a place to live." },
@@ -85,7 +85,7 @@ T(2, "s2.entrance_req", "Entrance-test requirement identified (GRE / GMAT / SAT)
 T(2, "s2.eligibility_report", "Eligibility assessment report prepared", { sub: "Assessment", o: "consultant", dep: ["s2.grade_conversion", "s2.backlogs"], ev: ["text:Findings: eligible options, gaps and risks"], p: "high", t: 5 });
 T(2, "s2.ack", "Review and acknowledge your eligibility report", { sub: "Assessment", dep: ["s2.eligibility_report"], ev: ["conf:student:What you understood and any questions"], a: "Acknowledge", t: 6 });
 
-// ---- 3. University & Course Shortlisting --------------------------------------------------------------------------------------
+// ---- 3. University & Programme Shortlisting --------------------------------------------------------------------------------------
 T(3, "s3.country_compare", "Review the country comparison (cost, work rights, visa)", { sub: "Research", dep: ["s2.ack"], ev: ["conf:student:Key takeaways"], a: "Review", t: 0 });
 T(3, "s3.longlist", "Longlist of at least 8 programmes built", { sub: "Research", o: "consultant", dep: ["s2.eligibility_report"], ev: ["text:Longlist with fit notes"], t: 1 });
 T(3, "s3.mix", "Shortlist has ambitious, target and safer options", { sub: "Shortlist", o: "consultant", dep: ["s3.longlist"], ev: ["conf:consultant:Mix confirmed (ambitious / target / safer)"], auto: "shortlist_mix", p: "high", t: 3, c: "Done when at least one ambitious, one target and one safer university are on the shortlist (checked automatically)." });
@@ -99,7 +99,7 @@ T(3, "s3.deadlines", "Application deadlines mapped for every university", { sub:
 // ---- 4. Document Collection & Verification -----------------------------------------------------------------------------------
 const D4 = "Document collection";
 T(4, "s4.passport", "Passport scanned and uploaded", { sub: D4, dep: ["s1.profile_form"], ev: ["doc:passport!"], r: true, p: "critical", a: "Upload passport", d: "Colour scan of the photo page. Must be valid for at least 6 months beyond the end of your course." });
-T(4, "s4.passport_validity", "Passport validity checked against your course dates", { sub: D4, o: "consultant", dep: ["s4.passport"], ev: ["text:Expiry date and the date it must be valid until"], p: "critical" });
+T(4, "s4.passport_validity", "Passport validity checked against your programme dates", { sub: D4, o: "consultant", dep: ["s4.passport"], ev: ["text:Expiry date and the date it must be valid until"], p: "critical" });
 T(4, "s4.photo", "Passport-size photo", { sub: D4, ev: ["doc:photo"], r: true });
 T(4, "s4.marks_10", "Class 10 marksheet", { sub: D4, ev: ["doc:transcripts"], r: true, w: deg("UG", "PG", "PhD") });
 T(4, "s4.degree", "Degree certificate or provisional certificate", { sub: D4, ev: ["doc:degree!"], r: true, w: deg("PG", "PhD"), p: "high" });
@@ -123,7 +123,7 @@ T(5, "s5.english_taken", "English test taken and scorecard uploaded", { sub: "Te
 T(5, "s5.english_meets", "English score checked against each university's minimum", { sub: "Tests", o: "consultant", dep: ["s5.english_taken"], ev: ["text:Score vs required minimum per university"], w: NEEDS_ENG, p: "high", t: -5 });
 T(5, "s5.entrance_book", "Book your entrance test (GRE / GMAT / SAT)", { sub: "Tests", dep: ["s2.entrance_req"], ev: ["text:Test, date and booking reference"], w: flag("entranceTestNeeded"), p: "high", t: -40, a: "Record booking" });
 T(5, "s5.entrance_taken", "Entrance test taken and scorecard uploaded", { sub: "Tests", dep: ["s5.entrance_book"], ev: ["doc:entrance_scorecard!"], r: true, w: flag("entranceTestNeeded"), p: "critical", t: -15, a: "Upload scorecard" });
-T(5, "s5.sop_brief", "SOP brief: your story, goals and why each course", { sub: "Statement of purpose", dep: ["s3.approve"], ev: ["text:Outline of your SOP"], a: "Write the brief", t: -30 });
+T(5, "s5.sop_brief", "SOP brief: your story, goals and why each programme", { sub: "Statement of purpose", dep: ["s3.approve"], ev: ["text:Outline of your SOP"], a: "Write the brief", t: -30 });
 T(5, "s5.sop_draft", "SOP first draft uploaded", { sub: "Statement of purpose", dep: ["s5.sop_brief"], ev: ["doc:sop"], r: true, a: "Upload draft", t: -20, min: 2 });
 T(5, "s5.sop_final", "SOP final version approved", { sub: "Statement of purpose", dep: ["s5.sop_draft"], ev: ["doc:sop!"], r: true, p: "high", a: "Upload final SOP", t: -5 });
 T(5, "s5.lor_people", "Choose at least two recommenders", { sub: "Recommendations", dep: ["s3.approve"], ev: ["text:Names, roles and relationship of your recommenders"], a: "Add recommenders", t: -30 });
@@ -188,7 +188,7 @@ T(10, "s10.checklist", "Destination-specific visa checklist issued", { sub: V, o
 T(10, "s10.sevis", "SEVIS fee paid and receipt saved", { sub: "USA (F-1)", dep: ["s8.enrolment_doc"], ev: ["doc:visa_receipt"], r: true, w: dest("usa"), p: "high", t: 3, a: "Upload receipt" });
 T(10, "s10.ds160", "DS-160 completed and confirmation saved", { sub: "USA (F-1)", dep: ["s10.sevis"], ev: ["doc:visa_form"], r: true, w: dest("usa"), p: "critical", t: 6, a: "Upload confirmation" });
 T(10, "s10.cas", "CAS received and checked (UK)", { sub: "UK (Student route)", o: "university", dep: ["s8.enrolment_doc"], ev: ["doc:enrolment_doc"], w: dest("uk"), ext: true, p: "critical", t: 3 });
-T(10, "s10.ihs_atas", "Health surcharge paid; ATAS checked if your course needs it", { sub: "UK (Student route)", dep: ["s10.cas"], ev: ["doc:visa_receipt"], r: true, w: dest("uk"), t: 6, a: "Upload receipt" });
+T(10, "s10.ihs_atas", "Health surcharge paid; ATAS checked if your programme needs it", { sub: "UK (Student route)", dep: ["s10.cas"], ev: ["doc:visa_receipt"], r: true, w: dest("uk"), t: 6, a: "Upload receipt" });
 T(10, "s10.coe_gs", "CoE received and Genuine Student statement prepared (Australia)", { sub: "Australia (Student)", dep: ["s8.enrolment_doc"], ev: ["doc:visa_form"], r: true, w: dest("australia"), p: "critical", t: 4, a: "Upload statement" });
 T(10, "s10.permit_pal", "Study-permit file prepared with attestation letter and GIC (Canada)", { sub: "Canada (Study permit)", dep: ["s8.enrolment_doc"], ev: ["doc:visa_form"], r: true, w: dest("canada"), p: "critical", t: 4, a: "Upload file" });
 T(10, "s10.national_visa", "National visa file prepared with APS / admission proof (Germany)", { sub: "Germany (National visa)", dep: ["s8.enrolment_doc", "s9.blocked_account"], ev: ["doc:visa_form"], r: true, w: dest("germany"), p: "critical", t: 4, a: "Upload file" });
@@ -196,7 +196,7 @@ T(10, "s10.campus_france", "Campus France / long-stay visa file prepared (France
 T(10, "s10.uae_visa", "Student residence visa file prepared (UAE)", { sub: "UAE (Student)", dep: ["s8.enrolment_doc"], ev: ["doc:visa_form"], r: true, w: dest("uae"), p: "critical", t: 4, a: "Upload file" });
 T(10, "s10.financial_evidence", "Financial evidence matched to the visa rules", { sub: V, o: "consultant", dep: ["s9.funds_check", "s10.checklist"], ev: ["text:Requirement vs evidence shown"], p: "critical", t: 5 });
 T(10, "s10.form", "Visa application form completed", { sub: V, dep: ["s10.checklist", "s8.enrolment_doc"], ev: ["doc:visa_form"], r: true, p: "critical", t: 8, a: "Upload form" });
-T(10, "s10.medical", "Medical / TB test done where required", { sub: V, dep: ["s10.checklist"], ev: ["doc:medical"], r: true, w: dest("uk", "canada", "australia"), t: 10, a: "Upload certificate", d: "Required for some nationalities and course lengths. Use only an approved panel clinic." });
+T(10, "s10.medical", "Medical / TB test done where required", { sub: V, dep: ["s10.checklist"], ev: ["doc:medical"], r: true, w: dest("uk", "canada", "australia"), t: 10, a: "Upload certificate", d: "Required for some nationalities and programme lengths. Use only an approved panel clinic." });
 T(10, "s10.police", "Police clearance obtained where required", { sub: V, dep: ["s10.checklist"], ev: ["doc:police"], r: true, w: dest("canada", "australia", "germany", "france"), t: 10, a: "Upload certificate" });
 T(10, "s10.fee", "Visa fee paid and receipt saved", { sub: V, dep: ["s10.form"], ev: ["doc:visa_receipt"], r: true, p: "high", t: 12, a: "Upload receipt" });
 T(10, "s10.appointment", "Visa appointment / biometrics booked", { sub: V, dep: ["s10.fee"], ev: ["text:Date, time and centre"], p: "critical", t: 14, a: "Record appointment" });
@@ -227,7 +227,7 @@ T(12, "s12.orientation", "Attended orientation", { sub: AR, dep: ["s12.arrived"]
 T(12, "s12.biometric_card", "Collected your residence permit / BRP / I-94 record where applicable", { sub: AR, dep: ["s12.arrived"], ev: ["text:Document type and collection date, or 'not applicable'"], w: dest("uk", "usa", "canada", "australia", "germany", "france", "uae"), t: 7, a: "Record" });
 T(12, "s12.enrolment", "Enrolment completed", { sub: AR, dep: ["s12.report"], ev: ["doc:enrolment_confirmation"], r: true, p: "high", t: 8, a: "Upload confirmation" });
 T(12, "s12.student_id", "Student ID collected", { sub: AR, dep: ["s12.enrolment"], ev: ["text:ID number or collection date"], t: 10, a: "Record" });
-T(12, "s12.courses", "Course registration done", { sub: AR, dep: ["s12.enrolment"], ev: ["text:Modules registered"], t: 12, a: "Record" });
+T(12, "s12.courses", "Programme registration done", { sub: AR, dep: ["s12.enrolment"], ev: ["text:Modules registered"], t: 12, a: "Record" });
 T(12, "s12.sim", "Local SIM / phone number active", { sub: "After-arrival support", dep: ["s12.arrived"], ev: ["text:Number and date activated"], t: 3, min: 5, a: "Record" });
 T(12, "s12.bank", "Local bank account opened", { sub: "After-arrival support", dep: ["s12.arrived"], ev: ["text:Bank and date opened"], p: "high", t: 14, min: 5, a: "Record" });
 T(12, "s12.tax_id", "Tax or social-security number obtained", { sub: "After-arrival support", dep: ["s12.enrolment"], ev: ["text:Number type and date applied or received"], t: 21, min: 5, a: "Record" });
@@ -236,7 +236,7 @@ T(12, "s12.address", "Local address registered where the law requires it", { sub
 T(12, "s12.checkin30", "30-day check-in call", { sub: "After-arrival support", o: "consultant", dep: ["s12.arrived"], ev: ["conf:consultant:Date and welfare notes"], t: 30, min: 5 });
 T(12, "s12.checkin90", "90-day check-in call", { sub: "After-arrival support", o: "consultant", dep: ["s12.checkin30"], ev: ["conf:consultant:Date and welfare notes"], t: 90, min: 5 });
 T(12, "s12.feedback", "Share feedback about your journey", { sub: "Alumni", dep: ["s12.enrolment"], ev: ["text:What worked and what to improve"], t: 45, a: "Give feedback" });
-T(12, "s12.alumni", "Joined the Yugty alumni network", { sub: "Alumni", dep: ["s12.enrolment"], ev: ["conf:student:Joined; add your university and course"], t: 60, a: "Join alumni" });
+T(12, "s12.alumni", "Joined the Yugty alumni network", { sub: "Alumni", dep: ["s12.enrolment"], ev: ["conf:student:Joined; add your university and programme"], t: 60, a: "Join alumni" });
 
 // ---- 13. Internships abroad (opt-in track) ---------------------------------------------------------------------------------------------
 const IN = flag("wantsInternship");

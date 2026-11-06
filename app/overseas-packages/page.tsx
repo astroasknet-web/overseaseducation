@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const FAQ: Array<[string, string]> = [
-  ["Which package should I start with?", "If you are still choosing where to apply, start with Discovery & Shortlisting. If you already know your course and universities, Application Pro covers the applications. Each level includes everything in the one before, so you can start small."],
+  ["Which package should I start with?", "If you are still choosing where to apply, start with Discovery & Shortlisting. If you already know your programme and universities, Application Pro covers the applications. Each level includes everything in the one before, so you can start small."],
   ["Can I move up to a higher package later?", "Yes. Tell your counsellor or raise a support ticket and we will work out what you have already covered."],
   ["Does any package guarantee admission or a visa?", "No. Universities and governments make those decisions. The packages improve how prepared and organised you are."],
   ["How do I pay?", "Every package is a one-time fee paid online at checkout, by card, UPI or net banking. You will receive a receipt, and your counsellor contacts you about the next steps."],
