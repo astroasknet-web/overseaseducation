@@ -47,7 +47,7 @@ export function UniCard({ u, country, fit, shortlisted, canShortlist, back }: { 
         <details className="mt-3">
           <summary className="cursor-pointer text-[13px] font-medium text-orange-dark min-h-[36px] flex items-center">Why this label</summary>
           <ul className="text-[13px] space-y-1 mt-1">
-            {fit.reasons.map((r) => <li key={r} className="text-emerald-800">&#10003; {r}</li>)}
+            {fit.reasons.map((r) => (/is below the typical level/.test(r) ? <li key={r} className="text-ink-2">+ {r}</li> : <li key={r} className="text-emerald-800">&#10003; {r}</li>))}
             {fit.cautions.map((r) => <li key={r} className="text-ink-2">+ {r}</li>)}
           </ul>
         </details>

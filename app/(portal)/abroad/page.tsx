@@ -10,6 +10,8 @@ import { eraseAction } from "@/app/abroad/more-actions";
 import { Flash } from "@/components/abroad/parts";
 import { viewCase } from "@/lib/journey/service";
 import { caseOfUser } from "@/lib/journey/store";
+import { listDocs, missingCore } from "@/lib/journey/docs";
+import { DOC_KEYS } from "@/lib/journey/types";
 import { Bar } from "@/components/journey/parts";
 import { ABROAD_PACKAGES } from "@/lib/abroad/packages";
 import { Roadmap } from "@/components/journey/Roadmap";
@@ -23,6 +25,7 @@ export const metadata: Metadata = { title: "Overseas education | Yugty" };
 export const dynamic = "force-dynamic";
 
 const STATUS: Record<string, string> = { draft: "Draft", in_review: "In review", applied: "Applied", offer: "Offer", declined: "Declined", accepted: "Accepted" };
+const JSTATUS: Record<string, string> = { shortlisted: "Shortlisted", preparing: "Preparing", submitted: "Submitted", under_review: "Under review", offer: "Offer received", accepted: "Offer accepted", declined: "Declined", rejected: "Not successful", withdrawn: "Withdrawn", deferred: "Deferred" };
 const day = (s: string) => new Date(s.replace(" ", "T") + "Z").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 const PREVIEW = JOURNEY_STAGES.map((s) => ({ stage: s.no, total: 0, done: 0, pct: 0 }));
 const btn = "min-h-[44px] px-4 rounded-lg text-[14px] font-semibold";
@@ -34,14 +37,19 @@ export default async function AbroadDashboard() {
   const complete = S.isComplete(profile);
   const stage = profile ? await S.syncStage(uid, uid) : "ONBOARDING";
   const cs = await A.countries();
-  const apps = await S.applications(uid);
+  const jc = await caseOfUser(uid);
+  // Once a journey exists it is the single source of truth for applications, documents and the visa stage.
+  const apps = jc ? [] : await S.applications(uid);
   const docs = await V.forUser(uid);
   const missing = await V.missingRequired(uid);
   const shortlistIds = await S.shortlistIds(uid);
   const shortlist = (await Promise.all(shortlistIds.map((id) => A.universityById(id)))).filter((u): u is A.University => u !== null);
   const history = await S.historyFor(uid, 8);
-  const jc = await caseOfUser(uid);
   const jv = jc ? await viewCase(jc.id) : null;
+  const jdocs = jc ? await listDocs(jc.id, { latestOnly: true }) : null;
+  const jmissing = jc ? await missingCore(jc.id) : null;
+  const needDocs = jmissing ? jmissing.map((k) => (DOC_KEYS[k]?.label ?? k).toLowerCase()) : missing.map((t) => V.TYPES[t].toLowerCase());
+  const docsHref = jc ? "/abroad/journey/documents" : "/abroad/documents";
 
   return (
     <PortalPage user={me} active="abroad" title="Overseas education" subtitle="Your journey, applications, documents and packages in one place, with a counselor reviewing every step." wide="full">
@@ -75,12 +83,12 @@ export default async function AbroadDashboard() {
       ) : (
         <p className="mb-6 flex flex-wrap gap-3">
           <Link href="/abroad/matches" className={`${btn} inline-flex items-center bg-orange hover:bg-orange-dark text-white`}>See my matches</Link>
-          <Link href="/abroad/documents" className={`${btn} inline-flex items-center border border-black/[0.15] hover:bg-cream-2`}>My documents ({docs.length})</Link>
+          <Link href={docsHref} className={`${btn} inline-flex items-center border border-black/[0.15] hover:bg-cream-2`}>My documents ({jdocs ? jdocs.length : docs.length})</Link>
           <Link href="/abroad/profile" className={`${btn} inline-flex items-center border border-black/[0.15] hover:bg-cream-2`}>Edit profile</Link>
         </p>
       )}
 
-      {complete && missing.length ? <Alert kind="info">Still needed before you can submit: {missing.map((t) => V.TYPES[t].toLowerCase()).join(", ")}. <Link className="underline" href="/abroad/documents">Upload documents</Link>.</Alert> : null}
+      {complete && needDocs.length ? <Alert kind="info">Still needed before you can submit: {needDocs.join(", ")}. <Link className="underline" href={docsHref}>Upload documents</Link>.</Alert> : null}
 
       <nav aria-label="Planning tools" className="mb-6 flex flex-wrap gap-2">
         {[["/abroad/visa", "Visa tracker"], ["/abroad/funds", "Proof of funds"], ["/abroad/loans", "Education loans"], ["/abroad/interview", "Visa interview practice"]].map(([href, label]) => <Link key={href} href={href} className="min-h-[44px] inline-flex items-center px-4 rounded-full border border-black/[0.15] bg-white text-[14px] font-medium hover:bg-cream-2">{label}</Link>)}
@@ -88,7 +96,28 @@ export default async function AbroadDashboard() {
 
       <section id="apps" className="mb-8" aria-labelledby="apps-h">
         <h2 id="apps-h" className="text-[20px] font-bold text-ink mb-3">Applications</h2>
-        {!apps.length ? <Card><p className="text-[15px] text-ink-3">No applications yet. Shortlist a university, open it and choose &ldquo;Start application&rdquo;.</p></Card> : null}
+        {jv ? (
+          <div className="grid lg:grid-cols-2 gap-4">
+            {jv.loaded.apps.map((a) => {
+              const mine = jv.tasks.filter((t) => t.task.applicationId === a.id && !t.task.obsolete && t.task.status !== "not_applicable");
+              const done = mine.filter((t) => t.task.status === "completed").length;
+              const visa = jv.progress.stages.find((s) => s.stage === 10);
+              return (
+                <article key={a.id} className="bg-white rounded-2xl border border-black/[0.08] shadow-card p-5">
+                  <div className="flex justify-between gap-3">
+                    <div className="min-w-0"><h3 className="text-[17px] font-semibold text-ink">{a.uniName}</h3><p className="text-[14px] text-ink-3">{a.programme} &middot; {a.intake} &middot; {a.category}</p></div>
+                    <span className="h-fit px-3 py-1 rounded-full bg-cream-3 text-[13px] font-medium">{JSTATUS[a.status] ?? a.status}</span>
+                  </div>
+                  <p className="mt-2 text-[14px] text-ink-3">{done} of {mine.length} application steps done</p>
+                  {a.status === "offer" || a.status === "accepted" ? <p className="mt-2 text-[14px] text-ink-2"><b>{a.offerType === "unconditional" ? "Unconditional" : "Conditional"} offer.</b> {a.offerConditions}</p> : null}
+                  {a.status === "accepted" && visa ? <p className="mt-2 text-[14px] text-ink-2">Visa and immigration: {visa.done} of {visa.total} steps done. <Link className="underline" href="/abroad/journey#stage-10">Open the visa stage</Link></p> : null}
+                  <p className="mt-3"><Link href="/abroad/journey/applications" className={`${btn} inline-flex items-center border border-black/[0.15] hover:bg-cream-2`}>Open application steps</Link></p>
+                </article>
+              );
+            })}
+          </div>
+        ) : null}
+        {!jv && !apps.length ? <Card><p className="text-[15px] text-ink-3">No applications yet. Shortlist a university, open it and choose &ldquo;Start application&rdquo;.</p></Card> : null}
         <div className="grid lg:grid-cols-2 gap-4">
           {apps.map((a) => {
             const c = cs[a.country_key];

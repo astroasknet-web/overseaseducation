@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { currentUser } from "@/lib/portal/guard";
 
 const LINKS: Array<[string, string]> = [
   ["/#destinations", "Destinations"],
@@ -12,9 +13,16 @@ const LINKS: Array<[string, string]> = [
 
 /**
  * The site header for Yugty Overseas Education. `overlay` places it transparently over the dark home hero; other pages get the solid
- * white bar. The mobile menu is a native <details>, so it works without JavaScript.
+ * white bar. It shows "My journey" and the person's first name when someone is signed in. The mobile menu is a native <details>, so it
+ * works without JavaScript.
  */
-export default function Navbar({ overlay = false }: { overlay?: boolean; hideUseCases?: boolean } = {}) {
+export default async function Navbar({ overlay = false }: { overlay?: boolean; hideUseCases?: boolean } = {}) {
+  const me = await currentUser().catch(() => null);
+  const first = me ? (me.name.split(" ")[0] || "Account") : "";
+  const journeyHref = me ? (me.role === "student" ? "/abroad" : me.role === "counselor" ? "/counselor/journey" : "/account") : "/#enquire";
+  const menu: Array<[string, string]> = me
+    ? [...LINKS, ["/study-abroad", "Find universities"], [journeyHref, me.role === "student" ? "My journey" : "My workspace"], ["/account", "My account"]]
+    : [...LINKS, ["/study-abroad", "Find universities"], ["/login", "Sign in"]];
   return (
     <header className={`yg-header ${overlay ? "yg-header-overlay" : "yg-header-solid"}`}>
       <div className="yg-wrap yg-header-in">
@@ -31,18 +39,24 @@ export default function Navbar({ overlay = false }: { overlay?: boolean; hideUse
           ))}
         </nav>
         <div className="yg-header-cta">
-          <Link href="/login" className="yg-signin">
-            Sign in
-          </Link>
-          <Link href="/#enquire" className="yg-btn yg-btn-primary yg-btn-sm">
-            Free counselling <ArrowRight size={16} aria-hidden />
+          {me ? (
+            <Link href="/account" className="yg-signin" aria-label={`My account, signed in as ${me.name}`}>
+              Hi, {first}
+            </Link>
+          ) : (
+            <Link href="/login" className="yg-signin">
+              Sign in
+            </Link>
+          )}
+          <Link href={journeyHref} className="yg-btn yg-btn-primary yg-btn-sm">
+            {me ? (me.role === "student" ? "My journey" : "My workspace") : "Free counselling"} <ArrowRight size={16} aria-hidden />
           </Link>
           <details className="yg-menu">
             <summary aria-label="Open menu">
               <span />
             </summary>
             <div className="yg-menu-panel">
-              {[...LINKS, ["/study-abroad", "Find universities"], ["/login", "Sign in"]].map(([h, l]) => (
+              {menu.map(([h, l]) => (
                 <Link key={h + l} href={h}>
                   {l}
                 </Link>

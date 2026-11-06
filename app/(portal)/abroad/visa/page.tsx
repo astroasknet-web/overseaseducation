@@ -5,6 +5,8 @@ import * as visa from "@/lib/abroad/visa";
 import { saveVisaAction } from "@/app/abroad/more-actions";
 import { Flash } from "@/components/abroad/parts";
 import { Card, PortalPage } from "@/components/portal/shell";
+import { caseOfUser } from "@/lib/journey/store";
+import { viewCase } from "@/lib/journey/service";
 
 export const metadata: Metadata = { title: "My visa tracker | Yugty" };
 export const dynamic = "force-dynamic";
@@ -16,10 +18,21 @@ export default async function VisaPage() {
   const me = await requireUser("student");
   const cases = await visa.forUser(me.id);
   const ready = await Promise.all(cases.map((c) => visa.readiness(me.id, c)));
+  const jc = await caseOfUser(me.id);
+  const jv = jc ? await viewCase(jc.id) : null;
+  const visaTasks = jv ? jv.tasks.filter((t) => t.task.stage === 10 && !t.task.obsolete && t.task.status !== "not_applicable") : [];
+  const visaDone = visaTasks.filter((t) => t.task.status === "completed").length;
   return (
     <PortalPage user={me} active="abroad" title="My visa tracker" subtitle="You book the appointment with the embassy; we remind you, give you a calendar file and check you are ready." wide>
       <Flash />
-      {!cases.length ? <Card><p className="text-[15px] text-ink-3">A visa case appears here once a university makes you an offer. <Link className="underline" href="/abroad#apps">See your applications</Link>.</p></Card> : null}
+      {jv && visaTasks.length ? (
+        <Card title="Visa and immigration (from your journey)">
+          <p className="text-[14px] text-ink-3 mb-3">{visaDone} of {visaTasks.length} visa steps done. Each step shows who does it and what proof is needed. <Link className="underline" href="/abroad/journey#stage-10">Open the visa stage</Link></p>
+          <div className="h-2 rounded-full bg-cream-3 overflow-hidden mb-3" role="img" aria-label={`${visaDone} of ${visaTasks.length} visa steps done`}><span className="block h-full bg-orange rounded-full" style={{ width: `${visaTasks.length ? Math.round((visaDone / visaTasks.length) * 100) : 0}%` }} /></div>
+          <ul className="text-[14px] space-y-1">{visaTasks.map((t) => <li key={t.task.id}>{t.task.status === "completed" ? <span className="text-emerald-800">&#10003; {t.task.title}</span> : <span className="text-ink-2">&#9675; {t.task.title}</span>}</li>)}</ul>
+        </Card>
+      ) : null}
+      {!jv && !cases.length ? <Card><p className="text-[15px] text-ink-3">A visa case appears here once a university makes you an offer. <Link className="underline" href="/abroad#apps">See your applications</Link>.</p></Card> : null}
       {cases.map((c, i) => (
         <Card key={c.id} title={c.uni_name}>
           <p className="text-[14px] text-ink-3 mb-4">{c.program} &middot; {c.intake} &middot; {visa.STAGES[c.stage]}{c.appointment_at ? <> &middot; <a className="underline" href={`/abroad/visa/ics/${c.id}`}>Add to calendar</a></> : null}</p>

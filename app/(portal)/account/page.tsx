@@ -3,7 +3,7 @@ import Link from "next/link";
 import { isVerified, mfaRequiredFor } from "@/lib/portal/auth";
 import { requireUser } from "@/lib/portal/guard";
 import MyProducts from "@/components/pay/MyProducts";
-import QrDashboard from "@/components/portal/QrDashboard";
+import JourneyCard from "@/components/portal/JourneyCard";
 import ServicesCard from "@/components/pay/ServicesCard";
 import { Alert } from "@/components/portal/ui";
 import { Card, PortalPage } from "@/components/portal/shell";
@@ -31,18 +31,8 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
     <PortalPage user={me} active="account" title={`Hello, ${me.name.split(" ")[0]}`} subtitle={`${ROLE_LABEL[me.role]} account`}>
       {sp.welcome ? <Alert kind="success">Welcome to Yugty. Your account is ready.</Alert> : null}
 
-      {me.role === "student" ? <QrDashboard userId={me.id} name={me.name} justSaved={sp.scan === "1"} /> : null}
+      {me.role === "student" ? <JourneyCard userId={me.id} /> : null}
       {me.role === "student" ? <MyProducts userId={me.id} /> : null}
-
-      {me.role === "student" ? (
-        <Card title="Your Skill Passport">
-          <p className="text-[15px] text-ink-3 mb-4">Score your resume, see what to improve, and publish a QR-verifiable passport that employers can check.</p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/passport" className="inline-flex items-center min-h-[48px] px-5 rounded-lg bg-orange hover:bg-orange-dark text-white font-semibold text-[15px]">Open my Skill Passport</Link>
-            <Link href="/studio" className="inline-flex items-center min-h-[48px] px-5 rounded-lg border border-black/[0.15] hover:bg-cream-2 text-ink font-semibold text-[15px]">Build my resume in Resume Studio</Link>
-          </div>
-        </Card>
-      ) : null}
 
       {me.role === "student" ? <ServicesCard userId={me.id} msg={{ ok: sp.svc === "ok" ? sp.t : undefined, err: sp.svc === "err" ? sp.e : undefined }} /> : null}
 

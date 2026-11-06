@@ -15,8 +15,6 @@ export function groupsFor(role: string): NavGroup[] {
         { title: "Overview", items: [ACCOUNT, BILLING, SUPPORT] },
         { title: "Study abroad", items: [
           { key: "abroad", href: "/abroad", label: "Overseas education", icon: "abroad" },
-          { key: "passport", href: "/passport", label: "Skill Passport", icon: "passport" },
-          { key: "share", href: "/passport/share", label: "Share my passport", icon: "share" },
         ] },
       ];
     case "teacher":

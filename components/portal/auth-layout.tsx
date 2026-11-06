@@ -152,7 +152,8 @@ export function SocialButtons({ role = "student", next = "", verb = "Continue" }
 
 /** Account type tabs on the sign-up page. */
 export function RoleTabs({ role }: { role: string }) {
-  const tabs: [string, string][] = [["student", "Student"], ["teacher", "Teacher"], ["parent", "Parent"], ["employer", "Employer"]];
+  const tabs: [string, string][] = [["student", "Student"]];
+  if (tabs.length < 2) return null; // other account types belong to other Yugty apps
   return (
     <nav aria-label="Account type" className="mb-6 grid grid-cols-4 gap-1 rounded-xl bg-cream-2 p-1">
       {tabs.map(([k, l]) => (

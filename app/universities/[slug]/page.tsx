@@ -100,7 +100,7 @@ export default async function UniversityPage({ params }: { params: Promise<{ slu
             <article className={box}>
               <h2 className="text-[20px] font-bold text-ink mb-2">Why this label for you</h2>
               <ul className="text-[15px] space-y-1.5">
-                {fit.reasons.map((r) => <li key={r} className="text-emerald-800">&#10003; {r}</li>)}
+                {fit.reasons.map((r) => (/is below the typical level/.test(r) ? <li key={r} className="text-ink-2">+ {r}</li> : <li key={r} className="text-emerald-800">&#10003; {r}</li>))}
                 {fit.cautions.map((r) => <li key={r} className="text-ink-2">+ {r}</li>)}
               </ul>
             </article>

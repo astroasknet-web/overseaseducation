@@ -14,14 +14,13 @@ export const dynamic = "force-dynamic";
 
 const COPY = {
   student: ["Create your free account", "Applying is free. We never charge placement fees."],
-  employer: ["Hire on Yugty", "Post roles and meet verified students."],
 } as const;
 
 export default async function SignupPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;
   const me = await currentUser();
   if (me) redirect(homeFor(me.role));
-  const role = sp.role === "employer" ? sp.role : "student";
+  const role = "student" as const; // this app is for students; other account types sign up on their own Yugty app
   const [title, sub] = COPY[role];
   const mode = captchaMode();
   const oauthError = sp.e ? OAUTH_ERRORS[sp.e] : undefined;
@@ -34,7 +33,7 @@ export default async function SignupPage({ searchParams }: { searchParams: Promi
     >
       <RoleTabs role={role} />
       {oauthError ? <Notice>{oauthError}</Notice> : null}
-      {role === "employer" ? <Notice kind="info">Employers sign up with a work email so we can verify the company.</Notice> : <SocialButtons role={role} verb="Sign up" />}
+      <SocialButtons role={role} verb="Sign up" />
       <SignupForm role={role} captcha={{ mode, siteKey: mode === "turnstile" ? turnstileSiteKey() : "" }} />
     </AuthSplit>
   );

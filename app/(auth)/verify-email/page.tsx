@@ -23,7 +23,7 @@ export default async function VerifyEmailPage({ searchParams }: { searchParams: 
   if (sp.done) {
     return (
       <AuthSplit eyebrow="Your account" title="Email confirmed">
-        <Notice kind="success">Your email is verified. You can now {me?.role === "employer" ? "post roles" : "apply to internships"} on Yugty.</Notice>
+        <Notice kind="success">Your email is verified. You can now save documents and complete the steps of your study abroad journey.</Notice>
         <a href={home} className={btn}>{homeLabel}</a>
       </AuthSplit>
     );
